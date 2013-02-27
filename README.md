@@ -49,6 +49,10 @@ I will be continuing to develop the M13InfniteTabBar. Adding features as I need 
 * Handle device rotation. Implemented but buggy. Need to learn a bit more about bounds and frames.
 * Allow switching the order, adding, and removing of tabs.
 
+Contact Me:
+-------------
+If you have any questions comments or suggestions, send me a message. If you find a bug, or want to submit a pull request, let me know.
+
 License:
 --------
 MIT License
