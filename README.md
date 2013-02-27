@@ -18,6 +18,8 @@ Screenshots from WMSO?
 <img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/WMSOAlertProgress.png</img>
 <img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/WMSOAlert.png</img>
 
+Watch the demo video here: https://raw.github.com/Marxon13/M13InfiniteTabBar/master/M13InfiniteTabBar.mp4
+
 Set Up:
 --------------
 * First, create all of your UIViewControllers, and create all of the M13InfiniteTabBarItems that correspond to those view controllers. The M13InfiniteTabBarItems are created with ```- (id)initWithTitle:(NSString *)title andIcon:(UIImage *)icon```, where the title is the title text you want displayed, and the icon is a black and white mask for the icon.
