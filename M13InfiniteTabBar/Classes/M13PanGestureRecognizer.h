@@ -15,14 +15,23 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIGestureRecognizerSubclass.h>
 
+/** Directional constants. */
 typedef enum {
     M13PanGestureRecognizerDirectionVertical,
     M13PanGestureRecognizerDirectionHorizontal
 } M13PanGestureRecognizerDirection;
 
+/** A `UIPanGestureRecognizer allowing panning in one direction */
 @interface M13PanGestureRecognizer : UIPanGestureRecognizer
-
-//The direction to allow dragging in
+/** The direction to allow dragging in. 
+ 
+    Available Values: 
+    typedef enum {
+        M13PanGestureRecognizerDirectionVertical,
+        M13PanGestureRecognizerDirectionHorizontal
+    } M13PanGestureRecognizerDirection;
+ 
+ */
 @property (nonatomic, assign) M13PanGestureRecognizerDirection panDirection;
 
 @end

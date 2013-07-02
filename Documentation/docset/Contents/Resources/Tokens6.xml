@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/M13PanGestureRecognizer.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/M13PanGestureRecognizer</TokenIdentifier>
+			<Abstract type="html">A `UIPanGestureRecognizer allowing panning in one direction</Abstract>
+			<DeclaredIn>M13PanGestureRecognizer.h</DeclaredIn>
+			
+			<NodeRef refid="6"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13PanGestureRecognizer/setPanDirection:</TokenIdentifier>
+			<Abstract type="html">The direction to allow dragging in.</Abstract>
+			<DeclaredIn>M13PanGestureRecognizer.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) M13PanGestureRecognizerDirection panDirection</Declaration>
+			
+			
+			<Anchor>//api/name/panDirection</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13PanGestureRecognizer/panDirection</TokenIdentifier>
+			<Abstract type="html">The direction to allow dragging in.</Abstract>
+			<DeclaredIn>M13PanGestureRecognizer.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) M13PanGestureRecognizerDirection panDirection</Declaration>
+			
+			
+			<Anchor>//api/name/panDirection</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13PanGestureRecognizer/panDirection</TokenIdentifier>
+			<Abstract type="html">The direction to allow dragging in.</Abstract>
+			<DeclaredIn>M13PanGestureRecognizer.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) M13PanGestureRecognizerDirection panDirection</Declaration>
+			
+			
+			<Anchor>//api/name/panDirection</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

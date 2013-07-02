@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+    <TOC>
+        <Node type="folder">
+            <Name>M13InfiniteTabBar</Name>
+            <Path>index.html</Path>
+			<Subnodes>
+                
+				
+				<Node type="folder">
+					<Name>Classes</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="1"/>
+						<NodeRef refid="2"/>
+						<NodeRef refid="3"/>
+						<NodeRef refid="4"/>
+						<NodeRef refid="5"/>
+						<NodeRef refid="6"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+				
+				<Node type="folder">
+					<Name>Protocols</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="7"/>
+						<NodeRef refid="8"/>
+						<NodeRef refid="9"/>
+						
+					</Subnodes>
+				</Node>
+				
+			</Subnodes>
+        </Node>
+    </TOC>
+	<Library>
+		
+		<Node id="1">
+			<Name>M13InfiniteTabBar</Name>
+			<Path>Classes/M13InfiniteTabBar.html</Path>
+		</Node>
+		<Node id="2">
+			<Name>M13InfiniteTabBarCentralPullNotificationBackgroundView</Name>
+			<Path>Classes/M13InfiniteTabBarCentralPullNotificationBackgroundView.html</Path>
+		</Node>
+		<Node id="3">
+			<Name>M13InfiniteTabBarCentralPullViewController</Name>
+			<Path>Classes/M13InfiniteTabBarCentralPullViewController.html</Path>
+		</Node>
+		<Node id="4">
+			<Name>M13InfiniteTabBarController</Name>
+			<Path>Classes/M13InfiniteTabBarController.html</Path>
+		</Node>
+		<Node id="5">
+			<Name>M13InfiniteTabBarItem</Name>
+			<Path>Classes/M13InfiniteTabBarItem.html</Path>
+		</Node>
+		<Node id="6">
+			<Name>M13PanGestureRecognizer</Name>
+			<Path>Classes/M13PanGestureRecognizer.html</Path>
+		</Node>
+		
+		
+		<Node id="7">
+			<Name>M13InfiniteTabBarCentralPullViewControllerDelegate</Name>
+			<Path>Protocols/M13InfiniteTabBarCentralPullViewControllerDelegate.html</Path>
+		</Node>
+		<Node id="8">
+			<Name>M13InfiniteTabBarControllerDelegate</Name>
+			<Path>Protocols/M13InfiniteTabBarControllerDelegate.html</Path>
+		</Node>
+		<Node id="9">
+			<Name>M13InfiniteTabBarDelegate</Name>
+			<Path>Protocols/M13InfiniteTabBarDelegate.html</Path>
+		</Node>
+		
+	</Library>
+</DocSetNodes>

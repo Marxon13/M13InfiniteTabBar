@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/M13InfiniteTabBarCentralPullViewController.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/M13InfiniteTabBarCentralPullViewController</TokenIdentifier>
+			<Abstract type="html">The centrally located UIViewController that is available anywhere by dragging up from the M13InfiniteTabBar.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/setHandleView:</TokenIdentifier>
+			<Abstract type="html">The handle of the pullable view.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIView *handleView</Declaration>
+			
+			
+			<Anchor>//api/name/handleView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/handleView</TokenIdentifier>
+			<Abstract type="html">The handle of the pullable view.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIView *handleView</Declaration>
+			
+			
+			<Anchor>//api/name/handleView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarCentralPullViewController/handleView</TokenIdentifier>
+			<Abstract type="html">The handle of the pullable view.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIView *handleView</Declaration>
+			
+			
+			<Anchor>//api/name/handleView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/setClosedCenter:</TokenIdentifier>
+			<Abstract type="html">The center of the UIView in respect to its parent when the pullable view is closed.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readwrite, assign) CGPoint closedCenter</Declaration>
+			
+			
+			<Anchor>//api/name/closedCenter</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/closedCenter</TokenIdentifier>
+			<Abstract type="html">The center of the UIView in respect to its parent when the pullable view is closed.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readwrite, assign) CGPoint closedCenter</Declaration>
+			
+			
+			<Anchor>//api/name/closedCenter</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarCentralPullViewController/closedCenter</TokenIdentifier>
+			<Abstract type="html">The center of the UIView in respect to its parent when the pullable view is closed.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readwrite, assign) CGPoint closedCenter</Declaration>
+			
+			
+			<Anchor>//api/name/closedCenter</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/setOpenCenter:</TokenIdentifier>
+			<Abstract type="html">The center of the UIView in respect to its parent when the pullable view is open</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readwrite, assign) CGPoint openCenter</Declaration>
+			
+			
+			<Anchor>//api/name/openCenter</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/openCenter</TokenIdentifier>
+			<Abstract type="html">The center of the UIView in respect to its parent when the pullable view is open</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readwrite, assign) CGPoint openCenter</Declaration>
+			
+			
+			<Anchor>//api/name/openCenter</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarCentralPullViewController/openCenter</TokenIdentifier>
+			<Abstract type="html">The center of the UIView in respect to its parent when the pullable view is open</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readwrite, assign) CGPoint openCenter</Declaration>
+			
+			
+			<Anchor>//api/name/openCenter</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/setIsOpen:</TokenIdentifier>
+			<Abstract type="html">The current state of the pullable view.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, assign) BOOL isOpen</Declaration>
+			
+			
+			<Anchor>//api/name/isOpen</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/isOpen</TokenIdentifier>
+			<Abstract type="html">The current state of the pullable view.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, assign) BOOL isOpen</Declaration>
+			
+			
+			<Anchor>//api/name/isOpen</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarCentralPullViewController/isOpen</TokenIdentifier>
+			<Abstract type="html">The current state of the pullable view.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, assign) BOOL isOpen</Declaration>
+			
+			
+			<Anchor>//api/name/isOpen</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/setPanRecognizer:</TokenIdentifier>
+			<Abstract type="html">The gesture recognizer that detects upward drags. Accessable to allow fo concurrent gesture recognizers</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) M13PanGestureRecognizer *panRecognizer</Declaration>
+			
+			
+			<Anchor>//api/name/panRecognizer</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/panRecognizer</TokenIdentifier>
+			<Abstract type="html">The gesture recognizer that detects upward drags. Accessable to allow fo concurrent gesture recognizers</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) M13PanGestureRecognizer *panRecognizer</Declaration>
+			
+			
+			<Anchor>//api/name/panRecognizer</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarCentralPullViewController/panRecognizer</TokenIdentifier>
+			<Abstract type="html">The gesture recognizer that detects upward drags. Accessable to allow fo concurrent gesture recognizers</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) M13PanGestureRecognizer *panRecognizer</Declaration>
+			
+			
+			<Anchor>//api/name/panRecognizer</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/setAnimationDuration:</TokenIdentifier>
+			<Abstract type="html">The duration of the animation when the view is opened or closed programatically.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readwrite, assign) CGFloat animationDuration</Declaration>
+			
+			
+			<Anchor>//api/name/animationDuration</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/animationDuration</TokenIdentifier>
+			<Abstract type="html">The duration of the animation when the view is opened or closed programatically.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readwrite, assign) CGFloat animationDuration</Declaration>
+			
+			
+			<Anchor>//api/name/animationDuration</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarCentralPullViewController/animationDuration</TokenIdentifier>
+			<Abstract type="html">The duration of the animation when the view is opened or closed programatically.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (readwrite, assign) CGFloat animationDuration</Declaration>
+			
+			
+			<Anchor>//api/name/animationDuration</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/setDelegate:</TokenIdentifier>
+			<Abstract type="html">The pullable view&apos;s delegate</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) id&lt;M13InfiniteTabBarCentralPullViewControllerDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/delegate</TokenIdentifier>
+			<Abstract type="html">The pullable view&apos;s delegate</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) id&lt;M13InfiniteTabBarCentralPullViewControllerDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarCentralPullViewController/delegate</TokenIdentifier>
+			<Abstract type="html">The pullable view&apos;s delegate</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) id&lt;M13InfiniteTabBarCentralPullViewControllerDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/setOpened:animated:</TokenIdentifier>
+			<Abstract type="html">Set the state of the view.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>- (void)setOpened:(BOOL)opened animated:(BOOL)animated</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>opened</Name>
+					<Abstract type="html">Wether or not the view will be opened.</Abstract>
+				</Parameter><Parameter>
+					<Name>animated</Name>
+					<Abstract type="html">Wether or not to animate the transition.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setOpened:animated:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullViewController/handleDrag:</TokenIdentifier>
+			<Abstract type="html">Allows updating of the view&apos;s position while the user drags.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>- (void)handleDrag:(UIPanGestureRecognizer *)sender</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sender</Name>
+					<Abstract type="html">The UIPanGestureRecognizer handling the drag.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/handleDrag:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

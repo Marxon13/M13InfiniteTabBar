@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/M13InfiniteTabBarCentralPullNotificationBackgroundView.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/M13InfiniteTabBarCentralPullNotificationBackgroundView</TokenIdentifier>
+			<Abstract type="html">The pattern that will be animated during an alert.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullNotificationBackgroundView/setIsEmergency:</TokenIdentifier>
+			<Abstract type="html">Used to change the notification styling if the notification is important.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL isEmergency</Declaration>
+			
+			
+			<Anchor>//api/name/isEmergency</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullNotificationBackgroundView/isEmergency</TokenIdentifier>
+			<Abstract type="html">Used to change the notification styling if the notification is important.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL isEmergency</Declaration>
+			
+			
+			<Anchor>//api/name/isEmergency</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarCentralPullNotificationBackgroundView/isEmergency</TokenIdentifier>
+			<Abstract type="html">Used to change the notification styling if the notification is important.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL isEmergency</Declaration>
+			
+			
+			<Anchor>//api/name/isEmergency</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullNotificationBackgroundView/setNotificationPatternRepeatDistance:</TokenIdentifier>
+			<Abstract type="html">Used by the tab bar to produce a continous animation.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) CGFloat notificationPatternRepeatDistance</Declaration>
+			
+			
+			<Anchor>//api/name/notificationPatternRepeatDistance</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullNotificationBackgroundView/notificationPatternRepeatDistance</TokenIdentifier>
+			<Abstract type="html">Used by the tab bar to produce a continous animation.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) CGFloat notificationPatternRepeatDistance</Declaration>
+			
+			
+			<Anchor>//api/name/notificationPatternRepeatDistance</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarCentralPullNotificationBackgroundView/notificationPatternRepeatDistance</TokenIdentifier>
+			<Abstract type="html">Used by the tab bar to produce a continous animation.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) CGFloat notificationPatternRepeatDistance</Declaration>
+			
+			
+			<Anchor>//api/name/notificationPatternRepeatDistance</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullNotificationBackgroundView/setNotificationNonEmergencyColor:</TokenIdentifier>
+			<Abstract type="html">Fill color for a non emergency</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *notificationNonEmergencyColor</Declaration>
+			
+			
+			<Anchor>//api/name/notificationNonEmergencyColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullNotificationBackgroundView/notificationNonEmergencyColor</TokenIdentifier>
+			<Abstract type="html">Fill color for a non emergency</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *notificationNonEmergencyColor</Declaration>
+			
+			
+			<Anchor>//api/name/notificationNonEmergencyColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarCentralPullNotificationBackgroundView/notificationNonEmergencyColor</TokenIdentifier>
+			<Abstract type="html">Fill color for a non emergency</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *notificationNonEmergencyColor</Declaration>
+			
+			
+			<Anchor>//api/name/notificationNonEmergencyColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullNotificationBackgroundView/setNotificationEmergencyColor:</TokenIdentifier>
+			<Abstract type="html">Fill color for an emergency</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *notificationEmergencyColor</Declaration>
+			
+			
+			<Anchor>//api/name/notificationEmergencyColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarCentralPullNotificationBackgroundView/notificationEmergencyColor</TokenIdentifier>
+			<Abstract type="html">Fill color for an emergency</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *notificationEmergencyColor</Declaration>
+			
+			
+			<Anchor>//api/name/notificationEmergencyColor</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarCentralPullNotificationBackgroundView/notificationEmergencyColor</TokenIdentifier>
+			<Abstract type="html">Fill color for an emergency</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullNotificationBackgroundView.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *notificationEmergencyColor</Declaration>
+			
+			
+			<Anchor>//api/name/notificationEmergencyColor</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

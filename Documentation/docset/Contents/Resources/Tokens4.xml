@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/M13InfiniteTabBarController.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/M13InfiniteTabBarController</TokenIdentifier>
+			<Abstract type="html">A controller for M13InfiniteTabBar. Preforms similar to UITabBarController.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>
+			
+			<NodeRef refid="4"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/initWithViewControllers:pairedWithInfiniteTabBarItems:</TokenIdentifier>
+			<Abstract type="html">Initalize an instance of M13InfiniteTabBarController with a set of UIViewControllers paired with a set of M13InfiniteTabBarItems.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithViewControllers:(NSArray *)viewControllers pairedWithInfiniteTabBarItems:(NSArray *)items</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>viewControllers</Name>
+					<Abstract type="html">All the view controllers for the tabs in order.</Abstract>
+				</Parameter><Parameter>
+					<Name>items</Name>
+					<Abstract type="html">The tabs that correspond to the UIViewControllers in the other array.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">An instance of M13InfiniteTabBarConroller</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithViewControllers:pairedWithInfiniteTabBarItems:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/setDelegate:</TokenIdentifier>
+			<Abstract type="html">Responds to M13InfiniteTabBarController&apos;s delegate methods.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) id&lt;M13InfiniteTabBarControllerDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/delegate</TokenIdentifier>
+			<Abstract type="html">Responds to M13InfiniteTabBarController&apos;s delegate methods.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) id&lt;M13InfiniteTabBarControllerDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarController/delegate</TokenIdentifier>
+			<Abstract type="html">Responds to M13InfiniteTabBarController&apos;s delegate methods.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) id&lt;M13InfiniteTabBarControllerDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/setInfiniteTabBar:</TokenIdentifier>
+			<Abstract type="html">The M13InfiniteTabBar instance the controller is controlling. This property is accessable to allow apperance customization.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) M13InfiniteTabBar *infiniteTabBar</Declaration>
+			
+			
+			<Anchor>//api/name/infiniteTabBar</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/infiniteTabBar</TokenIdentifier>
+			<Abstract type="html">The M13InfiniteTabBar instance the controller is controlling. This property is accessable to allow apperance customization.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) M13InfiniteTabBar *infiniteTabBar</Declaration>
+			
+			
+			<Anchor>//api/name/infiniteTabBar</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarController/infiniteTabBar</TokenIdentifier>
+			<Abstract type="html">The M13InfiniteTabBar instance the controller is controlling. This property is accessable to allow apperance customization.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) M13InfiniteTabBar *infiniteTabBar</Declaration>
+			
+			
+			<Anchor>//api/name/infiniteTabBar</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/setSelectedViewController:</TokenIdentifier>
+			<Abstract type="html">The selected UIViewController instance.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIViewController *selectedViewController</Declaration>
+			
+			
+			<Anchor>//api/name/selectedViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/selectedViewController</TokenIdentifier>
+			<Abstract type="html">The selected UIViewController instance.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIViewController *selectedViewController</Declaration>
+			
+			
+			<Anchor>//api/name/selectedViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarController/selectedViewController</TokenIdentifier>
+			<Abstract type="html">The selected UIViewController instance.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) UIViewController *selectedViewController</Declaration>
+			
+			
+			<Anchor>//api/name/selectedViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/setSelectedIndex:</TokenIdentifier>
+			<Abstract type="html">The index of the selected `UIViewController</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSUInteger selectedIndex</Declaration>
+			
+			
+			<Anchor>//api/name/selectedIndex</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/selectedIndex</TokenIdentifier>
+			<Abstract type="html">The index of the selected `UIViewController</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSUInteger selectedIndex</Declaration>
+			
+			
+			<Anchor>//api/name/selectedIndex</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarController/selectedIndex</TokenIdentifier>
+			<Abstract type="html">The index of the selected `UIViewController</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSUInteger selectedIndex</Declaration>
+			
+			
+			<Anchor>//api/name/selectedIndex</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/setSelectedIndex:</TokenIdentifier>
+			<Abstract type="html">Set the selected UIViewController programatically by its index</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>- (void)setSelectedIndex:(NSUInteger)selectedIndex</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>selectedIndex</Name>
+					<Abstract type="html">The index to be selected.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setSelectedIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/setSelectedViewController:</TokenIdentifier>
+			<Abstract type="html">Set the selected UIViewController.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>- (void)setSelectedViewController:(UIViewController *)selectedViewController</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>selectedViewController</Name>
+					<Abstract type="html">The UIViewController to be selected.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setSelectedViewController:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/setCentralViewController:</TokenIdentifier>
+			<Abstract type="html">The UIViewController that is accesssable by pulling up on the M13InfiniteTabBar</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIViewController *centralViewController</Declaration>
+			
+			
+			<Anchor>//api/name/centralViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/centralViewController</TokenIdentifier>
+			<Abstract type="html">The UIViewController that is accesssable by pulling up on the M13InfiniteTabBar</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIViewController *centralViewController</Declaration>
+			
+			
+			<Anchor>//api/name/centralViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarController/centralViewController</TokenIdentifier>
+			<Abstract type="html">The UIViewController that is accesssable by pulling up on the M13InfiniteTabBar</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIViewController *centralViewController</Declaration>
+			
+			
+			<Anchor>//api/name/centralViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/setIsCentralViewControllerOpen:</TokenIdentifier>
+			<Abstract type="html">Returns wether the central view controller is on screen or not.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isCentralViewControllerOpen</Declaration>
+			
+			
+			<Anchor>//api/name/isCentralViewControllerOpen</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/isCentralViewControllerOpen</TokenIdentifier>
+			<Abstract type="html">Returns wether the central view controller is on screen or not.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isCentralViewControllerOpen</Declaration>
+			
+			
+			<Anchor>//api/name/isCentralViewControllerOpen</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarController/isCentralViewControllerOpen</TokenIdentifier>
+			<Abstract type="html">Returns wether the central view controller is on screen or not.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isCentralViewControllerOpen</Declaration>
+			
+			
+			<Anchor>//api/name/isCentralViewControllerOpen</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/showAlertForCentralViewControllerIsEmergency:</TokenIdentifier>
+			<Abstract type="html">Show the upward chevron animation.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>- (void)showAlertForCentralViewControllerIsEmergency:(BOOL)emergency</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>emergency</Name>
+					<Abstract type="html">Indicate if the new alert is an emergency. The choice determines the color of the chevron.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/showAlertForCentralViewControllerIsEmergency:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/setCentralViewControllerOpened:animated:</TokenIdentifier>
+			<Abstract type="html">Change the state of the central view controller.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>- (void)setCentralViewControllerOpened:(BOOL)opened animated:(BOOL)animated</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>opened</Name>
+					<Abstract type="html">The new state of the central view controller.</Abstract>
+				</Parameter><Parameter>
+					<Name>animated</Name>
+					<Abstract type="html">Wether or not the transition is animated.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setCentralViewControllerOpened:animated:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/endAlertAnimation</TokenIdentifier>
+			<Abstract type="html">End the chevron animation</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>- (void)endAlertAnimation</Declaration>
+			
+			
+			<Anchor>//api/name/endAlertAnimation</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/setUI_APPEARANCE_SELECTOR:</TokenIdentifier>
+			<Abstract type="html">The background color of the tab bar</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *UI_APPEARANCE_SELECTOR</Declaration>
+			
+			
+			<Anchor>//api/name/UI_APPEARANCE_SELECTOR</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/UI_APPEARANCE_SELECTOR</TokenIdentifier>
+			<Abstract type="html">The background color of the tab bar</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *UI_APPEARANCE_SELECTOR</Declaration>
+			
+			
+			<Anchor>//api/name/UI_APPEARANCE_SELECTOR</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarController/UI_APPEARANCE_SELECTOR</TokenIdentifier>
+			<Abstract type="html">The background color of the tab bar</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIColor *UI_APPEARANCE_SELECTOR</Declaration>
+			
+			
+			<Anchor>//api/name/UI_APPEARANCE_SELECTOR</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/setPullNotificatonBackgroundView:</TokenIdentifier>
+			<Abstract type="html">The view that is shown and animated to alert users to a change in the central view controller.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) M13InfiniteTabBarCentralPullNotificationBackgroundView *pullNotificatonBackgroundView</Declaration>
+			
+			
+			<Anchor>//api/name/pullNotificatonBackgroundView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/pullNotificatonBackgroundView</TokenIdentifier>
+			<Abstract type="html">The view that is shown and animated to alert users to a change in the central view controller.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) M13InfiniteTabBarCentralPullNotificationBackgroundView *pullNotificatonBackgroundView</Declaration>
+			
+			
+			<Anchor>//api/name/pullNotificatonBackgroundView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarController/pullNotificatonBackgroundView</TokenIdentifier>
+			<Abstract type="html">The view that is shown and animated to alert users to a change in the central view controller.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) M13InfiniteTabBarCentralPullNotificationBackgroundView *pullNotificatonBackgroundView</Declaration>
+			
+			
+			<Anchor>//api/name/pullNotificatonBackgroundView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/infiniteTabBar:shouldSelectItem:</TokenIdentifier>
+			<Abstract type="html">Asks the delegate if the tab that the user selected should be selected.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.m</DeclaredIn>			
+			
+			<Declaration>- (BOOL)infiniteTabBar:(M13InfiniteTabBar *)tabBar shouldSelectItem:(M13InfiniteTabBarItem *)item</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>tabBar</Name>
+					<Abstract type="html">The instance of `M13InfiniteTabBar that is requesting a change.</Abstract>
+				</Parameter><Parameter>
+					<Name>item</Name>
+					<Abstract type="html">The M13InfiniteTabBarItem that will be selected.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">Wether or not the tab bar can select that tab.</Abstract></ReturnValue>
+			<Anchor>//api/name/infiniteTabBar:shouldSelectItem:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/infiniteTabBar:didSelectItem:</TokenIdentifier>
+			<Abstract type="html">Lets the delegate know that an tab bar item has been selected</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.m</DeclaredIn>			
+			
+			<Declaration>- (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar didSelectItem:(M13InfiniteTabBarItem *)item</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>tabBar</Name>
+					<Abstract type="html">The instance of M13InfiniteTabBar that has been changed.</Abstract>
+				</Parameter><Parameter>
+					<Name>item</Name>
+					<Abstract type="html">The M13InfiniteTabBarItem that has been selected.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/infiniteTabBar:didSelectItem:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/infiniteTabBar:willAnimateInViewControllerForItem:</TokenIdentifier>
+			<Abstract type="html">Prepare to animate in a new UIViewController. Anything in this method will not be animated on screen.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.m</DeclaredIn>			
+			
+			<Declaration>- (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar willAnimateInViewControllerForItem:(M13InfiniteTabBarItem *)item</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>tabBar</Name>
+					<Abstract type="html">The instance of M13InfiniteTabBar that has been changed.</Abstract>
+				</Parameter><Parameter>
+					<Name>item</Name>
+					<Abstract type="html">The M13InfiniteTabBarItem that has been selected.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/infiniteTabBar:willAnimateInViewControllerForItem:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/infiniteTabBar:animateInViewControllerForItem:</TokenIdentifier>
+			<Abstract type="html">Preform animations to change the front most view controller here.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.m</DeclaredIn>			
+			
+			<Declaration>- (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar animateInViewControllerForItem:(M13InfiniteTabBarItem *)item</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>tabBar</Name>
+					<Abstract type="html">The instance of M13InfiniteTabBar that has been changed.</Abstract>
+				</Parameter><Parameter>
+					<Name>item</Name>
+					<Abstract type="html">The `M13InfiniteTabBarItem that has been selected.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/infiniteTabBar:animateInViewControllerForItem:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarController/pullableView:didChangeState:</TokenIdentifier>
+			<Abstract type="html">Lets the delegate know that the central view controller did change positions.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarController.m</DeclaredIn>			
+			
+			<Declaration>- (void)pullableView:(M13InfiniteTabBarCentralPullViewController *)pullableView didChangeState:(BOOL)isOpen</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>pullableView</Name>
+					<Abstract type="html">The view that changed.</Abstract>
+				</Parameter><Parameter>
+					<Name>isOpen</Name>
+					<Abstract type="html">Wether or not the view is on screen.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/pullableView:didChangeState:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

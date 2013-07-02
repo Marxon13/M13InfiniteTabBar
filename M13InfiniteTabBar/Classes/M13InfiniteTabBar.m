@@ -71,7 +71,6 @@
         [((M13InfiniteTabBarItem *)[_items objectAtIndex:_previousSelectedIndex]) setSelected:YES];
         
         [self rotateItemsToOrientation:[UIDevice currentDevice].orientation];
-        NSLog(@"%@ : %@ : %@", NSStringFromCGRect(self.frame), NSStringFromCGSize(self.contentSize), NSStringFromCGRect(_tabContainerView.frame));
     }
     return self;
 }
@@ -125,8 +124,8 @@
 - (void)rotateItemsToOrientation:(UIDeviceOrientation)orientation;
 {
     CGFloat angle = 0;
-    if ( orientation == UIDeviceOrientationLandscapeLeft ) angle = M_PI_2;
-    else if ( orientation == UIDeviceOrientationLandscapeRight ) angle = -M_PI_2;
+    if ( orientation == UIDeviceOrientationLandscapeLeft ) angle = -M_PI_2;
+    else if ( orientation == UIDeviceOrientationLandscapeRight ) angle = M_PI_2;
     else if ( orientation == UIDeviceOrientationPortraitUpsideDown ) angle = M_PI;
     for (M13InfiniteTabBarItem *item in _visibleIcons) {
         [item rotateToAngle:angle];
@@ -295,6 +294,11 @@
         }
         
         if (shouldUpdate) {
+            //Set the opacity of the new view controller to 0 before the animation starts
+            if ([_tabBarDelegate respondsToSelector:@selector(infiniteTabBar:willAnimateInViewControllerForItem:)]) {
+               [_tabBarDelegate infiniteTabBar:self willAnimateInViewControllerForItem:item]; 
+            }
+            
             [UIView beginAnimations:@"TabChangedAnimation" context:nil];
             [UIView setAnimationDuration:.5];
             [UIView setAnimationDelegate:self];

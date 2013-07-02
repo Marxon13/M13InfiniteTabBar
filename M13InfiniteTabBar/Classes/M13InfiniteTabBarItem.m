@@ -130,7 +130,12 @@
     CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskRef), CGImageGetHeight(maskRef), CGImageGetBitsPerComponent(maskRef), CGImageGetBitsPerPixel(maskRef), CGImageGetBytesPerRow(maskRef), CGImageGetDataProvider(maskRef), NULL, FALSE);
     CGImageRef masked = CGImageCreateWithMask(backgroundImage.CGImage, mask);
     
-    return [UIImage imageWithCGImage:masked];
+    UIImage *image = [UIImage imageWithCGImage:masked];;
+    CGImageRelease(mask);
+    CGImageRelease(masked);
+    //CGImageRelease(maskRef);
+    
+    return image;
 }
 
 - (void)setBackgroundImage:(UIImage *)backgroundImage

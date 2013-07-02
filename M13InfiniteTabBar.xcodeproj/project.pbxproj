@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		CAF63C4C1783144000A9D1B1 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CAF63C4F1783144000A9D1B1 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				CAF63C501783144A00A9D1B1 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		CA71128C16CDD550007760C4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA71128B16CDD550007760C4 /* QuartzCore.framework */; };
 		CAB8453A16CC8AEE0051B3A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB8453916CC8AEE0051B3A9 /* UIKit.framework */; };
@@ -250,6 +264,7 @@
 			projectRoot = "";
 			targets = (
 				CAB8453516CC8AEE0051B3A9 /* M13InfiniteTabBar */,
+				CAF63C4C1783144000A9D1B1 /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -285,6 +300,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CAF63C501783144A00A9D1B1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#appledoc Xcode script\n# Start constants\ncompany=\"Marxon13 Productions (Brandon McQuilkin)\";\ncompanyID=\"com.BrandonMcQuilkin\";\ncompanyURL=\"http://marxon13.com\";\ntarget=\"iphoneos\";\n#target=\"macosx\";\noutputPath=\"~/github/local/M13InfiniteTabBar/Documentation\";\n# End constants\n/usr/local/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--docset-atom-filename \"${company}.atom\" \\\n--docset-feed-url \"${companyURL}/${company}/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"${companyURL}/${company}/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${companyURL}/${company}\" \\\n--output \"${outputPath}\" \\\n--docset-platform-family \"${target}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--exit-threshold 2 \\\n\"${PROJECT_DIR}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CAB8453216CC8AEE0051B3A9 /* Sources */ = {
@@ -413,6 +444,20 @@
 			};
 			name = Release;
 		};
+		CAF63C4D1783144000A9D1B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CAF63C4E1783144000A9D1B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -433,6 +478,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		CAF63C4F1783144000A9D1B1 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAF63C4D1783144000A9D1B1 /* Debug */,
+				CAF63C4E1783144000A9D1B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

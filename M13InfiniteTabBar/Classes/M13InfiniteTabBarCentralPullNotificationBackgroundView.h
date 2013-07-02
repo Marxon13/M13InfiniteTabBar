@@ -14,16 +14,18 @@
 
 #import <UIKit/UIKit.h>
 
+/** The pattern that will be animated during an alert. */
 @interface M13InfiniteTabBarCentralPullNotificationBackgroundView : UIView
 
-//Used to change the notification styling if the notification is important.
+/** Used to change the notification styling if the notification is important. */
 @property (nonatomic, assign) BOOL isEmergency;
 
-//Used by the tab bar to produce a continous animation.
+/** Used by the tab bar to produce a continous animation. */
 @property (nonatomic, readonly) CGFloat notificationPatternRepeatDistance;
 
-//Pattern Colors
+/** Fill color for a non emergency */
 @property (nonatomic, retain) UIColor *notificationNonEmergencyColor;
+/** Fill color for an emergency */
 @property (nonatomic, retain) UIColor *notificationEmergencyColor;
 
 @end

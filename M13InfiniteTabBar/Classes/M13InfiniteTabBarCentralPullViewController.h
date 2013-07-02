@@ -17,39 +17,47 @@
 #import "M13PanGestureRecognizer.h"
 @class M13InfiniteTabBarCentralPullViewController;
 
+/** Delegate protocols for `M13InfiniteTabBarCentralPullViewController` */
 @protocol M13InfiniteTabBarCentralPullViewControllerDelegate <NSObject>
 
+/** Lets the delegate know that the central view controller did change positions.
+ @param pullableView    The view that changed.
+ @param isOpen          Wether or not the view is on screen. */
 - (void)pullableView:(M13InfiniteTabBarCentralPullViewController *)pullableView didChangeState:(BOOL)isOpen;
 
 @end
 
+/** The centrally located `UIViewController` that is available anywhere by dragging up from the M13InfiniteTabBar. */
 @interface M13InfiniteTabBarCentralPullViewController : UIView
-
-//The handle of the pull view
+/** @name Properties */
+/** The handle of the pullable view. */
 @property (nonatomic, retain) UIView *handleView;
 
-//Location of the center of the pull view in its super view when closed
+/** The center of the `UIView` in respect to its parent when the pullable view is closed. */ 
 @property (readwrite, assign) CGPoint closedCenter;
 
-//Location of the center of the pull view in its super view when open
+/** The center of the `UIView` in respect to its parent when the pullable view is open */
 @property (readwrite, assign) CGPoint openCenter;
 
-//Used to retreive the state of the view
+/** The current state of the pullable view. */
 @property (readonly, assign) BOOL isOpen;
 
-//Gesture Recongizier
+/** The gesture recognizer that detects upward drags. Accessable to allow fo concurrent gesture recognizers*/
 @property (nonatomic, retain) M13PanGestureRecognizer *panRecognizer;
 
-//Duration of the animation when pulled open or closed, and the gesture is ended
+/** The duration of the animation when the view is opened or closed programatically. */
 @property (readwrite, assign) CGFloat animationDuration;
 
-//Delegate to be notified about state changes
+/** The pullable view's delegate */
 @property (nonatomic, retain) id<M13InfiniteTabBarCentralPullViewControllerDelegate> delegate;
 
-//Toggle the state
+/** Set the state of the view.
+ @param opened      Wether or not the view will be opened.
+ @param animated    Wether or not to animate the transition. */
 - (void)setOpened:(BOOL)opened animated:(BOOL)animated;
 
-//Drag
+/** Allows updating of the view's position while the user drags. 
+ @param sender The UIPanGestureRecognizer handling the drag. */
 -(void)handleDrag:(UIPanGestureRecognizer *)sender;
 
 @end

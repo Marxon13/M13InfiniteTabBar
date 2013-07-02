@@ -10,6 +10,7 @@
 
 #import "M13InfiniteTabBarController.h"
 #import "M13InfiniteTabBarItem.h"
+#import "ViewController.h"
 
 @interface AppDelegate () <M13InfiniteTabBarControllerDelegate>
 
@@ -17,37 +18,74 @@
 
 @implementation AppDelegate
 {
-    UIViewController *c1;
-    UIViewController *c2;
-    UIViewController *c3;
-    UIViewController *c4;
-    UIViewController *c5;
-    UIViewController *c6;
-    UIViewController *c7;
-    UIViewController *c8;
+    ViewController *c1;
+    ViewController *c2;
+    ViewController *c3;
+    ViewController *c4;
+    ViewController *c5;
+    ViewController *c6;
+    ViewController *c7;
+    ViewController *c8;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //Create view controllers
-    c1 = [[UIViewController alloc] init];
+    c1 = [[ViewController alloc] init];
     c1.view.backgroundColor = [UIColor redColor];
-    c2 = [[UIViewController alloc] init];
+    c1.title = @"Bone";
+    UIView *sub1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    sub1.backgroundColor = [UIColor whiteColor];
+    [c1.view addSubview:sub1];
+    c2 = [[ViewController alloc] init];
     c2.view.backgroundColor = [UIColor orangeColor];
-    c3 = [[UIViewController alloc] init];
+    c2.title = @"Fish";
+    UIView *sub2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    sub2.backgroundColor = [UIColor whiteColor];
+    [c2.view addSubview:sub2];
+    c3 = [[ViewController alloc] init];
     c3.view.backgroundColor = [UIColor yellowColor];
-    c4 = [[UIViewController alloc] init];
+    c3.title = @"Cat";
+    UIView *sub3 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    sub3.backgroundColor = [UIColor whiteColor];
+    UILabel *lab3 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
+    lab3.textAlignment = NSTextAlignmentCenter;
+    lab3.text = @"Cat Label";
+    lab3.center = c3.view.center;
+    lab3.backgroundColor = [UIColor clearColor];
+    lab3.textColor = [UIColor grayColor];
+    [c3.view addSubview:lab3];
+    [c3.view addSubview:sub3];
+    c4 = [[ViewController alloc] init];
     c4.view.backgroundColor = [UIColor greenColor];
-    c5 = [[UIViewController alloc] init];
+    c4.title = @"Dog"; 
+    UIView *sub4 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    sub4.backgroundColor = [UIColor whiteColor];
+    [c4.view addSubview:sub4];
+    c5 = [[ViewController alloc] init];
     c5.view.backgroundColor = [UIColor blueColor];
-    c6 = [[UIViewController alloc] init];
+    c5.title = @"Snail";
+    UIView *sub5 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    sub5.backgroundColor = [UIColor whiteColor];
+    [c5.view addSubview:sub1];
+    c6 = [[ViewController alloc] init];
     c6.view.backgroundColor = [UIColor lightGrayColor];
-    c7 = [[UIViewController alloc] init];
+    c6.title = @"Rabbit";
+    UIView *sub6 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    sub6.backgroundColor = [UIColor whiteColor];
+    [c6.view addSubview:sub6];
+    c7 = [[ViewController alloc] init];
     c7.view.backgroundColor = [UIColor darkGrayColor];
     c7.title = @"Root";
-    c8 = [[UIViewController alloc] init];
+    UIView *sub7 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    sub7.backgroundColor = [UIColor whiteColor];
+    [c7.view addSubview:sub7];
+    c8 = [[ViewController alloc] init];
     c8.view.backgroundColor = [UIColor purpleColor];
-    c8.title = @"On Stack";
+    c8.title = @"Bird";
+    UIView *sub8 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    sub8.backgroundColor = [UIColor whiteColor];
+    [c8.view addSubview:sub8];
     UINavigationController *n7 = [[UINavigationController alloc] initWithRootViewController:c7];
     [n7 pushViewController:c8 animated:NO];
     

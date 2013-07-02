@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/M13InfiniteTabBarItem.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/M13InfiniteTabBarItem</TokenIdentifier>
+			<Abstract type="html">This class is similar to the UITabBarItem class.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarItem.h</DeclaredIn>
+			
+			<NodeRef refid="5"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarItem/initWithTitle:andIcon:</TokenIdentifier>
+			<Abstract type="html">Initalize the M13InfiniteTabBarItem.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarItem.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithTitle:(NSString *)title andIcon:(UIImage *)icon</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>title</Name>
+					<Abstract type="html">The text that should be displayed, usually the title of the UIViewController.</Abstract>
+				</Parameter><Parameter>
+					<Name>icon</Name>
+					<Abstract type="html">The image to be displayed.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">An instance of M13InfiniteTabBarItem.</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithTitle:andIcon:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarItem/setUI_APPEARANCE_SELECTOR:</TokenIdentifier>
+			<Abstract type="html">The image that will show as the tab bar item&apos;s background.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIImage *UI_APPEARANCE_SELECTOR</Declaration>
+			
+			
+			<Anchor>//api/name/UI_APPEARANCE_SELECTOR</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarItem/UI_APPEARANCE_SELECTOR</TokenIdentifier>
+			<Abstract type="html">The image that will show as the tab bar item&apos;s background.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIImage *UI_APPEARANCE_SELECTOR</Declaration>
+			
+			
+			<Anchor>//api/name/UI_APPEARANCE_SELECTOR</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBarItem/UI_APPEARANCE_SELECTOR</TokenIdentifier>
+			<Abstract type="html">The image that will show as the tab bar item&apos;s background.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) UIImage *UI_APPEARANCE_SELECTOR</Declaration>
+			
+			
+			<Anchor>//api/name/UI_APPEARANCE_SELECTOR</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarItem/setSelected:</TokenIdentifier>
+			<Abstract type="html">Used to set wether the item is selected or not.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarItem.h</DeclaredIn>			
+			
+			<Declaration>- (void)setSelected:(BOOL)selected</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>selected</Name>
+					<Abstract type="html">Wether or not that tab is selected.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setSelected:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarItem/copy</TokenIdentifier>
+			<Abstract type="html">Duplicate a M13InfiniteTabBarItem.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarItem.h</DeclaredIn>			
+			
+			<Declaration>- (id)copy</Declaration>
+			
+			
+			<Anchor>//api/name/copy</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBarItem/rotateToAngle:</TokenIdentifier>
+			<Abstract type="html">Rotate the item to the given angle.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarItem.h</DeclaredIn>			
+			
+			<Declaration>- (void)rotateToAngle:(CGFloat)angle</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>angle</Name>
+					<Abstract type="html">The angle to rotate the item to.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/rotateToAngle:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/M13InfiniteTabBar.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/M13InfiniteTabBar</TokenIdentifier>
+			<Abstract type="html">The tab bar. Works like UITabBar, but way cooler.</Abstract>
+			<DeclaredIn>M13InfiniteTabBar.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBar/initWithInfiniteTabBarItems:</TokenIdentifier>
+			<Abstract type="html">Initalize an instance of M13InfiniteTabBar.</Abstract>
+			<DeclaredIn>M13InfiniteTabBar.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithInfiniteTabBarItems:(NSArray *)items</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>items</Name>
+					<Abstract type="html">The M13InfiniteTabBarItems that will be placed in the tab bar.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">An initalized M13InfiniteTabBar instance.</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithInfiniteTabBarItems:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBar/setTabBarDelegate:</TokenIdentifier>
+			<Abstract type="html">Tab bar&apos;s delegate.</Abstract>
+			<DeclaredIn>M13InfiniteTabBar.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) id&lt;M13InfiniteTabBarDelegate&gt; tabBarDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/tabBarDelegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBar/tabBarDelegate</TokenIdentifier>
+			<Abstract type="html">Tab bar&apos;s delegate.</Abstract>
+			<DeclaredIn>M13InfiniteTabBar.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) id&lt;M13InfiniteTabBarDelegate&gt; tabBarDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/tabBarDelegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBar/tabBarDelegate</TokenIdentifier>
+			<Abstract type="html">Tab bar&apos;s delegate.</Abstract>
+			<DeclaredIn>M13InfiniteTabBar.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) id&lt;M13InfiniteTabBarDelegate&gt; tabBarDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/tabBarDelegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBar/setSelectedItem:</TokenIdentifier>
+			<Abstract type="html">The M13InfiniteTabBarItem that is selected.</Abstract>
+			<DeclaredIn>M13InfiniteTabBar.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) M13InfiniteTabBarItem *selectedItem</Declaration>
+			
+			
+			<Anchor>//api/name/selectedItem</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBar/selectedItem</TokenIdentifier>
+			<Abstract type="html">The M13InfiniteTabBarItem that is selected.</Abstract>
+			<DeclaredIn>M13InfiniteTabBar.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) M13InfiniteTabBarItem *selectedItem</Declaration>
+			
+			
+			<Anchor>//api/name/selectedItem</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/M13InfiniteTabBar/selectedItem</TokenIdentifier>
+			<Abstract type="html">The M13InfiniteTabBarItem that is selected.</Abstract>
+			<DeclaredIn>M13InfiniteTabBar.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) M13InfiniteTabBarItem *selectedItem</Declaration>
+			
+			
+			<Anchor>//api/name/selectedItem</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/M13InfiniteTabBar/rotateItemsToOrientation:</TokenIdentifier>
+			<Abstract type="html">Method to rotate all the items on the tab bar to the given orientation.</Abstract>
+			<DeclaredIn>M13InfiniteTabBar.h</DeclaredIn>			
+			
+			<Declaration>- (void)rotateItemsToOrientation:(UIDeviceOrientation)orientation</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>orientation</Name>
+					<Abstract type="html">The orientation the tab bar items shoulb be rotated to.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/rotateItemsToOrientation:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

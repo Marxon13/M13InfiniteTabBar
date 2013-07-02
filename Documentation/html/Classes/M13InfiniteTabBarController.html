@@ -1,0 +1,1367 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>M13InfiniteTabBarController Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">M13InfiniteTabBar </a></h1>
+				<a id="developerHome" href="../index.html">Marxon13 Productions (Brandon McQuilkin)</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">M13InfiniteTabBarController Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/UI_APPEARANCE_SELECTOR">&nbsp;&nbsp;&nbsp;&nbsp;UI_APPEARANCE_SELECTOR</option>
+	
+	<option value="//api/name/centralViewController">&nbsp;&nbsp;&nbsp;&nbsp;centralViewController</option>
+	
+	<option value="//api/name/delegate">&nbsp;&nbsp;&nbsp;&nbsp;delegate</option>
+	
+	<option value="//api/name/infiniteTabBar">&nbsp;&nbsp;&nbsp;&nbsp;infiniteTabBar</option>
+	
+	<option value="//api/name/isCentralViewControllerOpen">&nbsp;&nbsp;&nbsp;&nbsp;isCentralViewControllerOpen</option>
+	
+	<option value="//api/name/pullNotificatonBackgroundView">&nbsp;&nbsp;&nbsp;&nbsp;pullNotificatonBackgroundView</option>
+	
+	<option value="//api/name/selectedIndex">&nbsp;&nbsp;&nbsp;&nbsp;selectedIndex</option>
+	
+	<option value="//api/name/selectedViewController">&nbsp;&nbsp;&nbsp;&nbsp;selectedViewController</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/endAlertAnimation">&nbsp;&nbsp;&nbsp;&nbsp;- endAlertAnimation</option>
+	
+	<option value="//api/name/infiniteTabBar:animateInViewControllerForItem:">&nbsp;&nbsp;&nbsp;&nbsp;- infiniteTabBar:animateInViewControllerForItem:</option>
+	
+	<option value="//api/name/infiniteTabBar:didSelectItem:">&nbsp;&nbsp;&nbsp;&nbsp;- infiniteTabBar:didSelectItem:</option>
+	
+	<option value="//api/name/infiniteTabBar:shouldSelectItem:">&nbsp;&nbsp;&nbsp;&nbsp;- infiniteTabBar:shouldSelectItem:</option>
+	
+	<option value="//api/name/infiniteTabBar:willAnimateInViewControllerForItem:">&nbsp;&nbsp;&nbsp;&nbsp;- infiniteTabBar:willAnimateInViewControllerForItem:</option>
+	
+	<option value="//api/name/initWithViewControllers:pairedWithInfiniteTabBarItems:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithViewControllers:pairedWithInfiniteTabBarItems:</option>
+	
+	<option value="//api/name/pullableView:didChangeState:">&nbsp;&nbsp;&nbsp;&nbsp;- pullableView:didChangeState:</option>
+	
+	<option value="//api/name/setCentralViewControllerOpened:animated:">&nbsp;&nbsp;&nbsp;&nbsp;- setCentralViewControllerOpened:animated:</option>
+	
+	<option value="//api/name/setSelectedIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- setSelectedIndex:</option>
+	
+	<option value="//api/name/setSelectedViewController:">&nbsp;&nbsp;&nbsp;&nbsp;- setSelectedViewController:</option>
+	
+	<option value="//api/name/showAlertForCentralViewControllerIsEmergency:">&nbsp;&nbsp;&nbsp;&nbsp;- showAlertForCentralViewControllerIsEmergency:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Initalization">Initalization</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Basic Properties">Basic Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Selection Handling">Selection Handling</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Appearance">Appearance</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/UI_APPEARANCE_SELECTOR">UI_APPEARANCE_SELECTOR</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/centralViewController">centralViewController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delegate">delegate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/infiniteTabBar">infiniteTabBar</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isCentralViewControllerOpen">isCentralViewControllerOpen</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pullNotificatonBackgroundView">pullNotificatonBackgroundView</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectedIndex">selectedIndex</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectedViewController">selectedViewController</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/endAlertAnimation">endAlertAnimation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/infiniteTabBar:animateInViewControllerForItem:">infiniteTabBar:animateInViewControllerForItem:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/infiniteTabBar:didSelectItem:">infiniteTabBar:didSelectItem:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/infiniteTabBar:shouldSelectItem:">infiniteTabBar:shouldSelectItem:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/infiniteTabBar:willAnimateInViewControllerForItem:">infiniteTabBar:willAnimateInViewControllerForItem:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithViewControllers:pairedWithInfiniteTabBarItems:">initWithViewControllers:pairedWithInfiniteTabBarItems:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pullableView:didChangeState:">pullableView:didChangeState:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setCentralViewControllerOpened:animated:">setCentralViewControllerOpened:animated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSelectedIndex:">setSelectedIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSelectedViewController:">setSelectedViewController:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showAlertForCentralViewControllerIsEmergency:">showAlertForCentralViewControllerIsEmergency:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="M13InfiniteTabBarController Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">M13InfiniteTabBarController Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">UIViewController</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/M13InfiniteTabBarCentralPullViewControllerDelegate.html">M13InfiniteTabBarCentralPullViewControllerDelegate</a><br /><a href="../Protocols/M13InfiniteTabBarDelegate.html">M13InfiniteTabBarDelegate</a></td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">M13InfiniteTabBarController.h<br />M13InfiniteTabBarController.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A controller for <a href="../Classes/M13InfiniteTabBar.html"><code>M13InfiniteTabBar</code></a>. Preforms similar to <code>UITabBarController</code>.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Initalization" name="task_Initalization"></a>
+						<h3 class="subsubtitle task-title">Initalization</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithViewControllers:pairedWithInfiniteTabBarItems:">&ndash;&nbsp;initWithViewControllers:pairedWithInfiniteTabBarItems:</a></code>
+		<span class="tooltip"><p>Initalize an instance of <code>M13InfiniteTabBarController</code> with a set of <code>UI</code>ViewController<code></code>s paired with a set of <a href="../Classes/M13InfiniteTabBarItem.html"><code>M13InfiniteTabBarItem</code></a>s.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Basic Properties" name="task_Basic Properties"></a>
+						<h3 class="subsubtitle task-title">Basic Properties</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+		<span class="tooltip"><p>Responds to <code>M13InfiniteTabBarController</code>&rsquo;s delegate methods.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/infiniteTabBar">&nbsp;&nbsp;infiniteTabBar</a></code>
+		<span class="tooltip"><p>The <a href="../Classes/M13InfiniteTabBar.html"><code>M13InfiniteTabBar</code></a> instance the controller is controlling. This property is accessable to allow apperance customization.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Selection Handling" name="task_Selection Handling"></a>
+						<h3 class="subsubtitle task-title">Selection Handling</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/selectedViewController">&nbsp;&nbsp;selectedViewController</a></code>
+		<span class="tooltip"><p>The selected <code>UI</code>ViewController<code></code> instance.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/selectedIndex">&nbsp;&nbsp;selectedIndex</a></code>
+		<span class="tooltip"><p>The index of the selected `UI<a href="../Classes/ViewController.html">ViewController</a></p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setSelectedIndex:">&ndash;&nbsp;setSelectedIndex:</a></code>
+		<span class="tooltip"><p>Set the selected <code>UI</code>ViewController<code></code> programatically by its index</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setSelectedViewController:">&ndash;&nbsp;setSelectedViewController:</a></code>
+		<span class="tooltip"><p>Set the selected <code>UI</code>ViewController<code></code>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/centralViewController">&nbsp;&nbsp;centralViewController</a></code>
+		<span class="tooltip"><p>The UI<a href="../Classes/ViewController.html">ViewController</a> that is accesssable by pulling up on the <a href="../Classes/M13InfiniteTabBar.html"><code>M13InfiniteTabBar</code></a></p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isCentralViewControllerOpen">&nbsp;&nbsp;isCentralViewControllerOpen</a></code>
+		<span class="tooltip"><p>Returns wether the central view controller is on screen or not.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showAlertForCentralViewControllerIsEmergency:">&ndash;&nbsp;showAlertForCentralViewControllerIsEmergency:</a></code>
+		<span class="tooltip"><p>Show the upward chevron animation.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setCentralViewControllerOpened:animated:">&ndash;&nbsp;setCentralViewControllerOpened:animated:</a></code>
+		<span class="tooltip"><p>Change the state of the central view controller.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/endAlertAnimation">&ndash;&nbsp;endAlertAnimation</a></code>
+		<span class="tooltip"><p>End the chevron animation</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Appearance" name="task_Appearance"></a>
+						<h3 class="subsubtitle task-title">Appearance</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/UI_APPEARANCE_SELECTOR">&nbsp;&nbsp;UI_APPEARANCE_SELECTOR</a></code>
+		<span class="tooltip"><p>The background color of the tab bar</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pullNotificatonBackgroundView">&nbsp;&nbsp;pullNotificatonBackgroundView</a></code>
+		<span class="tooltip"><p>The view that is shown and animated to alert users to a change in the central view controller.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/infiniteTabBar:shouldSelectItem:">&ndash;&nbsp;infiniteTabBar:shouldSelectItem:</a></code>
+		<span class="tooltip"><p>Asks the delegate if the tab that the user selected should be selected.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/infiniteTabBar:didSelectItem:">&ndash;&nbsp;infiniteTabBar:didSelectItem:</a></code>
+		<span class="tooltip"><p>Lets the delegate know that an tab bar item has been selected</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/infiniteTabBar:willAnimateInViewControllerForItem:">&ndash;&nbsp;infiniteTabBar:willAnimateInViewControllerForItem:</a></code>
+		<span class="tooltip"><p>Prepare to animate in a new <code>UIViewController</code>. Anything in this method will not be animated on screen.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/infiniteTabBar:animateInViewControllerForItem:">&ndash;&nbsp;infiniteTabBar:animateInViewControllerForItem:</a></code>
+		<span class="tooltip"><p>Preform animations to change the front most view controller here.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pullableView:didChangeState:">&ndash;&nbsp;pullableView:didChangeState:</a></code>
+		<span class="tooltip"><p>Lets the delegate know that the central view controller did change positions.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/UI_APPEARANCE_SELECTOR" title="UI_APPEARANCE_SELECTOR"></a>
+	<h3 class="subsubtitle method-title">UI_APPEARANCE_SELECTOR</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The background color of the tab bar</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIColor *UI_APPEARANCE_SELECTOR</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/centralViewController" title="centralViewController"></a>
+	<h3 class="subsubtitle method-title">centralViewController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The UI<a href="../Classes/ViewController.html">ViewController</a> that is accesssable by pulling up on the <a href="../Classes/M13InfiniteTabBar.html"><code>M13InfiniteTabBar</code></a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) UIViewController *centralViewController</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<div class="note"><p><strong>Note:</strong> When <a href="../Classes/M13InfiniteTabBar.html"><code>M13InfiniteTabBar</code></a> gets updated for iOS 7, the central<a href="../Classes/ViewController.html">ViewController</a> might dissapear. This is due to a conflict of how iOS 7 has a panel that drags like notification center from the bottom. Unless I can find an alternitive way to bring the central view controller up, It will just have to become a tab in the tab bar.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="subsubtitle method-title">delegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Responds to <code>M13InfiniteTabBarController</code>&rsquo;s delegate methods.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) id&lt;M13InfiniteTabBarControllerDelegate&gt; delegate</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/infiniteTabBar" title="infiniteTabBar"></a>
+	<h3 class="subsubtitle method-title">infiniteTabBar</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="../Classes/M13InfiniteTabBar.html"><code>M13InfiniteTabBar</code></a> instance the controller is controlling. This property is accessable to allow apperance customization.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) M13InfiniteTabBar *infiniteTabBar</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isCentralViewControllerOpen" title="isCentralViewControllerOpen"></a>
+	<h3 class="subsubtitle method-title">isCentralViewControllerOpen</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns wether the central view controller is on screen or not.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isCentralViewControllerOpen</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pullNotificatonBackgroundView" title="pullNotificatonBackgroundView"></a>
+	<h3 class="subsubtitle method-title">pullNotificatonBackgroundView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The view that is shown and animated to alert users to a change in the central view controller.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) M13InfiniteTabBarCentralPullNotificationBackgroundView *pullNotificatonBackgroundView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/selectedIndex" title="selectedIndex"></a>
+	<h3 class="subsubtitle method-title">selectedIndex</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The index of the selected `UI<a href="../Classes/ViewController.html">ViewController</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSUInteger selectedIndex</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/selectedViewController" title="selectedViewController"></a>
+	<h3 class="subsubtitle method-title">selectedViewController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The selected <code>UI</code>ViewController<code></code> instance.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) UIViewController *selectedViewController</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/endAlertAnimation" title="endAlertAnimation"></a>
+	<h3 class="subsubtitle method-title">endAlertAnimation</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>End the chevron animation</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)endAlertAnimation</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/infiniteTabBar:animateInViewControllerForItem:" title="infiniteTabBar:animateInViewControllerForItem:"></a>
+	<h3 class="subsubtitle method-title">infiniteTabBar:animateInViewControllerForItem:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Preform animations to change the front most view controller here.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)infiniteTabBar:(M13InfiniteTabBar *)<em>tabBar</em> animateInViewControllerForItem:(M13InfiniteTabBarItem *)<em>item</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tabBar</em></dt>
+			<dd><p>The instance of <a href="../Classes/M13InfiniteTabBar.html"><code>M13InfiniteTabBar</code></a> that has been changed.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>item</em></dt>
+			<dd><p>The `<a href="../Classes/M13InfiniteTabBarItem.html">M13InfiniteTabBarItem</a> that has been selected.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<div class="warning"><p><strong>Warning:</strong> Do not create your own <code>UIView</code> animation. One has already been started for you by the <a href="../Classes/M13InfiniteTabBarController.html"><code>M13InfiniteTabBarController</code></a>.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBar.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/infiniteTabBar:didSelectItem:" title="infiniteTabBar:didSelectItem:"></a>
+	<h3 class="subsubtitle method-title">infiniteTabBar:didSelectItem:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Lets the delegate know that an tab bar item has been selected</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)infiniteTabBar:(M13InfiniteTabBar *)<em>tabBar</em> didSelectItem:(M13InfiniteTabBarItem *)<em>item</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tabBar</em></dt>
+			<dd><p>The instance of <a href="../Classes/M13InfiniteTabBar.html"><code>M13InfiniteTabBar</code></a> that has been changed.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>item</em></dt>
+			<dd><p>The <a href="../Classes/M13InfiniteTabBarItem.html"><code>M13InfiniteTabBarItem</code></a> that has been selected.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBar.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/infiniteTabBar:shouldSelectItem:" title="infiniteTabBar:shouldSelectItem:"></a>
+	<h3 class="subsubtitle method-title">infiniteTabBar:shouldSelectItem:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Asks the delegate if the tab that the user selected should be selected.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)infiniteTabBar:(M13InfiniteTabBar *)<em>tabBar</em> shouldSelectItem:(M13InfiniteTabBarItem *)<em>item</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tabBar</em></dt>
+			<dd><p>The instance of `<a href="../Classes/M13InfiniteTabBar.html">M13InfiniteTabBar</a> that is requesting a change.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>item</em></dt>
+			<dd><p>The <a href="../Classes/M13InfiniteTabBarItem.html"><code>M13InfiniteTabBarItem</code></a> that will be selected.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Wether or not the tab bar can select that tab.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBar.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/infiniteTabBar:willAnimateInViewControllerForItem:" title="infiniteTabBar:willAnimateInViewControllerForItem:"></a>
+	<h3 class="subsubtitle method-title">infiniteTabBar:willAnimateInViewControllerForItem:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Prepare to animate in a new <code>UIViewController</code>. Anything in this method will not be animated on screen.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)infiniteTabBar:(M13InfiniteTabBar *)<em>tabBar</em> willAnimateInViewControllerForItem:(M13InfiniteTabBarItem *)<em>item</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tabBar</em></dt>
+			<dd><p>The instance of <a href="../Classes/M13InfiniteTabBar.html"><code>M13InfiniteTabBar</code></a> that has been changed.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>item</em></dt>
+			<dd><p>The <a href="../Classes/M13InfiniteTabBarItem.html"><code>M13InfiniteTabBarItem</code></a> that has been selected.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBar.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithViewControllers:pairedWithInfiniteTabBarItems:" title="initWithViewControllers:pairedWithInfiniteTabBarItems:"></a>
+	<h3 class="subsubtitle method-title">initWithViewControllers:pairedWithInfiniteTabBarItems:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initalize an instance of <code>M13InfiniteTabBarController</code> with a set of <code>UI</code>ViewController<code></code>s paired with a set of <a href="../Classes/M13InfiniteTabBarItem.html"><code>M13InfiniteTabBarItem</code></a>s.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithViewControllers:(NSArray *)<em>viewControllers</em> pairedWithInfiniteTabBarItems:(NSArray *)<em>items</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>viewControllers</em></dt>
+			<dd><p>All the view controllers for the tabs in order.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>items</em></dt>
+			<dd><p>The tabs that correspond to the <code>UIViewControllers</code> in the other array.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An instance of <code>M13InfiniteTabBarConroller</code></p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<div class="note"><p><strong>Note:</strong> On the iPhone, the third item in the tab bar is selected initally. On the iPad the fifth item is selected initally.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pullableView:didChangeState:" title="pullableView:didChangeState:"></a>
+	<h3 class="subsubtitle method-title">pullableView:didChangeState:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Lets the delegate know that the central view controller did change positions.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)pullableView:(M13InfiniteTabBarCentralPullViewController *)<em>pullableView</em> didChangeState:(BOOL)<em>isOpen</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pullableView</em></dt>
+			<dd><p>The view that changed.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>isOpen</em></dt>
+			<dd><p>Wether or not the view is on screen.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarCentralPullViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setCentralViewControllerOpened:animated:" title="setCentralViewControllerOpened:animated:"></a>
+	<h3 class="subsubtitle method-title">setCentralViewControllerOpened:animated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Change the state of the central view controller.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setCentralViewControllerOpened:(BOOL)<em>opened</em> animated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>opened</em></dt>
+			<dd><p>The new state of the central view controller.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animated</em></dt>
+			<dd><p>Wether or not the transition is animated.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setSelectedIndex:" title="setSelectedIndex:"></a>
+	<h3 class="subsubtitle method-title">setSelectedIndex:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set the selected <code>UI</code>ViewController<code></code> programatically by its index</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setSelectedIndex:(NSUInteger)<em>selectedIndex</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>selectedIndex</em></dt>
+			<dd><p>The index to be selected.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setSelectedViewController:" title="setSelectedViewController:"></a>
+	<h3 class="subsubtitle method-title">setSelectedViewController:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set the selected <code>UI</code>ViewController<code></code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setSelectedViewController:(UIViewController *)<em>selectedViewController</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>selectedViewController</em></dt>
+			<dd><p>The <code>UI</code>ViewController<code></code> to be selected.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showAlertForCentralViewControllerIsEmergency:" title="showAlertForCentralViewControllerIsEmergency:"></a>
+	<h3 class="subsubtitle method-title">showAlertForCentralViewControllerIsEmergency:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Show the upward chevron animation.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showAlertForCentralViewControllerIsEmergency:(BOOL)<em>emergency</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>emergency</em></dt>
+			<dd><p>Indicate if the new alert is an emergency. The choice determines the color of the chevron.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">M13InfiniteTabBarController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Marxon13 Productions (Brandon McQuilkin). All rights reserved. (Last updated: 2013-07-02)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

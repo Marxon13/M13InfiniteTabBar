@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/Brandon/Library/Developer/Shared/Documentation/DocSets/com.BrandonMcQuilkin.M13InfiniteTabBar.docset
+Time: 2013-07-02 14:20:27 +0000

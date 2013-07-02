@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/M13InfiniteTabBarCentralPullViewControllerDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/M13InfiniteTabBarCentralPullViewControllerDelegate</TokenIdentifier>
+			<Abstract type="html">Delegate protocols for M13InfiniteTabBarCentralPullViewController</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>
+			
+			<NodeRef refid="7"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/M13InfiniteTabBarCentralPullViewControllerDelegate/pullableView:didChangeState:</TokenIdentifier>
+			<Abstract type="html">Lets the delegate know that the central view controller did change positions.</Abstract>
+			<DeclaredIn>M13InfiniteTabBarCentralPullViewController.h</DeclaredIn>			
+			
+			<Declaration>- (void)pullableView:(M13InfiniteTabBarCentralPullViewController *)pullableView didChangeState:(BOOL)isOpen</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>pullableView</Name>
+					<Abstract type="html">The view that changed.</Abstract>
+				</Parameter><Parameter>
+					<Name>isOpen</Name>
+					<Abstract type="html">Wether or not the view is on screen.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/pullableView:didChangeState:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

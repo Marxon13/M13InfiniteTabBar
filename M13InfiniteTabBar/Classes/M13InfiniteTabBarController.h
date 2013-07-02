@@ -19,42 +19,72 @@
 #import "M13InfiniteTabBarCentralPullViewController.h"
 @class M13InfiniteTabBarController;
 
+/** Delegate to respond to changes occuring in `M13InfiniteTabBarController` */
 @protocol M13InfiniteTabBarControllerDelegate <NSObject>
 
-//delegate protocols
+/** Asks the delegate if the tab specified by the user should be selected 
+ @param tabBarController    The instance of `M13TabBarController.
+ @param viewController      The UIViewController requesting to become the main view.
+ @return Wether or not the UIViewController should be come the main window.
+ */
 - (BOOL)infiniteTabBarController:(M13InfiniteTabBarController *)tabBarController shouldSelectViewContoller:(UIViewController *)viewController;
+/** Lets the delegate know that a tab change occurred. 
+ @note This method is called after the animation for the tab change has been completed.
+ @param tabBarController    The instance of `M13TabBarController`.
+ @param viewController      The new main `UIViewController`. */
 - (void)infiniteTabBarController:(M13InfiniteTabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController;
 
 @end
 
+/** A controller for `M13InfiniteTabBar`. Preforms similar to `UITabBarController`.*/
 @interface M13InfiniteTabBarController : UIViewController <M13InfiniteTabBarDelegate, M13InfiniteTabBarCentralPullViewControllerDelegate>
+/** @name Initalization */
+/** Initalize an instance of `M13InfiniteTabBarController` with a set of `UIViewController`s paired with a set of `M13InfiniteTabBarItem`s.
+ @note On the iPhone, the third item in the tab bar is selected initally. On the iPad the fifth item is selected initally.
+ @param viewControllers  All the view controllers for the tabs in order.
+ @param items           The tabs that correspond to the `UIViewControllers` in the other array.
+ @return An instance of `M13InfiniteTabBarConroller` */
+ - (id)initWithViewControllers:(NSArray *)viewControllers pairedWithInfiniteTabBarItems:(NSArray *)items;
 
-- (id)initWithViewControllers:(NSArray *)viewControllers pairedWithInfiniteTabBarItems:(NSArray *)items;
+/** @name Basic Properties */
+/** Responds to `M13InfiniteTabBarController`'s delegate methods. */
+@property (nonatomic, retain) id<M13InfiniteTabBarControllerDelegate> delegate;
+/** The `M13InfiniteTabBar` instance the controller is controlling. This property is accessable to allow apperance customization. */
+@property (nonatomic, readonly) M13InfiniteTabBar *infiniteTabBar;
 
-@property (nonatomic, retain) id<M13InfiniteTabBarControllerDelegate> delegate; //Delegate
-@property (nonatomic, readonly) M13InfiniteTabBar *infiniteTabBar; //Infinite tab bar
-
+/** @name Selection Handling */
+/** The selected `UIViewController` instance. */
 @property (nonatomic, assign) UIViewController *selectedViewController;
+/** The index of the selected `UIViewController */
 @property (nonatomic) NSUInteger selectedIndex;
 
+/** Set the selected `UIViewController` programatically by its index
+ @param selectedIndex The index to be selected. */
 - (void)setSelectedIndex:(NSUInteger)selectedIndex;
+/** Set the selected `UIViewController`. 
+ @param selectedViewController The `UIViewController` to be selected. */
 - (void)setSelectedViewController:(UIViewController *)selectedViewController;
 
-//Central View controller is shown by dragging up on the tab bar
+/* @name Central View Controller */
+/** The UIViewController that is accesssable by pulling up on the `M13InfiniteTabBar` 
+ @note When `M13InfiniteTabBar` gets updated for iOS 7, the centralViewController might dissapear. This is due to a conflict of how iOS 7 has a panel that drags like notification center from the bottom. Unless I can find an alternitive way to bring the central view controller up, It will just have to become a tab in the tab bar.*/
 @property (nonatomic, retain) UIViewController *centralViewController;
+/** Returns wether the central view controller is on screen or not. */
 @property (nonatomic, readonly) BOOL isCentralViewControllerOpen;
+/** Show the upward chevron animation. 
+ @param emergency Indicate if the new alert is an emergency. The choice determines the color of the chevron. */
 - (void)showAlertForCentralViewControllerIsEmergency:(BOOL)emergency;
+/** Change the state of the central view controller.
+ @param opened      The new state of the central view controller.
+ @param animated    Wether or not the transition is animated. */
 - (void)setCentralViewControllerOpened:(BOOL)opened animated:(BOOL)animated;
+/** End the chevron animation */
 - (void)endAlertAnimation;
 
-//Delegate
-- (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar didSelectItem:(M13InfiniteTabBarItem *)item;
-- (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar animateInViewControllerForItem:(M13InfiniteTabBarItem *)item;
-- (BOOL)infiniteTabBar:(M13InfiniteTabBar *)tabBar shouldSelectItem:(M13InfiniteTabBarItem *)item;
-
-//Appearance
-@property (nonatomic, retain) UIColor *tabBarBackgroundColor UI_APPEARANCE_SELECTOR; //Solid unmoving background color of tab bar
-
-@property (nonatomic, retain) M13InfiniteTabBarCentralPullNotificationBackgroundView *pullNotificatonBackgroundView; //BackgroundView to alert users to a change in the central view controller
+/** @name Appearance */
+/** The background color of the tab bar */
+@property (nonatomic, retain) UIColor *tabBarBackgroundColor UI_APPEARANCE_SELECTOR;
+/** The view that is shown and animated to alert users to a change in the central view controller. */
+@property (nonatomic, retain) M13InfiniteTabBarCentralPullNotificationBackgroundView *pullNotificatonBackgroundView;
 
 @end

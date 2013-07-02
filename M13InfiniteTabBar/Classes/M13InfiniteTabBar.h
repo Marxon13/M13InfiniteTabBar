@@ -18,28 +18,54 @@
 @class M13InfiniteTabBar;
 @class M13InfiniteTabBarItem;
 
+/** The delegate protocol for `M13InfiniteTabBar`. */
 @protocol M13InfiniteTabBarDelegate <NSObject>
 
-//Requiered Method
+/** Lets the delegate know that an tab bar item has been selected 
+ @param tabBar      The instance of `M13InfiniteTabBar` that has been changed.
+ @param item        The `M13InfiniteTabBarItem` that has been selected. */
 - (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar didSelectItem:(M13InfiniteTabBarItem *)item;
 
-//Suggested Method
+/** Asks the delegate if the tab that the user selected should be selected.
+ @param tabBar      The instance of `M13InfiniteTabBar that is requesting a change.
+ @param item        The `M13InfiniteTabBarItem` that will be selected.
+ @return            Wether or not the tab bar can select that tab. */
 - (BOOL)infiniteTabBar:(M13InfiniteTabBar *)tabBar shouldSelectItem:(M13InfiniteTabBarItem *)item;
 
-//Method to run animations in sequence with M13InfiniteTabBarController
+/** Preform animations to change the front most view controller here. 
+ @warning Do not create your own `UIView` animation. One has already been started for you by the `M13InfiniteTabBarController`.
+ @param tabBar      The instance of `M13InfiniteTabBar` that has been changed.
+ @param item        The `M13InfiniteTabBarItem that has been selected.
+ */
 - (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar animateInViewControllerForItem:(M13InfiniteTabBarItem *)item;
+
+/** Prepare to animate in a new `UIViewController`. Anything in this method will not be animated on screen.
+ @param tabBar      The instance of `M13InfiniteTabBar` that has been changed.
+ @param item        The `M13InfiniteTabBarItem` that has been selected. */
+- (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar willAnimateInViewControllerForItem:(M13InfiniteTabBarItem *)item;
 
 @end
 
+/** The tab bar. Works like `UITabBar`, but way cooler. */
 @interface M13InfiniteTabBar : UIScrollView <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
+/** @name Initalization */
+/** Initalize an instance of M13InfiniteTabBar.
+ @param items   The `M13InfiniteTabBarItem`s that will be placed in the tab bar.
+ @return An initalized `M13InfiniteTabBar` instance. */
 - (id)initWithInfiniteTabBarItems:(NSArray *)items;
 
-//delegate
+/** @name Delegate */
+/** Tab bar's delegate. */
 @property (nonatomic, retain) id<M13InfiniteTabBarDelegate> tabBarDelegate;
 
-//Selected Item
+/** @name Selection */
+/** The `M13InfiniteTabBarItem` that is selected. */
 @property (nonatomic, retain) M13InfiniteTabBarItem *selectedItem;
+
+/** @name Animation */
+/** Method to rotate all the items on the tab bar to the given orientation.
+ @param orientation     The orientation the tab bar items shoulb be rotated to. */
 - (void)rotateItemsToOrientation:(UIDeviceOrientation)orientation;
 
 @end

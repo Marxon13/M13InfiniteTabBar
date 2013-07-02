@@ -10,11 +10,13 @@ Features:
 * All the colors can be customized to match the theme of your app. Most things follow the UIAppearance protocol.
 * All the delegate methods work just like the UITabBarControllerDelegate methods. So it is very easy to add this to an app with an existing UITabBar.
 * Contains an "central view controller" that works like Apple's Notification Center. Just pull up on the tab bar.
+* Custom rotation handling. The tab bar is anchored to the side of the device that has the home button.
 
 Screenshots from WMSO?
 -----------
 <img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/WMSOTab1.png</img>
 <img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/WMSOTab2.png</img>
+<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/RotatedScreenshot.png</img>
 <img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/WMSOAlertProgress.png</img>
 <img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/WMSOAlert.png</img>
 
@@ -41,13 +43,20 @@ Appearance Customization:
     * ```UIColor *unselectedTitleColor UI_APPEARANCE_SELECTOR``` The color of the title when the tab is unselected.
 * If you want to override the animation for when there is an "alert", subclass ```M13InfiniteTabBarCentralPullNotificationBackgroundView``` and set your subclass to ```M13InfiniteTabBarController```'s ```pullNotificatonBackgroundView``` property.
 
+Rotation Handling:
+-----------------
+M13InfiniteTabBarController handles the rotation of all child view controllers. M13InfiniteTabBarController itself is locked to portrait orientation. It changes the frame, bounds, and angle of the child view controllers manually. It checks the values of the child view controller's ```supportedInterfaceOrientations``` before rotation. Unlike UITabBarController, rotation for each child ```UIViewController``` is handled individually. If one of five child controllers requires portrait orientation while the rest can use any, the other four are not locked to portrait only. Even if the portrait view controller is selected in landscape orientation, it will display in portrait.
+
 Limitations / To Do:
 -------------------
 I will be continuing to develop the M13InfniteTabBar. Adding features as I need them. These are the rings currently on my to do list:
 
 * Create methods to add badges to tab bar items.
-* Handle device rotation. Implemented but buggy. Need to learn a bit more about bounds and frames.
 * Allow switching the order, adding, and removing of tabs.
+
+iOS 7 Support:
+----------
+The format of the central view controller will be changing with iOS 7. Due to the settings panel that the user can drag up from the bottom. If I cannot find another way to bring up the central view controller, it will be removed. If this happens, I will be changing ```M13InfiniteTabBarItem``` to allow badges, and perhaps pulsing animation to grab the user's attention. 
 
 Contact Me:
 -------------
