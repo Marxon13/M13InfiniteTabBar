@@ -9,16 +9,15 @@ Features:
 * Simple to setup, has a single initialization method, into which you can pass all the view controllers.
 * All the colors can be customized to match the theme of your app. Most things follow the UIAppearance protocol.
 * All the delegate methods work just like the UITabBarControllerDelegate methods. So it is very easy to add this to an app with an existing UITabBar.
-* Contains an "central view controller" that works like Apple's Notification Center. Just pull up on the tab bar.
 * Custom rotation handling. The tab bar is anchored to the side of the device that has the home button.
 
-Screenshots from WMSO?
+Screenshots
 -----------
-<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/WMSOTab1.png</img>
-<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/WMSOTab2.png</img>
-<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/RotatedScreenshot.png</img>
-<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/WMSOAlertProgress.png</img>
-<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/WMSOAlert.png</img>
+<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/Portrait.PNG</img>
+<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/Landscape1.PNG</img>
+<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/Upsidedown.png</img>
+<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/Landscape2.png</img>
+<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/TabRequiresAttention.PNG</img>
 
 Watch the demo video here: https://raw.github.com/Marxon13/M13InfiniteTabBar/master/M13InfiniteTabBar.mp4
 
@@ -28,20 +27,6 @@ Set Up:
 * Next create the M13InfiniteTabBarController with, ```- (id)initWithViewControllers:(NSArray *)viewControllers pairedWithInfiniteTabBarItems:(NSArray *)items```, passing in an array of the UIViewControllers, and an array of M13InfiniteTabBarItems. Make sure the indices of the UIViewController and its M13InfiniteTabBarItem match.
 * Now just push the M13InfiniteTabBarController just like you would show any UIViewController. That's it!
 * If you want to add a "Central View Controller" just set any UIViewController to M13InfiniteTabBarController's centralViewController property.
-
-Appearance Customization:
-----------------------
-* M13InfiniteTabBarController
-    * ```UIColor *tabBarBackgroundColor UI_APPEARANCE_SELECTOR``` This is the background of the tab bar.
-* M13InfiniteTabBarItem
-    * ```UIFont *titleFont UI_APPEARANCE_SELECTOR``` This is the font of the title label. I suggest leaving the font size at 7.0.
-    * ```UIImage *selectedIconOverlayImage UI_APPEARANCE_SELECTOR``` The image that is overlaid onto the icon when that tab is selected. If this is nil, the tint color will be used.
-    * ```UIColor *selectedIconTintColor UI_APPEARANCE_SELECTOR``` A solid color tint that is overlaid onto the icon when the tab is selected.
-    * ``` UIImage *unselectedIconOverlayImage UI_APPEARANCE_SELECTOR``` The image that is overlaid onto the icon when that tab is not selected. If this is nil, the tint color will be used.
-    * ```UIColor *unselectedIconTintColor UI_APPEARANCE_SELECTOR``` A solid color tint that is overlaid onto the icon when the tab is not selected.
-    * ```UIColor *selectedTitleColor UI_APPEARANCE_SELECTOR``` The color of the title when the tab is selected.
-    * ```UIColor *unselectedTitleColor UI_APPEARANCE_SELECTOR``` The color of the title when the tab is unselected.
-* If you want to override the animation for when there is an "alert", subclass ```M13InfiniteTabBarCentralPullNotificationBackgroundView``` and set your subclass to ```M13InfiniteTabBarController```'s ```pullNotificatonBackgroundView``` property.
 
 Rotation Handling:
 -----------------
@@ -53,10 +38,6 @@ I will be continuing to develop the M13InfniteTabBar. Adding features as I need 
 
 * Create methods to add badges to tab bar items.
 * Allow switching the order, adding, and removing of tabs.
-
-iOS 7 Support:
-----------
-The format of the central view controller will be changing with iOS 7. Due to the settings panel that the user can drag up from the bottom. If I cannot find another way to bring up the central view controller, it will be removed. If this happens, I will be changing ```M13InfiniteTabBarItem``` to allow badges, and perhaps pulsing animation to grab the user's attention. 
 
 Contact Me:
 -------------
