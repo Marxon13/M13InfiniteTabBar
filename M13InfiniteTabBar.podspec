@@ -28,9 +28,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   s.platform     = :ios, '7.0'
 
-  s.source = { :git => "https://github.com/Marxon13/M13InfiniteTabBar.git", :tag => "v2.0.0”}
+  s.source = { :git => "https://github.com/Marxon13/M13InfiniteTabBar.git", :tag => "v2.0.0"}
 
-  s.source_files  = 'Classes/*/*'
+  s.source_files  = 'Classes/*/*', 'Classes/*'
 
   s.frameworks = 'Foundation', 'UIKit', 'QuartzCore', 'CoreGraphics'
 
