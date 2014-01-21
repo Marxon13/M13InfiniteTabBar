@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "M13InfiniteTabBar"
-  s.version      = “2.0.0”
+  s.version      = "2.0.0"
   s.summary      = "A fully customizable UITabBar replacement for tab bars with five or more tabs."
 
   s.description  = <<-DESC
