@@ -23,6 +23,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     LICENSE
  }
 
+
   s.author             = { "Brandon McQuilkin" => "marxon13@yahoo.com" }
 
   s.platform     = :ios, '7.0'
