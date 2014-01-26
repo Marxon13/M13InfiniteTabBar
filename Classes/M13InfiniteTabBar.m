@@ -94,7 +94,7 @@
     CGFloat distanceFromCenter = fabs(currentOffset.x - centerOffsetX);
     
     if (distanceFromCenter > (contentWidth / 4.0)) {
-        self.contentOffset = CGPointMake(centerOffsetX, currentOffset.y);
+        self.contentOffset = CGPointMake(centerOffsetX, 0);
         
         // move content by the same amount so it appears to stay still
         for (M13InfiniteTabBarItem *view in _visibleIcons) {
