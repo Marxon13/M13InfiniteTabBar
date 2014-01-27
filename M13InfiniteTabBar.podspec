@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name         = "M13InfiniteTabBar"
-  s.version      = "2.0.0"
-  s.summary      = "A fully customizable UITabBar replacement for tab bars with five or more tabs."
+  s.version      = "2.0.1"
+  s.summary      = "An elegant redesign of UITabBar for iOS Applications."
 
   s.description  = <<-DESC
-                   M13InfiniteTabBar was created to get rid of the "More" button on the UITabBar. Why should have to preform an extra two taps to get to the tab I want. M13InfiniteTabBar puts all the tabs on one level, in an intuitive, stylized manner. I've been using this in my app, "What's My Stage On?" since August 2012, and have decided to clean it up, and turn it into an easy to use subclass for everyone.
+                   M13InfiniteTabBar is an elegant replacement for UITabBar. UITabBar becomes a problem when you have more than five view controllers that have the need to be accessed an equal amount of times. It maskes no sense to hide any of the tabs away under the "More" tab. Plus it takes two extra clicks to reach the view controllers behind the "More" button. M13InfiniteTabBar solves this problem by having all the view controllers on a single level. The "extra" view controllers can be reached by scrolling the tab bar left or right. The scrolling does pose a problem though, in which direction is my offscreen tab? M13InfiniteTabBar solves this by putting the tabs in an infinite scrolling loop. Any tab can be reached by scrolling in any direction. M13InfiniteTabBar also has a few other features that UITabBar doesn't offer on top of that.
                    DESC
 
   s.homepage     = "https://github.com/Marxon13/M13InfiniteTabBar"
@@ -28,7 +28,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   s.platform     = :ios, '7.0'
 
-  s.source = { :git => "https://github.com/Marxon13/M13InfiniteTabBar.git", :tag => "v2.0.0"}
+  s.source = { :git => "https://github.com/Marxon13/M13InfiniteTabBar.git", :tag => "v2.0.1"}
 
   s.source_files  = 'Classes/*/*', 'Classes/*'
 

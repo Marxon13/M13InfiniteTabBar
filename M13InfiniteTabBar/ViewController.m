@@ -18,6 +18,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(25, 50, self.view.frame.size.width-50.0, self.view.frame.size.height-100.0)];
+    _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:_imageView];
 }
 
 - (void)didReceiveMemoryWarning

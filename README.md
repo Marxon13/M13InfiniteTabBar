@@ -1,43 +1,92 @@
+![Banner](ReadmeResources/M13InfiniteTabBarBanner.png)
+
 M13InfiniteTabBar
 =============
-A fully customizable UITabBar replacement for tab bars with five or more tabs.
+M13InfiniteTabBar is an elegant replacement for UITabBar. UITabBar becomes a problem when you have more than five view controllers that have the need to be accessed an equal amount of times. It maskes no sense to hide any of the tabs away under the "More" tab. Plus it takes two extra clicks to reach the view controllers behind the "More" button. M13InfiniteTabBar solves this problem by having all the view controllers on a single level. The "extra" view controllers can be reached by scrolling the tab bar left or right. The scrolling does pose a problem though, in which direction is my offscreen tab? M13InfiniteTabBar solves this by putting the tabs in an infinite scrolling loop. Any tab can be reached by scrolling in any direction. M13InfiniteTabBar also has a few other features that UITabBar doesn't offer on top of that.
 
-M13InfiniteTabBar was created to get rid of the "More" button on the UITabBar. Why should have to preform an extra two taps to get to the tab I want. M13InfiniteTabBar puts all the tabs on one level, in an intuitive, stylized manner. I've been using this in my app, "What's My Stage On?" since August 2012, and have decided to clean it up, and turn it into an easy to use subclass for everyone.
+![ScreenShot](ReadmeResources/Screenshot.png =300x)
 
 Features:
 -----------
-* Simple to setup, has a single initialization method, into which you can pass all the view controllers.
-* All the colors can be customized to match the theme of your app. Most things follow the UIAppearance protocol.
-* All the delegate methods work just like the UITabBarControllerDelegate methods. So it is very easy to add this to an app with an existing UITabBar.
-* Custom rotation handling. The tab bar is anchored to the side of the device that has the home button.
+* Simple to setup; it has a single initialization method, which is passed the UIViewControllers that will be displayed along with their tabs.
+* All the colors and icons can be customized to match any application theme. Most properties follow the UIAppearance protocol.
+* All the delegate methods work just like the UITabBarControllerDelegate methods. Allowing easy delegate implementation. 
+* Handles device rotation in a unique way. The tab bar is sticky to the side of the screen with the home button. When the device is rotated, the view controller and the tab bar icons rotate to the new orientation, the tab bar stays locked in position. Rotation for each view controller is handled separatly. Each view controller can have its own set of allowed orientations; unlike UITabBar, where the view controllers either need to allow all orientations, or use only one orientation.
+* Allows user attention to be directed to a specific tab, A tab that requires user attention will change color, and if offscreen the tab bar will show an animation to direct the user's attention to scroll to that tab.
 
-Screenshots
------------
-<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/Portrait.PNG</img>
-<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/Landscape1.PNG</img>
-<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/Upsidedown.png</img>
-<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/Landscape2.png</img>
-<img width="320">https://raw.github.com/Marxon13/M13InfiniteTabBar/master/Screenshots/TabRequiresAttention.PNG</img>
+***Tap To Change Tabs***
 
-Watch the demo video here: https://raw.github.com/Marxon13/M13InfiniteTabBar/master/M13InfiniteTabBar.mp4
+![ScreenShot](ReadmeResources/TapToChange.gif =300x)
 
-Set Up:
---------------
-* First, create all of your UIViewControllers, and create all of the M13InfiniteTabBarItems that correspond to those view controllers. The M13InfiniteTabBarItems are created with ```- (id)initWithTitle:(NSString *)title andIcon:(UIImage *)icon```, where the title is the title text you want displayed, and the icon is a black and white mask for the icon.
-* Next create the M13InfiniteTabBarController with, ```- (id)initWithViewControllers:(NSArray *)viewControllers pairedWithInfiniteTabBarItems:(NSArray *)items```, passing in an array of the UIViewControllers, and an array of M13InfiniteTabBarItems. Make sure the indices of the UIViewController and its M13InfiniteTabBarItem match.
-* Now just push the M13InfiniteTabBarController just like you would show any UIViewController. That's it!
-* If you want to add a "Central View Controller" just set any UIViewController to M13InfiniteTabBarController's centralViewController property.
+***Infinite Scrolling***
+
+![ScreenShot](ReadmeResources/InfiniteScrolling.gif =300x)
+
+***Delegate Methods (Preventing tab selection)***
+
+![ScreenShot](ReadmeResources/DelegateMethods.gif =300x)
+
+***Directing User Attention***
+
+![ScreenShot](ReadmeResources/UserAttention.gif =300x)
+
+***Rotation***
+
+![ScreenShot](ReadmeResources/Rotation.gif =300x)
+
 
 Rotation Handling:
 -----------------
-M13InfiniteTabBarController handles the rotation of all child view controllers. M13InfiniteTabBarController itself is locked to portrait orientation. It changes the frame, bounds, and angle of the child view controllers manually. It checks the values of the child view controller's ```supportedInterfaceOrientations``` before rotation. Unlike UITabBarController, rotation for each child ```UIViewController``` is handled individually. If one of five child controllers requires portrait orientation while the rest can use any, the other four are not locked to portrait only. Even if the portrait view controller is selected in landscape orientation, it will display in portrait.
+M13InfiniteTabBarController handles the rotation of all child view controllers. M13InfiniteTabBarController itself is locked to portrait orientation. It changes the frame, bounds, and angle of the child view controllers manually. It checks the values of the child view controller's "supportedInterfaceOrientations" before rotation. Unlike UITabBarController, rotation for each child UIViewController is handled individually. If one of five child controllers requires portrait orientation while the rest can use any, the other four are not locked to portrait only. Even if the portrait view controller is selected in landscape orientation, it will display in portrait.
 
-Limitations / To Do:
+Set Up:
+--------------
+* First create all the view controllers and their tabs.
+
+```
+UIViewController *vc1 = [[UIViewController alloc] init];
+UIViewController *vc2 = [[UIViewController alloc] init];
+UIViewController *vc3 = [[UIViewController alloc] init];
+UIViewController *vc4 = [[UIViewController alloc] init];
+UIViewController *vc5 = [[UIViewController alloc] init];
+
+M13InfiteTabBarItem *item1 = [[M13InfiniteTabBarItem alloc] initWithTitle:@"Title" selectedIconMask:[UIImage imageNamed:@"image.png"] unselectedIconMask:[UIImage imageNamed:@"image.png"]];
+M13InfiteTabBarItem *item2 = [[M13InfiniteTabBarItem alloc] initWithTitle:@"Title" selectedIconMask:[UIImage imageNamed:@"image.png"] unselectedIconMask:[UIImage imageNamed:@"image.png"]];
+M13InfiteTabBarItem *item3 = [[M13InfiniteTabBarItem alloc] initWithTitle:@"Title" selectedIconMask:[UIImage imageNamed:@"image.png"] unselectedIconMask:[UIImage imageNamed:@"image.png"]];
+M13InfiteTabBarItem *item4 = [[M13InfiniteTabBarItem alloc] initWithTitle:@"Title" selectedIconMask:[UIImage imageNamed:@"image.png"] unselectedIconMask:[UIImage imageNamed:@"image.png"]];
+M13InfiteTabBarItem *item5 = [[M13InfiniteTabBarItem alloc] initWithTitle:@"Title" selectedIconMask:[UIImage imageNamed:@"image.png"] unselectedIconMask:[UIImage imageNamed:@"image.png"]];
+```
+
+* Next create the M13InfiniteTabBarController and set its delegate
+
+```
+M13InfiniteTabBarController *viewController = [[M13InfiniteTabBarController alloc] initWithViewControllers:@[vc1, vc2, vc3, vc4, vc5] pairedWithInfiniteTabBarItems:@[item1, item2, item3, item4, item5]];
+```
+
+* Customize any of the other attributes of M13InfiniteTabBar after it has been initalized.
+
+* To be able to direct the user's attention, set the requires user attention background view. This feature is separated to allow easy subclassing and custom designs.
+
+```
+viewController.requiresAttentionBackgroundView = [[PulsingRequiresAttentionView alloc] init];
+```
+
+
+* Lastly display the controller by adding it to a UIWindow, or pushing it onto a UINavigationController stack.
+
+
+To Do:
 -------------------
-I will be continuing to develop the M13InfniteTabBar. Adding features as I need them. These are the rings currently on my to do list:
+These features will eventually be added to M13InfiniteTabBar:
 
-* Create methods to add badges to tab bar items.
+* Adding badges to tab bar items.
 * Allow switching the order, adding, and removing of tabs.
+
+Known Issues:
+--------------
+* Scrolling problems when the tab bar is contained within a UINavigationController.
+* The selection triangle not consistantly appearing over the tab bar when the tabs root view are UINavigationControllers.
+
 
 Contact Me:
 -------------
@@ -47,7 +96,7 @@ License:
 --------
 MIT License
 
-> Copyright (c) 2013 Brandon McQuilkin
+> Copyright (c) 2014 Brandon McQuilkin
 > 
 > Permission is hereby granted, free of charge, to any person obtaining 
 >a copy of this software and associated documentation files (the  

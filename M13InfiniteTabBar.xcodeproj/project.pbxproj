@@ -68,6 +68,20 @@
 		CAC95023188862EC0027AFF6 /* tab7Line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC95007188862EC0027AFF6 /* tab7Line@2x.png */; };
 		CAC95024188862EC0027AFF6 /* tab7Solid.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC95008188862EC0027AFF6 /* tab7Solid.png */; };
 		CAC95025188862EC0027AFF6 /* tab7Solid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC95009188862EC0027AFF6 /* tab7Solid@2x.png */; };
+		CAF2A2AA1895EB20001C2D2B /* tab1Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2A81895EB20001C2D2B /* tab1Icon.png */; };
+		CAF2A2AB1895EB20001C2D2B /* tab1Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2A91895EB20001C2D2B /* tab1Icon@2x.png */; };
+		CAF2A2AE1895F4C1001C2D2B /* tab2Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2AC1895F4C1001C2D2B /* tab2Icon.png */; };
+		CAF2A2AF1895F4C1001C2D2B /* tab2Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2AD1895F4C1001C2D2B /* tab2Icon@2x.png */; };
+		CAF2A2B21895F55D001C2D2B /* tab3Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2B01895F55D001C2D2B /* tab3Icon.png */; };
+		CAF2A2B31895F55D001C2D2B /* tab3Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2B11895F55D001C2D2B /* tab3Icon@2x.png */; };
+		CAF2A2B61895F63A001C2D2B /* tab4Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2B41895F63A001C2D2B /* tab4Icon.png */; };
+		CAF2A2B71895F63A001C2D2B /* tab4Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2B51895F63A001C2D2B /* tab4Icon@2x.png */; };
+		CAF2A2BA1895F6BA001C2D2B /* tab5Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2B81895F6BA001C2D2B /* tab5Icon.png */; };
+		CAF2A2BB1895F6BA001C2D2B /* tab5Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2B91895F6BA001C2D2B /* tab5Icon@2x.png */; };
+		CAF2A2BE1895FEA2001C2D2B /* tab6Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2BC1895FEA2001C2D2B /* tab6Icon.png */; };
+		CAF2A2BF1895FEA2001C2D2B /* tab6Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2BD1895FEA2001C2D2B /* tab6Icon@2x.png */; };
+		CAF2A2C21895FF2D001C2D2B /* tab7Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2C01895FF2D001C2D2B /* tab7Icon.png */; };
+		CAF2A2C31895FF2D001C2D2B /* tab7Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF2A2C11895FF2D001C2D2B /* tab7Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +143,20 @@
 		CAC95007188862EC0027AFF6 /* tab7Line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab7Line@2x.png"; path = "Images/tab7Line@2x.png"; sourceTree = "<group>"; };
 		CAC95008188862EC0027AFF6 /* tab7Solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab7Solid.png; path = Images/tab7Solid.png; sourceTree = "<group>"; };
 		CAC95009188862EC0027AFF6 /* tab7Solid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab7Solid@2x.png"; path = "Images/tab7Solid@2x.png"; sourceTree = "<group>"; };
+		CAF2A2A81895EB20001C2D2B /* tab1Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab1Icon.png; path = Images/tab1Icon.png; sourceTree = "<group>"; };
+		CAF2A2A91895EB20001C2D2B /* tab1Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab1Icon@2x.png"; path = "Images/tab1Icon@2x.png"; sourceTree = "<group>"; };
+		CAF2A2AC1895F4C1001C2D2B /* tab2Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab2Icon.png; path = Images/tab2Icon.png; sourceTree = "<group>"; };
+		CAF2A2AD1895F4C1001C2D2B /* tab2Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab2Icon@2x.png"; path = "Images/tab2Icon@2x.png"; sourceTree = "<group>"; };
+		CAF2A2B01895F55D001C2D2B /* tab3Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab3Icon.png; path = Images/tab3Icon.png; sourceTree = "<group>"; };
+		CAF2A2B11895F55D001C2D2B /* tab3Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab3Icon@2x.png"; path = "Images/tab3Icon@2x.png"; sourceTree = "<group>"; };
+		CAF2A2B41895F63A001C2D2B /* tab4Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab4Icon.png; path = Images/tab4Icon.png; sourceTree = "<group>"; };
+		CAF2A2B51895F63A001C2D2B /* tab4Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab4Icon@2x.png"; path = "Images/tab4Icon@2x.png"; sourceTree = "<group>"; };
+		CAF2A2B81895F6BA001C2D2B /* tab5Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab5Icon.png; path = Images/tab5Icon.png; sourceTree = "<group>"; };
+		CAF2A2B91895F6BA001C2D2B /* tab5Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab5Icon@2x.png"; path = "Images/tab5Icon@2x.png"; sourceTree = "<group>"; };
+		CAF2A2BC1895FEA2001C2D2B /* tab6Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab6Icon.png; path = Images/tab6Icon.png; sourceTree = "<group>"; };
+		CAF2A2BD1895FEA2001C2D2B /* tab6Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab6Icon@2x.png"; path = "Images/tab6Icon@2x.png"; sourceTree = "<group>"; };
+		CAF2A2C01895FF2D001C2D2B /* tab7Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab7Icon.png; path = Images/tab7Icon.png; sourceTree = "<group>"; };
+		CAF2A2C11895FF2D001C2D2B /* tab7Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab7Icon@2x.png"; path = "Images/tab7Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,30 +262,44 @@
 		CAE46E3D16DBCC2E007CC4B7 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				CAF2A2A81895EB20001C2D2B /* tab1Icon.png */,
+				CAF2A2A91895EB20001C2D2B /* tab1Icon@2x.png */,
 				CAC94FEE188862EC0027AFF6 /* tab1Line.png */,
 				CAC94FEF188862EC0027AFF6 /* tab1Line@2x.png */,
 				CAC94FF0188862EC0027AFF6 /* tab1Solid.png */,
 				CAC94FF1188862EC0027AFF6 /* tab1Solid@2x.png */,
+				CAF2A2AC1895F4C1001C2D2B /* tab2Icon.png */,
+				CAF2A2AD1895F4C1001C2D2B /* tab2Icon@2x.png */,
 				CAC94FF2188862EC0027AFF6 /* tab2Line.png */,
 				CAC94FF3188862EC0027AFF6 /* tab2Line@2x.png */,
 				CAC94FF4188862EC0027AFF6 /* tab2Solid.png */,
 				CAC94FF5188862EC0027AFF6 /* tab2Solid@2x.png */,
+				CAF2A2B01895F55D001C2D2B /* tab3Icon.png */,
+				CAF2A2B11895F55D001C2D2B /* tab3Icon@2x.png */,
 				CAC94FF6188862EC0027AFF6 /* tab3Line.png */,
 				CAC94FF7188862EC0027AFF6 /* tab3Line@2x.png */,
 				CAC94FF8188862EC0027AFF6 /* tab3Solid.png */,
 				CAC94FF9188862EC0027AFF6 /* tab3Solid@2x.png */,
+				CAF2A2B41895F63A001C2D2B /* tab4Icon.png */,
+				CAF2A2B51895F63A001C2D2B /* tab4Icon@2x.png */,
 				CAC94FFA188862EC0027AFF6 /* tab4Line.png */,
 				CAC94FFB188862EC0027AFF6 /* tab4Line@2x.png */,
 				CAC94FFC188862EC0027AFF6 /* tab4Solid.png */,
 				CAC94FFD188862EC0027AFF6 /* tab4Solid@2x.png */,
+				CAF2A2B81895F6BA001C2D2B /* tab5Icon.png */,
+				CAF2A2B91895F6BA001C2D2B /* tab5Icon@2x.png */,
 				CAC94FFE188862EC0027AFF6 /* tab5Line.png */,
 				CAC94FFF188862EC0027AFF6 /* tab5Line@2x.png */,
 				CAC95000188862EC0027AFF6 /* tab5Solid.png */,
 				CAC95001188862EC0027AFF6 /* tab5Solid@2x.png */,
+				CAF2A2BC1895FEA2001C2D2B /* tab6Icon.png */,
+				CAF2A2BD1895FEA2001C2D2B /* tab6Icon@2x.png */,
 				CAC95002188862EC0027AFF6 /* tab6Line.png */,
 				CAC95003188862EC0027AFF6 /* tab6Line@2x.png */,
 				CAC95004188862EC0027AFF6 /* tab6Solid.png */,
 				CAC95005188862EC0027AFF6 /* tab6Solid@2x.png */,
+				CAF2A2C01895FF2D001C2D2B /* tab7Icon.png */,
+				CAF2A2C11895FF2D001C2D2B /* tab7Icon@2x.png */,
 				CAC95006188862EC0027AFF6 /* tab7Line.png */,
 				CAC95007188862EC0027AFF6 /* tab7Line@2x.png */,
 				CAC95008188862EC0027AFF6 /* tab7Solid.png */,
@@ -324,24 +366,38 @@
 				CAC9501D188862EC0027AFF6 /* tab5Solid@2x.png in Resources */,
 				CAB8454416CC8AEE0051B3A9 /* InfoPlist.strings in Resources */,
 				CAC9500E188862EC0027AFF6 /* tab2Line.png in Resources */,
+				CAF2A2AF1895F4C1001C2D2B /* tab2Icon@2x.png in Resources */,
 				CAC95016188862EC0027AFF6 /* tab4Line.png in Resources */,
+				CAF2A2BA1895F6BA001C2D2B /* tab5Icon.png in Resources */,
 				CAC9500A188862EC0027AFF6 /* tab1Line.png in Resources */,
+				CAF2A2BF1895FEA2001C2D2B /* tab6Icon@2x.png in Resources */,
 				CAC95025188862EC0027AFF6 /* tab7Solid@2x.png in Resources */,
 				CAC95012188862EC0027AFF6 /* tab3Line.png in Resources */,
+				CAF2A2B61895F63A001C2D2B /* tab4Icon.png in Resources */,
 				CAB8454C16CC8AEE0051B3A9 /* Default.png in Resources */,
+				CAF2A2AE1895F4C1001C2D2B /* tab2Icon.png in Resources */,
 				CAC95010188862EC0027AFF6 /* tab2Solid.png in Resources */,
 				CAC9500D188862EC0027AFF6 /* tab1Solid@2x.png in Resources */,
+				CAF2A2B31895F55D001C2D2B /* tab3Icon@2x.png in Resources */,
+				CAF2A2AB1895EB20001C2D2B /* tab1Icon@2x.png in Resources */,
 				CAB8454E16CC8AEE0051B3A9 /* Default@2x.png in Resources */,
 				CAC9500B188862EC0027AFF6 /* tab1Line@2x.png in Resources */,
 				CAC95017188862EC0027AFF6 /* tab4Line@2x.png in Resources */,
 				CAC95024188862EC0027AFF6 /* tab7Solid.png in Resources */,
+				CAF2A2AA1895EB20001C2D2B /* tab1Icon.png in Resources */,
 				CAC9501A188862EC0027AFF6 /* tab5Line.png in Resources */,
 				CAC9501C188862EC0027AFF6 /* tab5Solid.png in Resources */,
+				CAF2A2B21895F55D001C2D2B /* tab3Icon.png in Resources */,
+				CAF2A2C21895FF2D001C2D2B /* tab7Icon.png in Resources */,
+				CAF2A2B71895F63A001C2D2B /* tab4Icon@2x.png in Resources */,
 				CAC9501E188862EC0027AFF6 /* tab6Line.png in Resources */,
 				CAC9501F188862EC0027AFF6 /* tab6Line@2x.png in Resources */,
 				CAC95011188862EC0027AFF6 /* tab2Solid@2x.png in Resources */,
 				CAB8455016CC8AEE0051B3A9 /* Default-568h@2x.png in Resources */,
+				CAF2A2BE1895FEA2001C2D2B /* tab6Icon.png in Resources */,
+				CAF2A2C31895FF2D001C2D2B /* tab7Icon@2x.png in Resources */,
 				CAC9500F188862EC0027AFF6 /* tab2Line@2x.png in Resources */,
+				CAF2A2BB1895F6BA001C2D2B /* tab5Icon@2x.png in Resources */,
 				CAB8455616CC8AEE0051B3A9 /* ViewController_iPhone.xib in Resources */,
 				CAC95013188862EC0027AFF6 /* tab3Line@2x.png in Resources */,
 				CAC95014188862EC0027AFF6 /* tab3Solid.png in Resources */,
