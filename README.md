@@ -1,10 +1,10 @@
-![Banner](https://github.com/Marxon13/M13InfiniteTabBar/blob/master/ReadmeResources/M13InfiniteTabBarBanner.png)
+<img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/M13InfiniteTabBarBanner.png">
 
 M13InfiniteTabBar
 =============
 M13InfiniteTabBar is an elegant replacement for UITabBar. UITabBar becomes a problem when you have more than five view controllers that have the need to be accessed an equal amount of times. It maskes no sense to hide any of the tabs away under the "More" tab. Plus it takes two extra clicks to reach the view controllers behind the "More" button. M13InfiniteTabBar solves this problem by having all the view controllers on a single level. The "extra" view controllers can be reached by scrolling the tab bar left or right. The scrolling does pose a problem though, in which direction is my offscreen tab? M13InfiniteTabBar solves this by putting the tabs in an infinite scrolling loop. Any tab can be reached by scrolling in any direction. M13InfiniteTabBar also has a few other features that UITabBar doesn't offer on top of that.
 
-![ScreenShot](ReadmeResources/Screenshot.png =300x)
+<img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/Screenshot.png" width="300px">
 
 Features:
 -----------
@@ -16,23 +16,23 @@ Features:
 
 ***Tap To Change Tabs***
 
-![ScreenShot](ReadmeResources/TapToChange.gif =300x)
+<img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/TapToChange.gif" width="300px">
 
 ***Infinite Scrolling***
 
-![ScreenShot](ReadmeResources/InfiniteScrolling.gif =300x)
+<img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/InfiniteScrolling.gif" width="300px">
 
 ***Delegate Methods (Preventing tab selection)***
 
-![ScreenShot](ReadmeResources/DelegateMethods.gif =300x)
+<img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/DelegateMethods.gif" width="300px">
 
 ***Directing User Attention***
 
-![ScreenShot](ReadmeResources/UserAttention.gif =300x)
+<img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/UserAttention.gif" width="300px">
 
 ***Rotation***
 
-![ScreenShot](ReadmeResources/Rotation.gif =300x)
+<img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/Rotation.gif" width="300px">
 
 
 Rotation Handling:
