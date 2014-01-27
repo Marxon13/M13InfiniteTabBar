@@ -1,4 +1,4 @@
-![Banner](ReadmeResources/M13InfiniteTabBarBanner.png)
+![Banner](https://github.com/Marxon13/M13InfiniteTabBar/blob/master/ReadmeResources/M13InfiniteTabBarBanner.png)
 
 M13InfiniteTabBar
 =============
