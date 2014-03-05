@@ -71,6 +71,14 @@
     return self;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    _containerView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    _iconView.frame = CGRectMake(7, 7, self.frame.size.width - 14, 29);
+    _titleLabel.frame = CGRectMake(2, 37, self.frame.size.width - 4, 10);
+}
+
 - (void)rotateToAngle:(CGFloat)angle
 {
     _containerView.transform = CGAffineTransformMakeRotation(angle);

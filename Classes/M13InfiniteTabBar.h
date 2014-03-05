@@ -73,5 +73,7 @@
 /** Method to rotate all the items on the tab bar to the given orientation.
  @param orientation     The orientation the tab bar items shoulb be rotated to. */
 - (void)rotateItemsToOrientation:(UIDeviceOrientation)orientation;
+/**The number minimum number of items before the infinite scrolling animation occurs. If the number of items is less than this number, then the tab bar acts like a normal tab bar.*/
+@property (nonatomic, assign) NSInteger minimumNumberOfTabsForScrolling;
 
 @end

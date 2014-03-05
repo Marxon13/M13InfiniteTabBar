@@ -15,11 +15,17 @@
 
 #import <UIKit/UIKit.h>
 #import "M13InfiniteTabBar.h"
+#import "UIViewController+M13InfiniteTabBarExtension.h"
 @class M13InfiniteTabBarController;
 @class M13InfiniteTabBarRequiresAttentionBackgroundView;
 
 /** Delegate to respond to changes occuring in `M13InfiniteTabBarController` */
 @protocol M13InfiniteTabBarControllerDelegate <NSObject>
+
+/**Asks the delegate for the list of view controllers that will be represented in the tab bar controller. This is for a storyboard implementation of M13InfiniteTabBarController;
+ @param tabBarController    The instance of `M13TabBarController.
+ @return     The view controllers that will be represented in the tab bar. The first view controller will be the displaied view controller.*/
+- (NSArray *)infiniteTabBarControllerRequestingViewControllersToDisplay:(M13InfiniteTabBarController *)tabBarController;
 
 /** Asks the delegate if the tab specified by the user should be selected 
  @param tabBarController    The instance of `M13TabBarController.
@@ -38,18 +44,27 @@
 /** A controller for `M13InfiniteTabBar`. Preforms similar to `UITabBarController`.*/
 @interface M13InfiniteTabBarController : UIViewController <M13InfiniteTabBarDelegate>
 /** @name Initalization */
-/** Initalize an instance of `M13InfiniteTabBarController` with a set of `UIViewController`s paired with a set of `M13InfiniteTabBarItem`s.
+/** Initalize an instance of `M13InfiniteTabBarController` with a set of `UIViewController`s paired with a set of `M13InfiniteTabBarItem`s..
  @note On the iPhone, the third item in the tab bar is selected initally. On the iPad the fifth item is selected initally.
  @param viewControllers  All the view controllers for the tabs in order.
  @param items           The tabs that correspond to the `UIViewControllers` in the other array.
  @return An instance of `M13InfiniteTabBarConroller` */
- - (id)initWithViewControllers:(NSArray *)viewControllers pairedWithInfiniteTabBarItems:(NSArray *)items;
+ - (id)initWithViewControllers:(NSArray *)viewControllers pairedWithInfiniteTabBarItems:(NSArray *)items __attribute((deprecated("Use either initWithViewControllers: or the delegate method infiniteTabBarRequestingViewControllersToDisplay:.")));
+
+/** Initalize an instance of `M13InfiniteTabBarController` with a set of `UIViewController`s. This is for a programatic implementation of the tab bar without a storyboard.
+ @note On the iPhone, the third item in the tab bar is selected initally. On the iPad the fifth item is selected initally.
+ @param viewControllers  All the view controllers for the tabs in order, the first tab will be the selected tab. Also all of these view controllers should respond
+ @return An instance of `M13InfiniteTabBarConroller` */
+- (id)initWithViewControllers:(NSArray *)viewControllers;
+
 
 /** @name Basic Properties */
 /** Responds to `M13InfiniteTabBarController`'s delegate methods. */
 @property (nonatomic, retain) id<M13InfiniteTabBarControllerDelegate> delegate;
 /** The `M13InfiniteTabBar` instance the controller is controlling. This property is accessable to allow apperance customization. */
 @property (nonatomic, readonly) M13InfiniteTabBar *infiniteTabBar;
+/** The view controller list that the infinite tab bar displays.*/
+@property (nonatomic, copy) NSArray *viewControllers;
 
 /** @name Selection Handling */
 /** The selected `UIViewController` instance. */

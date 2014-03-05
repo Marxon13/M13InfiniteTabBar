@@ -30,6 +30,8 @@
     NSArray *_tabBarItems;
     CAShapeLayer *borderLayer;
     NSMutableDictionary *_indiciesRequiringAttention;
+    BOOL viewDidLoadOccur;
+    NSInteger numberOfItemsForScrolling;
 }
 
 - (id)initWithViewControllers:(NSArray *)viewControllers pairedWithInfiniteTabBarItems:(NSArray *)items
@@ -42,52 +44,133 @@
     return self;
 }
 
+- (id)initWithViewControllers:(NSArray *)viewControllers
+{
+    self = [super init];
+    if (self) {
+        _viewControllers = viewControllers;
+        NSMutableArray *array = [NSMutableArray array];
+        for (UIViewController *vc in viewControllers) {
+            [array addObject:vc.infiniteTabBarItem];
+        }
+        _tabBarItems = [array copy];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-	
-    //create content view to hold view controllers
-    _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 50.0)];
-    _contentView.backgroundColor = [UIColor whiteColor];
-    _contentView.clipsToBounds = YES;
+    viewDidLoadOccur = YES;
     
-    //initalize the tab bar
-    _infiniteTabBar = [[M13InfiniteTabBar alloc] initWithInfiniteTabBarItems:_tabBarItems];
-    _infiniteTabBar.tabBarDelegate = self;
-    _indiciesRequiringAttention = [[NSMutableDictionary alloc] init];
-        
-    //Create mask for tab bar
-    _maskView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 60.0, self.view.frame.size.width, 80.0)];
-    
-    //Apply iOS 7 style border
-    borderLayer = [CAShapeLayer layer];
-    borderLayer.lineWidth = 1.0;
-    borderLayer.strokeColor = [UIColor colorWithRed:0.56 green:0.56 blue:0.56 alpha:1].CGColor;
-    
-    //Combine views
-    _maskView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:_maskView];
-    [_maskView addSubview:_infiniteTabBar];
-    [self.view addSubview:_contentView];
-    [self.view.layer addSublayer:borderLayer];
-    
-    //Add user interaction view if not added to superview. This is for when the attention view is set before the view appears.
-    if (_requiresAttentionBackgroundView && _requiresAttentionBackgroundView.superview == nil) {
-        [self setRequiresAttentionBackgroundView:_requiresAttentionBackgroundView];
+    if (_viewControllers.count == 0 && _delegate) {
+        if ([_delegate respondsToSelector:@selector(infiniteTabBarControllerRequestingViewControllersToDisplay:)]) {
+            //Get the view controllers
+            _viewControllers = [_delegate infiniteTabBarControllerRequestingViewControllersToDisplay:self];
+            //Get the tab bar items
+            NSMutableArray *tempTabBarItems = [NSMutableArray array];
+            for (UIViewController *vc in _viewControllers) {
+                [tempTabBarItems addObject:vc.infiniteTabBarItem];
+            }
+            _tabBarItems = tempTabBarItems;
+        }
     }
-    _automaticallySetsSelectedTabImportanceLevelToZero = YES;
     
-    //Catch rotation changes for tabs
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRotation:) name:UIDeviceOrientationDidChangeNotification object:nil];
-    
-    //Set Up View Controllers
-    _selectedIndex = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) ? 2 : 5;
-    _selectedViewController = [_viewControllers objectAtIndex:_selectedIndex];
-    _selectedViewController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
-    _selectedViewController.view.contentScaleFactor = [UIScreen mainScreen].scale;
-    [_contentView addSubview:_selectedViewController.view];
+    [self setup];
+}
+
+- (void)setDelegate:(id<M13InfiniteTabBarControllerDelegate>)delegate
+{
+    _delegate = delegate;
+    //Only update view controllers on initial delegate setting.
+    if (_viewControllers.count == 0) {
+        if ([_delegate respondsToSelector:@selector(infiniteTabBarControllerRequestingViewControllersToDisplay:)]) {
+            //Get the view controllers
+            _viewControllers = [_delegate infiniteTabBarControllerRequestingViewControllersToDisplay:self];
+            //Get the tab bar items
+            NSMutableArray *tempTabBarItems = [NSMutableArray array];
+            for (UIViewController *vc in _viewControllers) {
+                [tempTabBarItems addObject:vc.infiniteTabBarItem];
+            }
+            _tabBarItems = tempTabBarItems;
+        }
+        [self setup];
+    }
+}
+
+- (void)setup
+{
+    if (viewDidLoadOccur && _viewControllers.count > 0) {
+        self.view.backgroundColor = [UIColor whiteColor];
+        
+        //create content view to hold view controllers
+        _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 50.0)];
+        _contentView.backgroundColor = [UIColor whiteColor];
+        _contentView.clipsToBounds = YES;
+        
+        //Determine if we have scrolling
+        numberOfItemsForScrolling = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) ? 6 : 15;
+        
+        //Set up the selection
+        _selectedIndex = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) ? 2 : 5;
+        //No Scrolling, select first item.
+        if (_viewControllers.count < numberOfItemsForScrolling) {
+            _selectedIndex = 0;
+        } else {
+            //Rotate the view controllers and tab bar items, so the center tab is the first one
+            NSMutableArray *tempViewControllers = [NSMutableArray array];
+            NSMutableArray *tempTabBarItems = [NSMutableArray array];
+            for (int i = _viewControllers.count - _selectedIndex; i < _viewControllers.count - _selectedIndex + _viewControllers.count - 1; i++) {
+                int j = i % _viewControllers.count;
+                [tempViewControllers addObject:_viewControllers[j]];
+                [tempTabBarItems addObject:_tabBarItems[j]];
+            }
+            _tabBarItems = tempTabBarItems;
+            _viewControllers = tempViewControllers;
+        }
+        
+        //Set selected view controller
+        _selectedViewController = [_viewControllers objectAtIndex:_selectedIndex];
+        
+        //initalize the tab bar
+        _infiniteTabBar = [[M13InfiniteTabBar alloc] initWithInfiniteTabBarItems:_tabBarItems];
+        _infiniteTabBar.minimumNumberOfTabsForScrolling = numberOfItemsForScrolling;
+        _infiniteTabBar.tabBarDelegate = self;
+        _indiciesRequiringAttention = [[NSMutableDictionary alloc] init];
+        
+        //Create mask for tab bar
+        _maskView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 60.0, self.view.frame.size.width, 80.0)];
+        
+        //Apply iOS 7 style border
+        borderLayer = [CAShapeLayer layer];
+        borderLayer.lineWidth = 1.0;
+        borderLayer.strokeColor = [UIColor colorWithRed:0.56 green:0.56 blue:0.56 alpha:1].CGColor;
+        
+        //Combine views
+        _maskView.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:_maskView];
+        [_maskView addSubview:_infiniteTabBar];
+        [self.view addSubview:_contentView];
+        [self.view.layer addSublayer:borderLayer];
+        
+        //Add user interaction view if not added to superview. This is for when the attention view is set before the view appears.
+        if (_requiresAttentionBackgroundView && _requiresAttentionBackgroundView.superview == nil) {
+            [self setRequiresAttentionBackgroundView:_requiresAttentionBackgroundView];
+        }
+        _automaticallySetsSelectedTabImportanceLevelToZero = YES;
+        
+        //Catch rotation changes for tabs
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRotation:) name:UIDeviceOrientationDidChangeNotification object:nil];
+        
+        
+        _selectedViewController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
+        _selectedViewController.view.contentScaleFactor = [UIScreen mainScreen].scale;
+        [_contentView addSubview:_selectedViewController.view];
+        
+        //Update mask
+        [self handleRotation:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -169,7 +252,7 @@
                 _contentView.frame = tempFrame;
                 _selectedViewController.view.frame = CGRectMake(0, 0, totalSize.width, totalSize.height - 50.0);
                 _maskView.frame = CGRectMake(0, totalSize.height - 50.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
-                
+                _infiniteTabBar.frame = CGRectMake(0, 0, _infiniteTabBar.frame.size.width, _infiniteTabBar.frame.size.height);
                 //If the child view controller supports this orientation
                 if (_selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAll || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAllButUpsideDown || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskPortrait) {
                     //Rotate View Bounds
@@ -183,9 +266,11 @@
                 CGPathMoveToPoint(path, NULL, 0, 0);
                 CGPathAddLineToPoint(path, NULL, tempFrame.size.width, 0);
                 CGPathAddLineToPoint(path, NULL, tempFrame.size.width, tempFrame.size.height);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth, tempFrame.size.height);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
+                if (_viewControllers.count >= numberOfItemsForScrolling) {
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth, tempFrame.size.height);
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
+                }
                 CGPathAddLineToPoint(path, NULL, 0, tempFrame.size.height);
                 CGPathCloseSubpath(path);
                 [maskLayer setPath:path];
@@ -199,7 +284,7 @@
                 _contentView.frame = tempFrame;
                 _selectedViewController.view.frame = CGRectMake(0, 0, totalSize.width, totalSize.height - 50);
                 _maskView.frame = CGRectMake(0, totalSize.height - 70.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
-                
+                _infiniteTabBar.frame = CGRectMake(0, 0, _infiniteTabBar.frame.size.width, _infiniteTabBar.frame.size.height);
                 //If the child view controller supports this interface orientation.
                 if (_selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAll || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskPortraitUpsideDown) {
                     //Rotate View Bounds
@@ -213,9 +298,11 @@
                 CGPathMoveToPoint(path, NULL, 0, 0);
                 CGPathAddLineToPoint(path, NULL, tempFrame.size.width, 0);
                 CGPathAddLineToPoint(path, NULL, tempFrame.size.width, tempFrame.size.height);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth, tempFrame.size.height);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
+                if (_viewControllers.count >= numberOfItemsForScrolling) {
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth, tempFrame.size.height);
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
+                }
                 CGPathAddLineToPoint(path, NULL, 0, tempFrame.size.height);
                 CGPathCloseSubpath(path);
                 [maskLayer setPath:path];
@@ -227,6 +314,7 @@
                 //Resize View
                 CGRect tempFrame = CGRectMake(0, 0, totalSize.width , totalSize.height - 50.0);
                 _contentView.frame = tempFrame;
+                _infiniteTabBar.frame = CGRectMake(-10, -7, _infiniteTabBar.frame.size.width, _infiniteTabBar.frame.size.height);
                 _selectedViewController.view.frame = CGRectMake(0, 0, totalSize.width , totalSize.height - 50.0);
                 _maskView.frame = CGRectMake(0, totalSize.height - 50.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
                 
@@ -243,9 +331,11 @@
                 CGPathMoveToPoint(path, NULL, 0, 0);
                 CGPathAddLineToPoint(path, NULL, tempFrame.size.width, 0);
                 CGPathAddLineToPoint(path, NULL, tempFrame.size.width, tempFrame.size.height);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth , tempFrame.size.height);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
+                if (_viewControllers.count >= numberOfItemsForScrolling) {
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth , tempFrame.size.height);
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
+                }
                 CGPathAddLineToPoint(path, NULL, 0, tempFrame.size.height);
                 CGPathCloseSubpath(path);
                 [maskLayer setPath:path];
@@ -258,6 +348,7 @@
                 _contentView.frame = tempFrame;
                 _selectedViewController.view.frame = CGRectMake(0, 0, totalSize.width, totalSize.height - 50.0);
                 _maskView.frame = CGRectMake(0, totalSize.height - 50.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
+                _infiniteTabBar.frame = CGRectMake(10, 5, _infiniteTabBar.frame.size.width, _infiniteTabBar.frame.size.height);
                 
                 //If the child view controller supports this interface orientation
                 if (_selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAll || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAllButUpsideDown || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskLandscape || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskLandscapeRight) {
@@ -272,9 +363,11 @@
                 CGPathMoveToPoint(path, NULL, 0, 0);
                 CGPathAddLineToPoint(path, NULL, tempFrame.size.width, 0);
                 CGPathAddLineToPoint(path, NULL, tempFrame.size.width, tempFrame.size.height);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth, tempFrame.size.height);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
-                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
+                if (_viewControllers.count >= numberOfItemsForScrolling) {
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth, tempFrame.size.height);
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
+                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
+                }
                 CGPathAddLineToPoint(path, NULL, 0, tempFrame.size.height);
                 CGPathCloseSubpath(path);
                 [maskLayer setPath:path];
@@ -284,9 +377,7 @@
             }
             [UIView commitAnimations];
         }
-        
     }
-    
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -351,6 +442,11 @@
 - (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar willAnimateInViewControllerForItem:(M13InfiniteTabBarItem *)item
 {
     UIViewController *newController = [_viewControllers objectAtIndex:item.tag];
+    
+    //Return if its the selected view controller
+    if (newController == _selectedViewController) {
+        return;
+    }
     
     //check to see if we should rotate, and set proper rotation values
     UIInterfaceOrientationMask mask = _selectedViewController.supportedInterfaceOrientations;

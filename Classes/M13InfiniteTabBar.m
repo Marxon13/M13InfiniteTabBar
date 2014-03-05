@@ -67,8 +67,26 @@
         
         //Set Previous Index
         _previousSelectedIndex = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) ? 2 : 5;
+        //Determine if we have scrolling
+        int numberOfItemsForScrolling = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) ? 6 : 15;
+        if (_items.count < numberOfItemsForScrolling) {
+            _previousSelectedIndex = 0;
+        }
         _selectedItem = [_items objectAtIndex:_previousSelectedIndex];
         [((M13InfiniteTabBarItem *)[_items objectAtIndex:_previousSelectedIndex]) setSelected:YES];
+        
+        //Setup tabs, if less than the scrolling amount
+        if (_items.count < numberOfItemsForScrolling) {
+            _visibleIcons = [[NSMutableArray alloc] init];
+            int tag = 0;
+            for (M13InfiniteTabBarItem *anItem in _items) {
+                M13InfiniteTabBarItem *item = [anItem copy];
+                item.tag = tag;
+                anItem.tag = tag;
+                [_visibleIcons addObject:item];
+                tag ++;
+            }
+        }
         
         [self rotateItemsToOrientation:[UIDevice currentDevice].orientation];
     }
@@ -110,14 +128,30 @@
 {
     [super layoutSubviews];
     
-    [self recenterIfNecessary];
-    
-    // tile content in visible bounds
-    CGRect visibleBounds = [self convertRect:[self bounds] toView:_tabContainerView];
-    CGFloat minimumVisibleX = CGRectGetMinX(visibleBounds);
-    CGFloat maximumVisibleX = CGRectGetMaxX(visibleBounds);
-    
-    [self tileLabelsFromMinX:minimumVisibleX toMaxX:maximumVisibleX];
+    if (_items.count >= _minimumNumberOfTabsForScrolling) {
+        //Infinite Scrolling
+        [self recenterIfNecessary];
+        
+        // tile content in visible bounds
+        CGRect visibleBounds = [self convertRect:[self bounds] toView:_tabContainerView];
+        CGFloat minimumVisibleX = CGRectGetMinX(visibleBounds);
+        CGFloat maximumVisibleX = CGRectGetMaxX(visibleBounds);
+        
+        [self tileLabelsFromMinX:minimumVisibleX toMaxX:maximumVisibleX];
+    } else {
+        //Basic Tab Bar
+        //Reset content size of scroll view
+        self.contentSize = self.frame.size;
+        _tabContainerView.frame = CGRectMake(0, 10, self.frame.size.width, self.frame.size.height);
+        //Manually lay out the tabs, no scrolling occuring
+        CGFloat width = self.frame.size.width / _items.count;
+        CGFloat origin = 0;
+        for (M13InfiniteTabBarItem *item in _visibleIcons) {
+            item.frame = CGRectMake(origin, 0, width, item.frame.size.height);
+            origin += width;
+            [_tabContainerView addSubview:item];
+        }
+    }
 }
 
 //Handle icon rotation on device rotation
@@ -237,23 +271,37 @@
 - (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture
 {
     M13InfiniteTabBarItem *item = (M13InfiniteTabBarItem *)[self viewAtLocation:[gesture locationInView:self]];
-    if (self.contentOffset.x == (item.frame.origin.x + (item.frame.size.width / 2.0)) - (self.frame.size.width / 2.0)) {
-        //center tab tapped
-        [self scrollViewDidEndScrollingAnimation:self];
-    } else {
-        //Center tapped tab
-        [self setContentOffset:CGPointMake((item.frame.origin.x + (item.frame.size.width / 2.0)) - (self.frame.size.width / 2.0), 0) animated:YES];
+    if (item != nil) {
+        if (_items.count >= _minimumNumberOfTabsForScrolling) {
+            //We have infinite scrolling
+            if (self.contentOffset.x == (item.frame.origin.x + (item.frame.size.width / 2.0)) - (self.frame.size.width / 2.0)) {
+                //Center tab tapped
+                [self scrollViewDidEndScrollingAnimation:self];
+            } else {
+                //Other tab tapped
+                [self setContentOffset:CGPointMake((item.frame.origin.x + (item.frame.size.width / 2.0)) - (self.frame.size.width / 2.0), 0) animated:YES];
+            }
+        } else {
+            //Regular tab bar
+            [self selectItem:item];
+        }
     }
 }
 
 - (void)setSelectedItem:(M13InfiniteTabBarItem *)selectedItem
 {
-    if (self.contentOffset.x == (selectedItem.frame.origin.x + (selectedItem.frame.size.width / 2.0)) - (self.frame.size.width / 2.0)) {
-        //center tab tapped
-        [self scrollViewDidEndScrollingAnimation:self];
+    if (_items.count >= _minimumNumberOfTabsForScrolling) {
+        //Scrolling
+        if (self.contentOffset.x == (selectedItem.frame.origin.x + (selectedItem.frame.size.width / 2.0)) - (self.frame.size.width / 2.0)) {
+            //center tab tapped
+            [self scrollViewDidEndScrollingAnimation:self];
+        } else {
+            //Center tapped tab
+            [self setContentOffset:CGPointMake((selectedItem.frame.origin.x + (selectedItem.frame.size.width / 2.0)) - (self.frame.size.width / 2.0), 0) animated:YES];
+        }
     } else {
-        //Center tapped tab
-        [self setContentOffset:CGPointMake((selectedItem.frame.origin.x + (selectedItem.frame.size.width / 2.0)) - (self.frame.size.width / 2.0), 0) animated:YES];
+        //Regular
+        [self setSelectedItem:selectedItem];
     }
 }
 
@@ -273,10 +321,44 @@
 }
 
 - (UIView *) viewAtLocation:(CGPoint) touchLocation {
+    //Get the subview at the touch location
     for (UIView *subView in _tabContainerView.subviews)
         if (CGRectContainsPoint(subView.frame, touchLocation))
             return subView;
-    return nil;
+    //Since we didn't tap a view, find the closest tab to the selection point (we need to do this since if we rotate the tabs, there is empty space. Performing this calculation is simpler than changing the frame of every tab.
+    CGFloat distance = CGFLOAT_MAX;
+    UIView *closestView;
+    for (UIView *subView in _tabContainerView.subviews) {
+        if (distance > [self distanceBetweenRect:subView.frame andPoint:touchLocation]) {
+            distance = [self distanceBetweenRect:subView.frame andPoint:touchLocation];
+            closestView = subView;
+        }
+    }
+    return closestView;
+}
+
+- (CGFloat)distanceBetweenRect:(CGRect)rect andPoint:(CGPoint)point
+{
+    // first of all, we check if point is inside rect. If it is, distance is zero
+    if (CGRectContainsPoint(rect, point)) return 0.f;
+    
+    // next we see which point in rect is closest to point
+    CGPoint closest = rect.origin;
+    if (rect.origin.x + rect.size.width < point.x)
+        closest.x += rect.size.width; // point is far right of us
+    else if (point.x > rect.origin.x)
+        closest.x = point.x; // point above or below us
+    if (rect.origin.y + rect.size.height < point.y)
+        closest.y += rect.size.height; // point is far below us
+    else if (point.y > rect.origin.y)
+        closest.y = point.y; // point is straight left or right
+    
+    // we've got a closest point; now pythagorean theorem
+    // distance^2 = [closest.x,y - closest.x,point.y]^2 + [closest.x,point.y - point.x,y]^2
+    // i.e. [closest.y-point.y]^2 + [closest.x-point.x]^2
+    CGFloat a = powf(closest.y-point.y, 2.f);
+    CGFloat b = powf(closest.x-point.x, 2.f);
+    return sqrtf(a + b);
 }
 
 //Scroll View Delegate Animations
@@ -303,50 +385,59 @@
     if (!_scrollAnimationCheck) {
         //Update View Controllers
         M13InfiniteTabBarItem *item = (M13InfiniteTabBarItem *)[self viewAtLocation:CGPointMake((self.frame.size.width / 2.0) + self.contentOffset.x , (self.frame.size.height/2.0) + self.contentOffset.y)];
-        BOOL shouldUpdate = YES;
-        if ([_tabBarDelegate respondsToSelector:@selector(infiniteTabBar:shouldSelectItem:)]) {
-            shouldUpdate = [_tabBarDelegate infiniteTabBar:self shouldSelectItem:item];
+        [self selectItem:item];
+    } else {
+        _scrollAnimationCheck = NO;
+    }
+}
+
+- (void)selectItem:(M13InfiniteTabBarItem *)item
+{
+    BOOL shouldUpdate = YES;
+    if ([_tabBarDelegate respondsToSelector:@selector(infiniteTabBar:shouldSelectItem:)]) {
+        shouldUpdate = [_tabBarDelegate infiniteTabBar:self shouldSelectItem:item];
+    }
+    
+    if (shouldUpdate) {
+        //Set the opacity of the new view controller to 0 before the animation starts
+        if ([_tabBarDelegate respondsToSelector:@selector(infiniteTabBar:willAnimateInViewControllerForItem:)]) {
+            [_tabBarDelegate infiniteTabBar:self willAnimateInViewControllerForItem:item];
         }
         
-        if (shouldUpdate) {
-            //Set the opacity of the new view controller to 0 before the animation starts
-            if ([_tabBarDelegate respondsToSelector:@selector(infiniteTabBar:willAnimateInViewControllerForItem:)]) {
-               [_tabBarDelegate infiniteTabBar:self willAnimateInViewControllerForItem:item]; 
+        [UIView beginAnimations:@"TabChangedAnimation" context:nil];
+        [UIView setAnimationDuration:.5];
+        [UIView setAnimationDelegate:self];
+        
+        //Swap Nav controllers
+        if ([_tabBarDelegate respondsToSelector:@selector(infiniteTabBar:animateInViewControllerForItem:)]) {
+            [_tabBarDelegate infiniteTabBar:self animateInViewControllerForItem:item];
+        }
+        
+        //Change Tabs
+        //Set selected highlight tab on every visible tab with tag, and the one in the available array to highlight all icons while scrolling
+        [item setSelected:YES];
+        M13InfiniteTabBarItem *hiddenItem = [_items objectAtIndex:item.tag];
+        [hiddenItem setSelected:YES];
+        //Remove highlight on every other tab
+        for (M13InfiniteTabBarItem *temp in _items) {
+            if (temp.tag != item.tag) {
+                [temp setSelected:NO];
             }
-            
-            [UIView beginAnimations:@"TabChangedAnimation" context:nil];
-            [UIView setAnimationDuration:.5];
-            [UIView setAnimationDelegate:self];
-            
-            //Swap Nav controllers
-            if ([_tabBarDelegate respondsToSelector:@selector(infiniteTabBar:animateInViewControllerForItem:)]) {
-                [_tabBarDelegate infiniteTabBar:self animateInViewControllerForItem:item];
+        }
+        for (M13InfiniteTabBarItem *temp in _visibleIcons) {
+            if (temp.tag != item.tag) {
+                [temp setSelected:NO];
             }
-           
-            //Change Tabs
-            //Set selected highlight tab on every visible tab with tag, and the one in the available array to highlight all icons while scrolling
-            [item setSelected:YES];
-            M13InfiniteTabBarItem *hiddenItem = [_items objectAtIndex:item.tag];
-            [hiddenItem setSelected:YES];
-            //Remove highlight on every other tab
-            for (M13InfiniteTabBarItem *temp in _items) {
-                if (temp.tag != item.tag) {
-                    [temp setSelected:NO];
-                }
-            }
-            for (M13InfiniteTabBarItem *temp in _visibleIcons) {
-                if (temp.tag != item.tag) {
-                    [temp setSelected:NO];
-                }
-            }
-            
-            _previousSelectedIndex = item.tag;
-            _selectedItem = item;
-            
-            [UIView setAnimationDidStopSelector:@selector(didSelectItem)];
-            
-            [UIView commitAnimations];
-        } else {
+        }
+        
+        _previousSelectedIndex = item.tag;
+        _selectedItem = item;
+        
+        [UIView setAnimationDidStopSelector:@selector(didSelectItem)];
+        
+        [UIView commitAnimations];
+    } else {
+        if (_items.count >= _minimumNumberOfTabsForScrolling) {
             //Scroll Back to nearest tab with previous index
             M13InfiniteTabBarItem *oldItem = nil;
             for (M13InfiniteTabBarItem *temp in _visibleIcons) {
@@ -366,10 +457,8 @@
             }
             _scrollAnimationCheck = YES;
         }
-    } else {
-        _scrollAnimationCheck = NO;
+        //Else, we don't need to scroll, since we are a basic tab bar.
     }
-    
 }
 
 //Finished tab change animation
