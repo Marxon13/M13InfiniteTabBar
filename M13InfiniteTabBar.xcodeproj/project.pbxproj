@@ -32,6 +32,7 @@
 		CA411D2D18C4DC7C00582555 /* UIViewController+M13InfiniteTabBarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CA411D2C18C4DC7C00582555 /* UIViewController+M13InfiniteTabBarExtension.m */; };
 		CA66B8CB18C6276400052251 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA66B8CA18C6276400052251 /* CustomNavigationController.m */; };
 		CA71128C16CDD550007760C4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA71128B16CDD550007760C4 /* QuartzCore.framework */; };
+		CA9A15C718F1D14B008F96CF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA9A15C618F1D14B008F96CF /* Images.xcassets */; };
 		CAB8453A16CC8AEE0051B3A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB8453916CC8AEE0051B3A9 /* UIKit.framework */; };
 		CAB8453C16CC8AEE0051B3A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB8453B16CC8AEE0051B3A9 /* Foundation.framework */; };
 		CAB8453E16CC8AEE0051B3A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB8453D16CC8AEE0051B3A9 /* CoreGraphics.framework */; };
@@ -107,6 +108,7 @@
 		CA66B8C918C6276400052251 /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
 		CA66B8CA18C6276400052251 /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		CA71128B16CDD550007760C4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CA9A15C618F1D14B008F96CF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CAB8453616CC8AEE0051B3A9 /* M13InfiniteTabBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = M13InfiniteTabBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB8453916CC8AEE0051B3A9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CAB8453B16CC8AEE0051B3A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -252,6 +254,7 @@
 				CAB8455116CC8AEE0051B3A9 /* ViewController.h */,
 				CAB8455216CC8AEE0051B3A9 /* ViewController.m */,
 				CA411D2618C3EE0C00582555 /* MainStoryboard.storyboard */,
+				CA9A15C618F1D14B008F96CF /* Images.xcassets */,
 				CAB8454016CC8AEE0051B3A9 /* Supporting Files */,
 			);
 			path = M13InfiniteTabBar;
@@ -405,6 +408,7 @@
 				CAF2A2B71895F63A001C2D2B /* tab4Icon@2x.png in Resources */,
 				CAC9501E188862EC0027AFF6 /* tab6Line.png in Resources */,
 				CAC9501F188862EC0027AFF6 /* tab6Line@2x.png in Resources */,
+				CA9A15C718F1D14B008F96CF /* Images.xcassets in Resources */,
 				CAC95011188862EC0027AFF6 /* tab2Solid@2x.png in Resources */,
 				CAB8455016CC8AEE0051B3A9 /* Default-568h@2x.png in Resources */,
 				CAF2A2BE1895FEA2001C2D2B /* tab6Icon.png in Resources */,
@@ -535,6 +539,8 @@
 		CAB8455D16CC8AEE0051B3A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "M13InfiniteTabBar/M13InfiniteTabBar-Prefix.pch";
 				INFOPLIST_FILE = "M13InfiniteTabBar/M13InfiniteTabBar-Info.plist";
@@ -546,6 +552,8 @@
 		CAB8455E16CC8AEE0051B3A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "M13InfiniteTabBar/M13InfiniteTabBar-Prefix.pch";
 				INFOPLIST_FILE = "M13InfiniteTabBar/M13InfiniteTabBar-Info.plist";
