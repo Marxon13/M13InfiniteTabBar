@@ -102,6 +102,15 @@
         vc.requiresAttentionBackgroundView = [[PulsingRequiresAttentionView alloc] init];
         //A view controller requires user attention
         [vc viewControllerAtIndex:6 requiresUserAttentionWithImportanceLevel:1];
+    } else if ([segue.identifier isEqualToString:@"InfiniteDisabledSegue"]) {
+        M13InfiniteTabBarController *vc = segue.destinationViewController;
+        display = @"InfiniteDisabledSegue";
+        vc.delegate = self;
+        vc.enableInfiniteScrolling = NO;
+        //Set the requires user attention background
+        vc.requiresAttentionBackgroundView = [[PulsingRequiresAttentionView alloc] init];
+        //A view controller requires user attention
+        [vc viewControllerAtIndex:6 requiresUserAttentionWithImportanceLevel:1];
     }
 }
 
@@ -136,7 +145,7 @@
     
     if ([display isEqualToString:@"LessThan5Tabs"]) {
         return @[vc1, vc2, vc3];
-    } else if ([display isEqualToString:@"GreaterThan5Tabs"]) {
+    } else if ([display isEqualToString:@"GreaterThan5Tabs"] || [display isEqualToString:@"InfiniteDisabledSegue"]) {
         return @[vc1, vc2, vc3, vc4, vc5, vc6, nc7];
     }
     return nil;

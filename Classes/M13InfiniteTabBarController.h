@@ -65,6 +65,8 @@
 @property (nonatomic, readonly) M13InfiniteTabBar *infiniteTabBar;
 /** The view controller list that the infinite tab bar displays.*/
 @property (nonatomic, copy) NSArray *viewControllers;
+/** If set to YES, and the number of tabs is greater than minimumNumberOfTabsForScrolling, the tab bar will scroll infinitly. If set to no, the tab bar will still scroll, but not scroll infinitly.*/
+@property (nonatomic, assign) BOOL enableInfiniteScrolling;
 
 /** @name Selection Handling */
 /** The selected `UIViewController` instance. */

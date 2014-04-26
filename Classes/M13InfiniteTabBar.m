@@ -33,6 +33,7 @@
         self.delegate = self;
         self.contentSize = self.frame.size;
         self.backgroundColor = [UIColor clearColor];
+        _enableInfiniteScrolling = YES;
         
         //Content size
         self.contentSize = CGSizeMake(items.count * ((M13InfiniteTabBarItem *)[items lastObject]).frame.size.width * 4, self.frame.size.height); //Need to iterate 4 times for infinite animation
@@ -76,7 +77,7 @@
         [((M13InfiniteTabBarItem *)[_items objectAtIndex:_previousSelectedIndex]) setSelected:YES];
         
         //Setup tabs, if less than the scrolling amount
-        if (_items.count < numberOfItemsForScrolling) {
+        if (_items.count < numberOfItemsForScrolling || !_enableInfiniteScrolling) {
             _visibleIcons = [[NSMutableArray alloc] init];
             int tag = 0;
             for (M13InfiniteTabBarItem *anItem in _items) {
@@ -128,7 +129,7 @@
 {
     [super layoutSubviews];
     
-    if (_items.count >= _minimumNumberOfTabsForScrolling) {
+    if (_items.count >= _minimumNumberOfTabsForScrolling && _enableInfiniteScrolling) {
         //Infinite Scrolling
         [self recenterIfNecessary];
         
@@ -138,7 +139,21 @@
         CGFloat maximumVisibleX = CGRectGetMaxX(visibleBounds);
         
         [self tileLabelsFromMinX:minimumVisibleX toMaxX:maximumVisibleX];
+    } else if (_items.count >= _minimumNumberOfTabsForScrolling && !_enableInfiniteScrolling) {
+        //Infinte scrolling disabled.
+        //Set the new content size, this should be the width of all the tab bar items, plus the width of the frame, so that we have width/2 padding on each side. So that the left and right most items can still reach the center.
+        CGFloat itemWidth = ((M13InfiniteTabBarItem *)[_items lastObject]).frame.size.width;
+        self.contentSize = CGSizeMake((_items.count * itemWidth) + self.frame.size.width, self.frame.size.height);
+        _tabContainerView.frame = CGRectMake(self.frame.size.width / 2.0, 10, self.contentSize.width, self.contentSize.height);
+        CGFloat origin = 0.0;
+        for (M13InfiniteTabBarItem *item in _visibleIcons) {
+            item.frame = CGRectMake(origin, 0, itemWidth, item.frame.size.height);
+            origin += itemWidth;
+            [_tabContainerView addSubview:item];
+        }
     } else {
+        //Scrolling Disabled
+        
         //Basic Tab Bar
         //Reset content size of scroll view
         self.contentSize = self.frame.size;
@@ -169,8 +184,41 @@
     }
 }
 
-//Tiling labels
+//Set wether or not we should scroll.
+- (void)setEnableInfiniteScrolling:(BOOL)enableInfiniteScrolling
+{
+    _enableInfiniteScrolling = enableInfiniteScrolling;
+    
+    if (_enableInfiniteScrolling) {
+        //Enable infinite
+        _visibleIcons = [[NSMutableArray alloc] init];
+        [self layoutSubviews];
+    } else {
+        //Disable infinite
+        _visibleIcons = [[NSMutableArray alloc] init];
+        int tag = 0;
+        for (M13InfiniteTabBarItem *anItem in _items) {
+            M13InfiniteTabBarItem *item = [anItem copy];
+            item.tag = tag;
+            anItem.tag = tag;
+            [_visibleIcons addObject:item];
+            tag ++;
+        }
+        [self layoutSubviews];
+        //center scroll view
+        //Need to find the item that is shown, since that has the proper frame.
+        M13InfiniteTabBarItem *item = nil;
+        for (M13InfiniteTabBarItem *anItem in _tabContainerView.subviews) {
+            if (anItem.tag == _selectedItem.tag) {
+                item = anItem;
+                break;
+            }
+        }
+        [self setSelectedItem:item];
+    }
+}
 
+//Tiling labels
 - (CGFloat)placeNewLabelOnRight:(CGFloat)rightEdge
 {
     //Get item of next index
@@ -270,38 +318,34 @@
 
 - (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture
 {
-    M13InfiniteTabBarItem *item = (M13InfiniteTabBarItem *)[self viewAtLocation:[gesture locationInView:self]];
+    //Calculate the location in _tabBarContainer Coordinates
+    CGPoint location = [gesture locationInView:nil];
+    location.x += (self.contentOffset.x - _tabContainerView.frame.origin.x);
+    
+    M13InfiniteTabBarItem *item = (M13InfiniteTabBarItem *)[self itemAtLocation:location];
     if (item != nil) {
-        if (_items.count >= _minimumNumberOfTabsForScrolling) {
-            //We have infinite scrolling
-            if (self.contentOffset.x == (item.frame.origin.x + (item.frame.size.width / 2.0)) - (self.frame.size.width / 2.0)) {
-                //Center tab tapped
-                [self scrollViewDidEndScrollingAnimation:self];
-            } else {
-                //Other tab tapped
-                [self setContentOffset:CGPointMake((item.frame.origin.x + (item.frame.size.width / 2.0)) - (self.frame.size.width / 2.0), 0) animated:YES];
-            }
-        } else {
-            //Regular tab bar
-            [self selectItem:item];
-        }
+        [self setSelectedItem:item];
     }
 }
 
 - (void)setSelectedItem:(M13InfiniteTabBarItem *)selectedItem
 {
     if (_items.count >= _minimumNumberOfTabsForScrolling) {
-        //Scrolling
-        if (self.contentOffset.x == (selectedItem.frame.origin.x + (selectedItem.frame.size.width / 2.0)) - (self.frame.size.width / 2.0)) {
-            //center tab tapped
+        //Convert the item's frame to self
+        CGRect itemFrameInSelf = selectedItem.frame;
+        itemFrameInSelf.origin.x += _tabContainerView.frame.origin.x;
+        
+        //Check to see if it is the center item
+        if (self.contentOffset.x == itemFrameInSelf.origin.x - (self.frame.size.width / 2.0) + (itemFrameInSelf.size.width / 2.0)) {
+            //Center tab tapped
             [self scrollViewDidEndScrollingAnimation:self];
         } else {
-            //Center tapped tab
-            [self setContentOffset:CGPointMake((selectedItem.frame.origin.x + (selectedItem.frame.size.width / 2.0)) - (self.frame.size.width / 2.0), 0) animated:YES];
+            //Other tab tapped
+            [self setContentOffset:CGPointMake((itemFrameInSelf.origin.x + (itemFrameInSelf.size.width / 2.0)) - (self.frame.size.width / 2.0), 0) animated:YES];
         }
     } else {
-        //Regular
-        [self setSelectedItem:selectedItem];
+        //Regular tab bar
+        [self selectItem:selectedItem];
     }
 }
 
@@ -320,17 +364,19 @@
     }
 }
 
-- (UIView *) viewAtLocation:(CGPoint) touchLocation {
+- (UIView *)itemAtLocation:(CGPoint)theLocation {
     //Get the subview at the touch location
-    for (UIView *subView in _tabContainerView.subviews)
-        if (CGRectContainsPoint(subView.frame, touchLocation))
+    for (UIView *subView in _tabContainerView.subviews) {
+        if (CGRectContainsPoint(subView.frame, theLocation)) {
             return subView;
+        }
+    }
     //Since we didn't tap a view, find the closest tab to the selection point (we need to do this since if we rotate the tabs, there is empty space. Performing this calculation is simpler than changing the frame of every tab.
     CGFloat distance = CGFLOAT_MAX;
     UIView *closestView;
     for (UIView *subView in _tabContainerView.subviews) {
-        if (distance > [self distanceBetweenRect:subView.frame andPoint:touchLocation]) {
-            distance = [self distanceBetweenRect:subView.frame andPoint:touchLocation];
+        if (distance > [self distanceBetweenRect:subView.frame andPoint:theLocation]) {
+            distance = [self distanceBetweenRect:subView.frame andPoint:theLocation];
             closestView = subView;
         }
     }
@@ -365,18 +411,37 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (!decelerate) {
-        M13InfiniteTabBarItem *item = (M13InfiniteTabBarItem *)[self viewAtLocation:CGPointMake((self.frame.size.width / 2.0) + self.contentOffset.x , (self.frame.size.height/2.0) + self.contentOffset.y)];
-        if (self.contentOffset.x != (item.frame.origin.x + (item.frame.size.width / 2.0)) - (self.frame.size.width / 2.0)) {
-            [self setContentOffset:CGPointMake((item.frame.origin.x + (item.frame.size.width / 2.0)) - (self.frame.size.width / 2.0), 0) animated:YES];
+        //Get the item
+        //Convert Superview points, to _tabContainerView points. (want the view in the center
+        CGPoint location = CGPointMake((self.frame.size.width / 2.0) , (self.frame.size.height/2.0) + self.contentOffset.y);
+        location.x += (self.contentOffset.x - _tabContainerView.frame.origin.x);
+        
+        M13InfiniteTabBarItem *item = (M13InfiniteTabBarItem *)[self itemAtLocation:location];
+        
+        //Convert the item's frame to self
+        CGRect itemFrameInSelf = item.frame;
+        itemFrameInSelf.origin.x = item.frame.origin.x + _tabContainerView.frame.origin.x;
+        
+        if (self.contentOffset.x != itemFrameInSelf.origin.x - (self.frame.size.width / 2.0) + (itemFrameInSelf.size.width / 2.0)) {
+            [self setContentOffset:CGPointMake(itemFrameInSelf.origin.x - (self.frame.size.width / 2.0) + (itemFrameInSelf.size.width / 2.0), 0) animated:YES];
         }
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    M13InfiniteTabBarItem *item = (M13InfiniteTabBarItem *)[self viewAtLocation:CGPointMake((self.frame.size.width / 2.0) + self.contentOffset.x , (self.frame.size.height/2.0) + self.contentOffset.y)];
-    if (self.contentOffset.x != (item.frame.origin.x + (item.frame.size.width / 2.0)) - (self.frame.size.width / 2.0)) {
-        [self setContentOffset:CGPointMake((item.frame.origin.x + (item.frame.size.width / 2.0)) - (self.frame.size.width / 2.0), 0) animated:YES];
+    //Convert Superview points, to _tabContainerView points. (want the view in the center
+    CGPoint location = CGPointMake((self.frame.size.width / 2.0) , (self.frame.size.height/2.0) + self.contentOffset.y);
+    location.x += (self.contentOffset.x - _tabContainerView.frame.origin.x);
+    
+    M13InfiniteTabBarItem *item = (M13InfiniteTabBarItem *)[self itemAtLocation:location];
+    
+    //Convert the item's frame to self
+    CGRect itemFrameInSelf = item.frame;
+    itemFrameInSelf.origin.x = item.frame.origin.x + _tabContainerView.frame.origin.x;
+    
+    if (self.contentOffset.x != itemFrameInSelf.origin.x - (self.frame.size.width / 2.0) + (itemFrameInSelf.size.width / 2.0)) {
+        [self setContentOffset:CGPointMake(itemFrameInSelf.origin.x - (self.frame.size.width / 2.0) + (itemFrameInSelf.size.width / 2.0), 0) animated:YES];
     }
 }
 
@@ -384,7 +449,11 @@
 {
     if (!_scrollAnimationCheck) {
         //Update View Controllers
-        M13InfiniteTabBarItem *item = (M13InfiniteTabBarItem *)[self viewAtLocation:CGPointMake((self.frame.size.width / 2.0) + self.contentOffset.x , (self.frame.size.height/2.0) + self.contentOffset.y)];
+        //Convert Superview points, to _tabContainerView points. (want the view in the center
+        CGPoint location = CGPointMake((self.frame.size.width / 2.0) , (self.frame.size.height/2.0) + self.contentOffset.y);
+        location.x += (self.contentOffset.x - _tabContainerView.frame.origin.x);
+        
+        M13InfiniteTabBarItem *item = (M13InfiniteTabBarItem *)[self itemAtLocation:location];
         [self selectItem:item];
     } else {
         _scrollAnimationCheck = NO;
@@ -449,11 +518,15 @@
                 //calculate offset between current center view origin and next previous view origin.
                 float offsetX = (_previousSelectedIndex - item.tag) * item.frame.size.width;
                 //add this to the current offset
-                offsetX += self.contentOffset.x;
+                offsetX += self.contentOffset.x + _tabContainerView.frame.origin.x;
                 [self setContentOffset:CGPointMake(offsetX, 0) animated:YES];
             } else {
                 //Use that view if exists
-                [self setContentOffset:CGPointMake((oldItem.frame.origin.x + (oldItem.frame.size.width / 2.0)- (self.frame.size.width / 2.0)), 0) animated:YES];
+                CGFloat oldX = oldItem.frame.origin.x;
+                oldX += _tabContainerView.frame.origin.x;
+                
+                
+                [self setContentOffset:CGPointMake((oldX + (oldItem.frame.size.width / 2.0) - (self.frame.size.width / 2.0)), 0) animated:YES];
             }
             _scrollAnimationCheck = YES;
         }

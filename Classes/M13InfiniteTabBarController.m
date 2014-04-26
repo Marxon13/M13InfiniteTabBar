@@ -40,6 +40,7 @@
     if (self) {
         _tabBarItems = items;
         _viewControllers = viewControllers;
+        _enableInfiniteScrolling = YES;
     }
     return self;
 }
@@ -49,11 +50,30 @@
     self = [super init];
     if (self) {
         _viewControllers = viewControllers;
+        _enableInfiniteScrolling = YES;
         NSMutableArray *array = [NSMutableArray array];
         for (UIViewController *vc in viewControllers) {
             [array addObject:vc.infiniteTabBarItem];
         }
         _tabBarItems = [array copy];
+    }
+    return self;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _enableInfiniteScrolling = YES;
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _enableInfiniteScrolling = YES;
     }
     return self;
 }
@@ -136,6 +156,7 @@
         _infiniteTabBar = [[M13InfiniteTabBar alloc] initWithInfiniteTabBarItems:_tabBarItems];
         _infiniteTabBar.minimumNumberOfTabsForScrolling = numberOfItemsForScrolling;
         _infiniteTabBar.tabBarDelegate = self;
+        _infiniteTabBar.enableInfiniteScrolling = _enableInfiniteScrolling;
         _indiciesRequiringAttention = [[NSMutableDictionary alloc] init];
         
         //Create mask for tab bar
@@ -604,6 +625,12 @@
     [_requiresAttentionBackgroundView showAnimationOnLeftEdgeWithImportanceLevel:leftImportanceLevel];
     [_requiresAttentionBackgroundView showAnimationOnRightEdgeWithImportanceLevel:rightImportanceLevel];
     
+}
+
+- (void)setEnableInfiniteScrolling:(BOOL)enableInfiniteScrolling
+{
+    _enableInfiniteScrolling = enableInfiniteScrolling;
+    _infiniteTabBar.enableInfiniteScrolling = _enableInfiniteScrolling;
 }
 
 @end
