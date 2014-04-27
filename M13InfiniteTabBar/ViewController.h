@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class M13InfiniteTabBarController;
 
 @interface ViewController : UIViewController
 
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
+
+@property (nonatomic, strong) M13InfiniteTabBarController *infiniteTabBarController;
+
+- (IBAction)gotoWorld:(id)sender;
 
 @end

@@ -77,7 +77,7 @@
         [((M13InfiniteTabBarItem *)[_items objectAtIndex:_previousSelectedIndex]) setSelected:YES];
         
         //Setup tabs, if less than the scrolling amount
-        if (_items.count < numberOfItemsForScrolling || !_enableInfiniteScrolling) {
+        if (_items.count < numberOfItemsForScrolling) {
             _visibleIcons = [[NSMutableArray alloc] init];
             int tag = 0;
             for (M13InfiniteTabBarItem *anItem in _items) {
@@ -191,7 +191,6 @@
     
     if (_enableInfiniteScrolling) {
         //Enable infinite
-        _visibleIcons = [[NSMutableArray alloc] init];
         [self layoutSubviews];
     } else {
         //Disable infinite
@@ -328,6 +327,35 @@
     }
 }
 
+- (void)selectItemAtIndex:(NSUInteger)index
+{
+    if (index >= _items.count) {
+        //Whoops, item doesn't exist.
+        return;
+    }
+    //Get the item at the given position in the tab bar. We will iterate from the left to the right, and look for the item with the same tag. Where will start depends on if we are infinite scrolling.
+    CGFloat itemWidth = ((M13InfiniteTabBarItem *)[_items lastObject]).frame.size.width;
+    for (int i = 0; i < _items.count; i++) {
+        
+        //Calculate the xpos to check
+        CGFloat xPos = 0;
+        if (_enableInfiniteScrolling) {
+            //Start at the middle
+            xPos = (_tabContainerView.frame.size.width / 2.0) + (i * itemWidth);
+        } else {
+            //Start at the left side.
+            xPos = (itemWidth / 2.0) + (i * itemWidth);
+        }
+        
+        //Get the item at the given position
+        M13InfiniteTabBarItem *item = [self itemAtLocation:CGPointMake(xPos, _tabContainerView.frame.size.height / 2.0)];
+        if (item.tag == index) {
+            [self setSelectedItem:item];
+            break;
+        }
+    }
+}
+
 - (void)setSelectedItem:(M13InfiniteTabBarItem *)selectedItem
 {
     if (_items.count >= _minimumNumberOfTabsForScrolling) {
@@ -364,17 +392,17 @@
     }
 }
 
-- (UIView *)itemAtLocation:(CGPoint)theLocation {
-    //Get the subview at the touch location
-    for (UIView *subView in _tabContainerView.subviews) {
+- (M13InfiniteTabBarItem *)itemAtLocation:(CGPoint)theLocation {
+    //Get the subview at the location given
+    for (M13InfiniteTabBarItem *subView in _tabContainerView.subviews) {
         if (CGRectContainsPoint(subView.frame, theLocation)) {
             return subView;
         }
     }
     //Since we didn't tap a view, find the closest tab to the selection point (we need to do this since if we rotate the tabs, there is empty space. Performing this calculation is simpler than changing the frame of every tab.
     CGFloat distance = CGFLOAT_MAX;
-    UIView *closestView;
-    for (UIView *subView in _tabContainerView.subviews) {
+    M13InfiniteTabBarItem *closestView;
+    for (M13InfiniteTabBarItem *subView in _tabContainerView.subviews) {
         if (distance > [self distanceBetweenRect:subView.frame andPoint:theLocation]) {
             distance = [self distanceBetweenRect:subView.frame andPoint:theLocation];
             closestView = subView;

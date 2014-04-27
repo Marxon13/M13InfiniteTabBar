@@ -551,7 +551,7 @@
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex
 {
-    [_infiniteTabBar setSelectedItem:[_tabBarItems objectAtIndex:selectedIndex]];
+    [_infiniteTabBar selectItemAtIndex:selectedIndex];
     [_infiniteTabBar item:_tabBarItems[selectedIndex] requiresUserAttention:NO];
 }
 

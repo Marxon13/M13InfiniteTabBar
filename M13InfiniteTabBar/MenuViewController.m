@@ -131,6 +131,17 @@
     ViewController *vc7 = [storyboard instantiateViewControllerWithIdentifier:@"InfoVC"];
     [nc7 pushViewController:vc7 animated:NO];
     
+    //------- setSelectedIndex: test --------
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setTitle:@"Goto World Tab" forState:UIControlStateNormal];
+    button.frame = CGRectMake(20, ([UIScreen mainScreen].bounds.size.height / 2.0) - 15, [UIScreen mainScreen].bounds.size.width - 40, 30);
+    button.backgroundColor = [UIColor colorWithWhite:1 alpha:.3];
+    [button addTarget:vc1 action:@selector(gotoWorld:) forControlEvents:UIControlEventTouchUpInside];
+    [vc1.view addSubview:button];
+    vc1.infiniteTabBarController = tabBarController;
+    
+    //------- end test ----------------------
     
     //You probably want to set this on the UIViewController initalization, from within the UIViewController subclass. I'm just doing it here since each tab inherits from the same subclass.
     [vc1 setInfiniteTabBarItem:[[M13InfiniteTabBarItem alloc] initWithTitle:@"Bookmarks" selectedIconMask:[UIImage imageNamed:@"tab1Solid.png"] unselectedIconMask:[UIImage imageNamed:@"tab1Line.png"]]];
@@ -142,7 +153,6 @@
     [nc7 setInfiniteTabBarItem:[[M13InfiniteTabBarItem alloc] initWithTitle:@"Info" selectedIconMask:[UIImage imageNamed:@"tab7Solid.png"] unselectedIconMask:[UIImage imageNamed:@"tab7Line.png"]]];
     
     //Done
-    
     if ([display isEqualToString:@"LessThan5Tabs"]) {
         return @[vc1, vc2, vc3];
     } else if ([display isEqualToString:@"GreaterThan5Tabs"] || [display isEqualToString:@"InfiniteDisabledSegue"]) {

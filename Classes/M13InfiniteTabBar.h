@@ -62,6 +62,12 @@
 /** @name Selection */
 /** The `M13InfiniteTabBarItem` that is selected. */
 @property (nonatomic, retain) M13InfiniteTabBarItem *selectedItem;
+/**
+ Selects the item at the given index.
+ 
+ @param index The index of the item to select.
+ */
+- (void)selectItemAtIndex:(NSUInteger)index;
 
 /** @name User Attention*/
 /** Set wether or not a specific tab requires user attention.

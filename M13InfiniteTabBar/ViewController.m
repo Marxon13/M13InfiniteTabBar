@@ -68,4 +68,15 @@
     return UIInterfaceOrientationPortrait;
 }
 
+- (void)gotoWorld:(id)sender
+{
+    //Need to check how many view controllers we have.
+    if (self.infiniteTabBarController.viewControllers.count >= 4) {
+        [self.infiniteTabBarController setSelectedIndex:4];
+    } else {
+        [self.infiniteTabBarController setSelectedIndex:2];
+    }
+    
+}
+
 @end
