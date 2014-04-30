@@ -140,7 +140,7 @@
             //Rotate the view controllers and tab bar items, so the center tab is the first one
             NSMutableArray *tempViewControllers = [NSMutableArray array];
             NSMutableArray *tempTabBarItems = [NSMutableArray array];
-            for (int i = _viewControllers.count - _selectedIndex; i < _viewControllers.count - _selectedIndex + _viewControllers.count - 1; i++) {
+            for (int i = _viewControllers.count - _selectedIndex; i < _viewControllers.count - _selectedIndex + _viewControllers.count; i++) {
                 int j = i % _viewControllers.count;
                 [tempViewControllers addObject:_viewControllers[j]];
                 [tempTabBarItems addObject:_tabBarItems[j]];
