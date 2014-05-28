@@ -84,6 +84,11 @@ These features will eventually be added to M13InfiniteTabBar:
 * Adding badges to tab bar items.
 * Allow switching the order, adding, and removing of tabs.
 
+Known Issues:
+--------------------
+
+* M13InfiniteTabBar does not seem to work in the simulator. I have tested it on actual devices, and it works as expected. The two main issues are that the selection triangle does not appear, and that the tabs are cut off the bottom of the bar. I am not sure what is causing this. I am going to assume it is the simulator, since it works fine on actual devices.
+
 
 Contact Me:
 -------------
