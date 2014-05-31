@@ -5,20 +5,20 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>8879BE10-9AD2-4FEC-8252-1748B0A84C64</string>
+	<string>E56517C1-D467-4B54-A5AA-9FC6042680F3</string>
 	<key>IDESourceControlProjectName</key>
-	<string>M13InfiniteTabBar</string>
+	<string>InitialViewExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>8E33E4D3-5EB5-4C47-8E4A-17A4EE32707E</key>
 		<string>https://github.com/Marxon13/M13InfiniteTabBar.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>M13InfiniteTabBar.xcworkspace</string>
+	<string>Examples/InitialViewExample/InitialViewExample.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>8E33E4D3-5EB5-4C47-8E4A-17A4EE32707E</key>
-		<string>..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Marxon13/M13InfiniteTabBar.git</string>

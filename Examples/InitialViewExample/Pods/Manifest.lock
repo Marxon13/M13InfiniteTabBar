@@ -1,0 +1,10 @@
+PODS:
+  - M13InfiniteTabBar (2.2.2)
+
+DEPENDENCIES:
+  - M13InfiniteTabBar
+
+SPEC CHECKSUMS:
+  M13InfiniteTabBar: 5a8809cdadcf182993fa83aeaec4d9dd9a2348e2
+
+COCOAPODS: 0.33.1
