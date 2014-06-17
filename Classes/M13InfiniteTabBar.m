@@ -33,6 +33,7 @@
         self.delegate = self;
         self.contentSize = self.frame.size;
         self.backgroundColor = [UIColor clearColor];
+        self.clipsToBounds = NO;
         _enableInfiniteScrolling = YES;
         
         //Content size
@@ -157,7 +158,7 @@
         //Basic Tab Bar
         //Reset content size of scroll view
         self.contentSize = self.frame.size;
-        _tabContainerView.frame = CGRectMake(0, 10, self.frame.size.width, self.frame.size.height);
+        _tabContainerView.frame = CGRectMake(0, -10, self.frame.size.width, self.frame.size.height);
         //Manually lay out the tabs, no scrolling occuring
         CGFloat width = self.frame.size.width / _items.count;
         CGFloat origin = 0;

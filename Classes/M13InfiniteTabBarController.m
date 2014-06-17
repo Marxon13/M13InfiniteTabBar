@@ -120,6 +120,7 @@
 
 - (void)setup
 {
+    //All the frames here are temporary. They will be layed out during handleInterfaceChange:
     if (viewDidLoadOccur && _viewControllers.count > 0) {
         self.view.backgroundColor = [UIColor whiteColor];
         
@@ -182,12 +183,14 @@
         
         //Catch rotation changes for tabs
         [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRotation:) name:UIDeviceOrientationDidChangeNotification object:nil];
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleInterfaceChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
         
         _selectedViewController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
         _selectedViewController.view.contentScaleFactor = [UIScreen mainScreen].scale;
         [_contentView addSubview:_selectedViewController.view];
+        
+        //Update mask
+        [self handleInterfaceChange:nil];
     }
 }
 
@@ -197,7 +200,7 @@
     [_selectedViewController viewWillAppear:animated];
     
     //Update mask
-    [self handleRotation:nil];
+    [self handleInterfaceChange:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -225,7 +228,7 @@
 }
 
 //Handle rotating all view controllers
-- (void)handleRotation:(NSNotification *)notification
+- (void)handleInterfaceChange:(NSNotification *)notification
 {
     //If notification is nil, we manually called for a redraw
     if (_selectedViewController.shouldAutorotate || notification == nil) {
@@ -257,9 +260,10 @@
             interfaceOrientation = UIInterfaceOrientationLandscapeLeft;
         }
         
+        //Update frames
         if (go) {
-            //begin rotation
-            [UIView beginAnimations:@"HandleRotation" context:nil];
+            //Start Animation
+            [UIView beginAnimations:@"HandleInterfaceChange" context:nil];
             [UIView setAnimationDuration:0.5];
             [UIView setAnimationDelegate:self];
             
@@ -270,145 +274,119 @@
             [[UIApplication sharedApplication] setStatusBarOrientation:interfaceOrientation];
             //Rotate tab bar items
             [_infiniteTabBar rotateItemsToOrientation:orientation];
-            //Recreate mask and adjust frames to make room for status bar.
+            
+            //Global values
+            CGRect tempFrame;
+            
             if (interfaceOrientation == UIInterfaceOrientationPortrait) {
-                //Resize View
-                CGRect tempFrame = CGRectMake(0, 0, totalSize.width, totalSize.height - 50.0);
+                //Code that needs to be separate based on top or bottom
+                if (_tabBarPosition == M13InfiniteTabBarPositionBottom) {
+                    tempFrame = CGRectMake(0, 0, totalSize.width, totalSize.height - 50.0);
+                    _maskView.frame = CGRectMake(0, totalSize.height - 50.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
+                } else {
+                    tempFrame = CGRectMake(0, 65, totalSize.width, totalSize.height - 65.0);
+                    _maskView.frame = CGRectMake(0, 5, _maskView.frame.size.width, _maskView.frame.size.height);
+                }
+                
                 _contentView.frame = tempFrame;
-                _selectedViewController.view.frame = CGRectMake(0, 0, totalSize.width, totalSize.height - 50.0);
-                _maskView.frame = CGRectMake(0, totalSize.height - 50.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
+                _selectedViewController.view.frame = CGRectMake(0, 0, tempFrame.size.width, tempFrame.size.height);
                 _infiniteTabBar.frame = CGRectMake(0, 0, _infiniteTabBar.frame.size.width, _infiniteTabBar.frame.size.height);
-                //If the child view controller supports this orientation
+                
+                //Rotate the child view controller if it supports the orientation
                 if (_selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAll || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAllButUpsideDown || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskPortrait) {
                     //Rotate View Bounds
                     _selectedViewController.view.transform = CGAffineTransformMakeRotation(angle);
-                    _selectedViewController.view.bounds = CGRectMake(0, 0, totalSize.width, totalSize.height - 50.0);
+                    _selectedViewController.view.bounds = CGRectMake(0, 0, tempFrame.size.width, tempFrame.size.height);
                 }
-                
-                //Create content mask
-                CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-                CGMutablePathRef path = CGPathCreateMutable();
-                CGPathMoveToPoint(path, NULL, 0, 0);
-                CGPathAddLineToPoint(path, NULL, tempFrame.size.width, 0);
-                CGPathAddLineToPoint(path, NULL, tempFrame.size.width, tempFrame.size.height);
-                if (_viewControllers.count >= numberOfItemsForScrolling) {
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth, tempFrame.size.height);
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
-                }
-                CGPathAddLineToPoint(path, NULL, 0, tempFrame.size.height);
-                CGPathCloseSubpath(path);
-                [maskLayer setPath:path];
-                CGPathRelease(path);
-                _contentView.layer.mask = maskLayer;
-                //Create the iOS7 border
                 
             } else if (interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
-                //Resize View
-                CGRect tempFrame = CGRectMake(0, 0, totalSize.width, totalSize.height - 70.0);
+                if (_tabBarPosition == M13InfiniteTabBarPositionBottom) {
+                    tempFrame = CGRectMake(0, 0, totalSize.width, totalSize.height - 70.0);
+                    _maskView.frame = CGRectMake(0, totalSize.height - 70.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
+                } else {
+                    tempFrame = CGRectMake(0, 50, totalSize.width, totalSize.height - 50.0);
+                    _maskView.frame = CGRectMake(0, -10, _maskView.frame.size.width, _maskView.frame.size.height);
+                }
+                
                 _contentView.frame = tempFrame;
-                _selectedViewController.view.frame = CGRectMake(0, 0, totalSize.width, totalSize.height - 50);
-                _maskView.frame = CGRectMake(0, totalSize.height - 70.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
+                _selectedViewController.view.frame = CGRectMake(0, 0, tempFrame.size.width, tempFrame.size.height);
                 _infiniteTabBar.frame = CGRectMake(0, 0, _infiniteTabBar.frame.size.width, _infiniteTabBar.frame.size.height);
+                
                 //If the child view controller supports this interface orientation.
                 if (_selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAll || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskPortraitUpsideDown) {
                     //Rotate View Bounds
                     _selectedViewController.view.transform = CGAffineTransformMakeRotation(angle);
-                    _selectedViewController.view.bounds = CGRectMake(0, 0, totalSize.width, totalSize.height - 50.0);
+                    _selectedViewController.view.bounds = CGRectMake(0, 0, tempFrame.size.width, tempFrame.size.height);
                 }
                 
-                //Create content mask
-                CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-                CGMutablePathRef path = CGPathCreateMutable();
-                CGPathMoveToPoint(path, NULL, 0, 0);
-                CGPathAddLineToPoint(path, NULL, tempFrame.size.width, 0);
-                CGPathAddLineToPoint(path, NULL, tempFrame.size.width, tempFrame.size.height);
-                if (_viewControllers.count >= numberOfItemsForScrolling) {
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth, tempFrame.size.height);
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
-                }
-                CGPathAddLineToPoint(path, NULL, 0, tempFrame.size.height);
-                CGPathCloseSubpath(path);
-                [maskLayer setPath:path];
-                CGPathRelease(path);
-                _contentView.layer.mask = maskLayer;
-                //Create the iOS7 border
-                
-            } else if (interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-                //Resize View
-                CGRect tempFrame = CGRectMake(0, 0, totalSize.width , totalSize.height - 50.0);
-                _contentView.frame = tempFrame;
-                _infiniteTabBar.frame = CGRectMake(-10, -7, _infiniteTabBar.frame.size.width, _infiniteTabBar.frame.size.height);
-                _selectedViewController.view.frame = CGRectMake(0, 0, totalSize.width , totalSize.height - 50.0);
-                _maskView.frame = CGRectMake(0, totalSize.height - 50.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
-                
-                //If the child view controller supports this interface orientation
-                if (_selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAll || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAllButUpsideDown || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskLandscape || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskLandscapeLeft) {
-                    //Rotate View Bounds
-                    _selectedViewController.view.transform = CGAffineTransformMakeRotation(angle);
-                    _selectedViewController.view.bounds = CGRectMake(0, 0, totalSize.height - 50.0, totalSize.width);
-                }
-                
-                //Create content mask
-                CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-                CGMutablePathRef path = CGPathCreateMutable();
-                CGPathMoveToPoint(path, NULL, 0, 0);
-                CGPathAddLineToPoint(path, NULL, tempFrame.size.width, 0);
-                CGPathAddLineToPoint(path, NULL, tempFrame.size.width, tempFrame.size.height);
-                if (_viewControllers.count >= numberOfItemsForScrolling) {
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth , tempFrame.size.height);
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
-                }
-                CGPathAddLineToPoint(path, NULL, 0, tempFrame.size.height);
-                CGPathCloseSubpath(path);
-                [maskLayer setPath:path];
-                CGPathRelease(path);
-                _contentView.layer.mask = maskLayer;
-                //Create the iOS7 border
             } else if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
-                //Resize View
-                CGRect tempFrame = CGRectMake(0, 0, totalSize.width, totalSize.height - 50.0);
+                if (_tabBarPosition == M13InfiniteTabBarPositionBottom) {
+                    tempFrame = CGRectMake(0, 0, totalSize.width, totalSize.height - 50.0);
+                    _maskView.frame = CGRectMake(0, totalSize.height - 50.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
+                } else {
+                    tempFrame = CGRectMake(0, 50.0, totalSize.width, totalSize.height - 50.0);
+                    _maskView.frame = CGRectMake(0, -10, _maskView.frame.size.width, _maskView.frame.size.height);
+                }
+                
                 _contentView.frame = tempFrame;
-                _selectedViewController.view.frame = CGRectMake(0, 0, totalSize.width, totalSize.height - 50.0);
-                _maskView.frame = CGRectMake(0, totalSize.height - 50.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
-                _infiniteTabBar.frame = CGRectMake(10, 5, _infiniteTabBar.frame.size.width, _infiniteTabBar.frame.size.height);
+                _selectedViewController.view.frame = CGRectMake(0, 0, tempFrame.size.width, tempFrame.size.height);
+                _infiniteTabBar.frame = CGRectMake(0, 0, _infiniteTabBar.frame.size.width, _infiniteTabBar.frame.size.height);
                 
                 //If the child view controller supports this interface orientation
                 if (_selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAll || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAllButUpsideDown || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskLandscape || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskLandscapeRight) {
                     //Rotate View Bounds
                     _selectedViewController.view.transform = CGAffineTransformMakeRotation(angle);
-                    _selectedViewController.view.bounds = CGRectMake(0, 0, totalSize.height - 50.0, totalSize.width);
+                    _selectedViewController.view.bounds = CGRectMake(0, 0, tempFrame.size.height, tempFrame.size.width);
                 }
                 
-                //Create content mask
-                CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-                CGMutablePathRef path = CGPathCreateMutable();
-                CGPathMoveToPoint(path, NULL, 0, 0);
-                CGPathAddLineToPoint(path, NULL, tempFrame.size.width, 0);
-                CGPathAddLineToPoint(path, NULL, tempFrame.size.width, tempFrame.size.height);
-                if (_viewControllers.count >= numberOfItemsForScrolling) {
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth, tempFrame.size.height);
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
-                    CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
+            } else if (interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+                if (_tabBarPosition == M13InfiniteTabBarPositionBottom) {
+                    tempFrame = CGRectMake(0, 0, totalSize.width , totalSize.height - 50.0);
+                    _maskView.frame = CGRectMake(0, totalSize.height - 50.0 - triangleDepth, _maskView.frame.size.width, _maskView.frame.size.height);
+                } else {
+                    tempFrame = CGRectMake(0, 50, totalSize.width , totalSize.height - 50.0);
+                    _maskView.frame = CGRectMake(0, -10, _maskView.frame.size.width, _maskView.frame.size.height);
                 }
-                CGPathAddLineToPoint(path, NULL, 0, tempFrame.size.height);
-                CGPathCloseSubpath(path);
-                [maskLayer setPath:path];
-                CGPathRelease(path);
-                _contentView.layer.mask = maskLayer;
-                //Create the iOS7 Border
+                
+                _contentView.frame = tempFrame;
+                _infiniteTabBar.frame = CGRectMake(0, 0, _infiniteTabBar.frame.size.width, _infiniteTabBar.frame.size.height);
+                _selectedViewController.view.frame = CGRectMake(0, 0, tempFrame.size.width, tempFrame.size.height);
+                
+                //If the child view controller supports this interface orientation
+                if (_selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAll || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskAllButUpsideDown || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskLandscape || _selectedViewController.supportedInterfaceOrientations == UIInterfaceOrientationMaskLandscapeLeft) {
+                    //Rotate View Bounds
+                    _selectedViewController.view.transform = CGAffineTransformMakeRotation(angle);
+                    _selectedViewController.view.bounds = CGRectMake(0, 0, tempFrame.size.height, tempFrame.size.width);
+                }
             }
+            
+            //Create the mask for the content view
+            CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+            CGMutablePathRef path = CGPathCreateMutable();
+            CGPathMoveToPoint(path, NULL, 0, 0); //Top left
+            if (_tabBarPosition == M13InfiniteTabBarPositionTop && _viewControllers.count >= numberOfItemsForScrolling) {
+                //Add the triangle
+                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, 0);
+                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), triangleDepth);
+                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth, 0);
+            }
+            CGPathAddLineToPoint(path, NULL, tempFrame.size.width, 0); //Top Right
+            CGPathAddLineToPoint(path, NULL, tempFrame.size.width, tempFrame.size.height); //Bottom Right
+            if (_tabBarPosition == M13InfiniteTabBarPositionBottom && _viewControllers.count >= numberOfItemsForScrolling) {
+                //Add the triangle
+                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) + triangleDepth, tempFrame.size.height);
+                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0), tempFrame.size.height - triangleDepth);
+                CGPathAddLineToPoint(path, NULL, (tempFrame.size.width / 2.0) - triangleDepth, tempFrame.size.height);
+            }
+            CGPathAddLineToPoint(path, NULL, 0, tempFrame.size.height); //Bottom LEft
+            CGPathCloseSubpath(path); //Close
+            [maskLayer setPath:path];
+            CGPathRelease(path);
+            _contentView.layer.mask = maskLayer;
+            
+            //Complete animations
             [UIView commitAnimations];
         }
-    }
-}
-
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    if (flag) {
-        NSLog(@"Frame: %@", NSStringFromCGRect(_infiniteTabBar.frame));
     }
 }
 
@@ -642,6 +620,14 @@
 {
     _enableInfiniteScrolling = enableInfiniteScrolling;
     _infiniteTabBar.enableInfiniteScrolling = _enableInfiniteScrolling;
+}
+
+- (void)setTabBarPosition:(M13InfiniteTabBarPosition)tabBarPosition
+{
+    _tabBarPosition = tabBarPosition;
+    if (self.viewControllers.count > 0) {
+        [self handleInterfaceChange:nil];
+    }
 }
 
 @end

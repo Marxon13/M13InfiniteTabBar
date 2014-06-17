@@ -11,7 +11,7 @@ Features:
 * Simple to setup; It can be setup programitically via a single initialization method, which is passed the UIViewControllers that will be displayed along with their tabs. Or, a single delegate method if using storyboards.
 * All the colors and icons can be customized to match any application theme. Most properties follow the UIAppearance protocol.
 * All the delegate methods work just like the UITabBarControllerDelegate methods. Allowing easy delegate implementation. 
-* Handles device rotation in a unique way. The tab bar is sticky to the side of the screen with the home button. When the device is rotated, the view controller and the tab bar icons rotate to the new orientation, the tab bar stays locked in position. Rotation for each view controller is handled separatly. Each view controller can have its own set of allowed orientations; unlike UITabBar, where the view controllers either need to allow all orientations, or use only one orientation.
+* Handles device rotation in a unique way. The tab bar is sticks to either the top or bottom of the screen. When the device is rotated, the view controller and the tab bar icons rotate to the new orientation, the tab bar stays locked in position. Rotation for each view controller is handled separatly. Each view controller can have its own set of allowed orientations; unlike UITabBarController, where the view controllers either need to allow all orientations, or use only one orientation.
 * Allows user attention to be directed to a specific tab, A tab that requires user attention will change color, and if offscreen the tab bar will show an animation to direct the user's attention to scroll to that tab.
 * The tab bar, if it contains more tabs than what can fit on screen (5 for iPhone and 14 for iPad), will be come infinitly scrolling. If all the tabs can fit on screen, it will act like a normal tab bar.
 * It is also possible to turn of infinite scrolling. The tab bar will only show one set of tabs, and will still scroll, but their will be boundaries to the scrolling.
@@ -35,6 +35,11 @@ Features:
 ***Rotation***
 
 <img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/Rotation.gif" width="300px">
+
+***Pinned To Top***
+<img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/Top.png" width="300px">
+
+
 
 
 Rotation Handling:

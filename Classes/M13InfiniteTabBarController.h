@@ -19,6 +19,11 @@
 @class M13InfiniteTabBarController;
 @class M13InfiniteTabBarRequiresAttentionBackgroundView;
 
+typedef enum {
+    M13InfiniteTabBarPositionBottom,
+    M13InfiniteTabBarPositionTop
+} M13InfiniteTabBarPosition;
+
 /** Delegate to respond to changes occuring in `M13InfiniteTabBarController` */
 @protocol M13InfiniteTabBarControllerDelegate <NSObject>
 
@@ -67,6 +72,8 @@
 @property (nonatomic, copy) NSArray *viewControllers;
 /** If set to YES, and the number of tabs is greater than minimumNumberOfTabsForScrolling, the tab bar will scroll infinitly. If set to no, the tab bar will still scroll, but not scroll infinitly.*/
 @property (nonatomic, assign) BOOL enableInfiniteScrolling;
+/**The location that the tab bar is pinned. The bar can be pinned to the top or bottom. Default is the bottom.*/
+@property (nonatomic, assign) M13InfiniteTabBarPosition tabBarPosition;
 
 /** @name Selection Handling */
 /** The selected `UIViewController` instance. */

@@ -111,6 +111,15 @@
         vc.requiresAttentionBackgroundView = [[PulsingRequiresAttentionView alloc] init];
         //A view controller requires user attention
         [vc viewControllerAtIndex:6 requiresUserAttentionWithImportanceLevel:1];
+    } else if ([segue.identifier isEqualToString:@"PinnedToTopSegue"]) {
+        display = @"GreaterThan5Tabs";
+        M13InfiniteTabBarController *vc = segue.destinationViewController;
+        vc.tabBarPosition = M13InfiniteTabBarPositionTop;
+        vc.delegate = self;
+        //Set the requires user attention background
+        vc.requiresAttentionBackgroundView = [[PulsingRequiresAttentionView alloc] init];
+        //A view controller requires user attention
+        [vc viewControllerAtIndex:6 requiresUserAttentionWithImportanceLevel:1];
     }
 }
 
