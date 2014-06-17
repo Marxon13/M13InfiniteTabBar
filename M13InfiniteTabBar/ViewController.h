@@ -16,5 +16,6 @@
 @property (nonatomic, strong) M13InfiniteTabBarController *infiniteTabBarController;
 
 - (IBAction)gotoWorld:(id)sender;
+- (IBAction)gotoTrash:(id)sender;
 
 @end

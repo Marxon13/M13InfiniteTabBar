@@ -188,9 +188,6 @@
         _selectedViewController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
         _selectedViewController.view.contentScaleFactor = [UIScreen mainScreen].scale;
         [_contentView addSubview:_selectedViewController.view];
-        
-        //Update mask
-        [self handleRotation:nil];
     }
 }
 
@@ -199,7 +196,8 @@
     [super viewWillAppear:animated];
     [_selectedViewController viewWillAppear:animated];
     
-    [_infiniteTabBar rotateItemsToOrientation:[UIDevice currentDevice].orientation];
+    //Update mask
+    [self handleRotation:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -229,8 +227,14 @@
 //Handle rotating all view controllers
 - (void)handleRotation:(NSNotification *)notification
 {
-    if (_selectedViewController.shouldAutorotate) {
+    //If notification is nil, we manually called for a redraw
+    if (_selectedViewController.shouldAutorotate || notification == nil) {
         UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+        
+        //If face down, face up, or unknow, force portrait, otherwise no triangle will be drawn
+        if (!UIDeviceOrientationIsPortrait(orientation) && !UIDeviceOrientationIsLandscape(orientation)) {
+            orientation = UIDeviceOrientationPortrait;
+        }
         
         //check to see if we should rotate, and set proper rotation values for animation
         UIInterfaceOrientationMask mask = _selectedViewController.supportedInterfaceOrientations;
@@ -398,6 +402,13 @@
             }
             [UIView commitAnimations];
         }
+    }
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (flag) {
+        NSLog(@"Frame: %@", NSStringFromCGRect(_infiniteTabBar.frame));
     }
 }
 

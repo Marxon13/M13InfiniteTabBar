@@ -139,6 +139,14 @@
     button.backgroundColor = [UIColor colorWithWhite:1 alpha:.3];
     [button addTarget:vc1 action:@selector(gotoWorld:) forControlEvents:UIControlEventTouchUpInside];
     [vc1.view addSubview:button];
+    
+    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button1 setTitle:@"Goto Trash Tab" forState:UIControlStateNormal];
+    button1.frame = CGRectMake(20, button.frame.origin.y + button.frame.size.height, [UIScreen mainScreen].bounds.size.width - 40, 30);
+    button1.backgroundColor = [UIColor colorWithWhite:1 alpha:.3];
+    [button1 addTarget:vc1 action:@selector(gotoTrash:) forControlEvents:UIControlEventTouchUpInside];
+    [vc1.view addSubview:button1];
+    
     vc1.infiniteTabBarController = tabBarController;
     
     //------- end test ----------------------

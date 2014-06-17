@@ -79,4 +79,14 @@
     
 }
 
+- (void)gotoTrash:(id)sender
+{
+    //Need to check how many view controllers we have.
+    if (self.infiniteTabBarController.viewControllers.count >= 4) {
+        [self.infiniteTabBarController setSelectedIndex:6];
+    } else {
+        //Does not exist.
+    }
+}
+
 @end

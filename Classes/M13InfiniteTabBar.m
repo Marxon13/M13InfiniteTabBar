@@ -333,27 +333,18 @@
         //Whoops, item doesn't exist.
         return;
     }
+    
+    //Select the current item
+    if (index == _selectedItem.tag) {
+        [self setSelectedItem:_selectedItem];
+    }
+    
     //Get the item at the given position in the tab bar. We will iterate from the left to the right, and look for the item with the same tag. Where will start depends on if we are infinite scrolling.
     CGFloat itemWidth = ((M13InfiniteTabBarItem *)[_items lastObject]).frame.size.width;
-    for (int i = 0; i < _items.count; i++) {
-        
-        //Calculate the xpos to check
-        CGFloat xPos = 0;
-        if (_enableInfiniteScrolling) {
-            //Start at the middle
-            xPos = (_tabContainerView.frame.size.width / 2.0) + (i * itemWidth);
-        } else {
-            //Start at the left side.
-            xPos = (itemWidth / 2.0) + (i * itemWidth);
-        }
-        
-        //Get the item at the given position
-        M13InfiniteTabBarItem *item = [self itemAtLocation:CGPointMake(xPos, _tabContainerView.frame.size.height / 2.0)];
-        if (item.tag == index) {
-            [self setSelectedItem:item];
-            break;
-        }
-    }
+    //Calculate the offset of the number of tabs
+    CGFloat offset = itemWidth * (index - _selectedItem.tag);
+    //Scroll that amount, Auto selects item.
+    [self setContentOffset:CGPointMake(self.contentOffset.x + offset, self.contentOffset.y) animated:YES];
 }
 
 - (void)setSelectedItem:(M13InfiniteTabBarItem *)selectedItem
