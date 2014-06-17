@@ -37,6 +37,7 @@ Features:
 <img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/Rotation.gif" width="300px">
 
 ***Pinned To Top***
+
 <img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/Top.png" width="300px">
 
 
