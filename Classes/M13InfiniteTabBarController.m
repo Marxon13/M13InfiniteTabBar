@@ -169,7 +169,12 @@
         borderLayer.strokeColor = [UIColor colorWithRed:0.56 green:0.56 blue:0.56 alpha:1].CGColor;
         
         //Combine views
-        _maskView.backgroundColor = [UIColor whiteColor];
+        
+        if (!_tabBarBackgroundColor) {
+            _tabBarBackgroundColor = [UIColor whiteColor];
+        }
+        _maskView.backgroundColor = _tabBarBackgroundColor;
+        
         [self.view addSubview:_maskView];
         [_maskView addSubview:_infiniteTabBar];
         [self.view addSubview:_contentView];
