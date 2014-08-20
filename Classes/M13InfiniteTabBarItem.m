@@ -114,17 +114,17 @@
 {
     _selected = selected;
     
-    [_iconView setImage:[self createColoredIconForCurrnetState]];
+    [_iconView setImage:[self createColoredIconForCurrentState]];
 }
 
 - (void)setRequiresUserAttention:(BOOL)requiresAttention
 {
     _requiresAttention = requiresAttention;
     
-    [_iconView setImage:[self createColoredIconForCurrnetState]];
+    [_iconView setImage:[self createColoredIconForCurrentState]];
 }
 
-- (UIImage *)createColoredIconForCurrnetState
+- (UIImage *)createColoredIconForCurrentState
 {
     //Set colors
     if (_selected) {
