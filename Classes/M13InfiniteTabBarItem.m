@@ -91,6 +91,17 @@
 {
     M13InfiniteTabBarItem *item = [[M13InfiniteTabBarItem alloc] initWithTitle:_titleLabel.text selectedIconMask:_selectedIcon unselectedIconMask:_unselectedIcon];
     if (item) {
+		item.backgroundImage = self.backgroundImage;
+		item.titleFont = self.titleFont;
+		item.selectedIconOverlayImage = self.selectedIconOverlayImage;
+		item.selectedIconTintColor = self.selectedIconTintColor;
+		item.unselectedIconOverlayImage = self.unselectedIconOverlayImage;
+		item.unselectedIconTintColor = self.unselectedIconTintColor;
+		item.attentionIconOverlayImage = self.attentionIconOverlayImage;
+		item.attentionIconTintColor = self.attentionIconTintColor;
+		item.selectedTitleColor = self.selectedTitleColor;
+		item.unselectedTitleColor = self.unselectedTitleColor;
+		item.attentionTitleColor = self.attentionTitleColor;
         [item setSelected:_selected];
         [item setRequiresUserAttention:_requiresAttention];
         UIView *itemContainerView = [item.subviews objectAtIndex:0];
