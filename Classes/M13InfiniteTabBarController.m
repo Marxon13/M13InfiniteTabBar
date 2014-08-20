@@ -141,7 +141,7 @@
             //Rotate the view controllers and tab bar items, so the center tab is the first one
             NSMutableArray *tempViewControllers = [NSMutableArray array];
             NSMutableArray *tempTabBarItems = [NSMutableArray array];
-            for (int i = _viewControllers.count - _selectedIndex; i < _viewControllers.count - _selectedIndex + _viewControllers.count; i++) {
+            for (int i = (int)_viewControllers.count - (int)_selectedIndex; i < _viewControllers.count - _selectedIndex + _viewControllers.count; i++) {
                 int j = i % _viewControllers.count;
                 [tempViewControllers addObject:_viewControllers[j]];
                 [tempTabBarItems addObject:_tabBarItems[j]];
@@ -586,7 +586,7 @@
     }
     //Create the search array
     NSMutableArray *searchArray = [NSMutableArray array];
-    for (int i = _selectedIndex + 1; i <= _viewControllers.count + _selectedIndex - 1; i++) {
+    for (int i = (int)_selectedIndex + 1; i <= (int)_viewControllers.count + (int)_selectedIndex - 1; i++) {
         [searchArray addObject:[NSNumber numberWithInt:(i % _viewControllers.count)]];
     }
     

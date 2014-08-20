@@ -223,7 +223,7 @@
 {
     //Get item of next index
     M13InfiniteTabBarItem *rightMostItem = [_visibleIcons lastObject];
-    int rightMostIndex = rightMostItem.tag;
+    int rightMostIndex = (int)rightMostItem.tag;
     int indexToInsert = rightMostIndex + 1;
     //Loop back if next index is past end of availableIcons
     if (indexToInsert == [_items count]) {
@@ -247,11 +247,11 @@
 {
     //Get item of next index
     M13InfiniteTabBarItem *leftMostItem = [_visibleIcons objectAtIndex:0];
-    int leftMostIndex = leftMostItem.tag;
+    int leftMostIndex = (int)leftMostItem.tag;
     int indexToInsert = leftMostIndex - 1;
     //Loop back if next index is past end of availableIcons
     if (indexToInsert == -1) {
-        indexToInsert = [_items count] - 1;
+        indexToInsert = (int)[_items count] - 1;
     }
     M13InfiniteTabBarItem *itemToInsert = [(M13InfiniteTabBarItem *)[_items objectAtIndex:indexToInsert] copy];
     itemToInsert.tag = indexToInsert;
