@@ -128,6 +128,7 @@
         _leftShapeLayer.frame = CGRectMake(0, 0, initialX + (self.frame.size.height / 2.0) +_thickness, self.frame.size.height);
         _leftShapeLayer.path = pathRef;
         
+		CGPathRelease(pathRef);
         if ([_leftShapeLayer animationForKey:pulseAnimationKey] != nil) {
             [_leftShapeLayer removeAnimationForKey:pulseAnimationKey];
         }
@@ -184,6 +185,7 @@
         }
         _rightShapeLayer.frame = CGRectMake(0, 0, initialX + (self.frame.size.height / 2.0) + _thickness, self.frame.size.height);
         _rightShapeLayer.path = pathRef;
+		CGPathRelease(pathRef);
         
         if ([_rightShapeLayer animationForKey:pulseAnimationKey] != nil) {
             [_rightShapeLayer removeAnimationForKey:pulseAnimationKey];
