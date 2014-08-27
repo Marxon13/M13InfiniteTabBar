@@ -16,6 +16,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "M13InfiniteTabBarItem.h"
 #import "M13InfiniteTabBarRequiresAttentionBackgroundView.h"
+#import "UIViewController+M13InfiniteTabBarExtension.h"
 
 
 @interface M13InfiniteTabBarController ()
@@ -189,6 +190,11 @@
         //Catch rotation changes for tabs
         [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleInterfaceChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+        
+        //Set the inifinite tab bar controller for each view controller.
+        for (UIViewController *vc in self.viewControllers) {
+            vc.infiniteTabBarController = self;
+        }
         
         _selectedViewController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
         _selectedViewController.view.contentScaleFactor = [UIScreen mainScreen].scale;

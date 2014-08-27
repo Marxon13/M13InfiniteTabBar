@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "M13InfiniteTabBar"
-  s.version      = "2.3.1"
+  s.version      = "2.3.2"
   s.summary      = "An elegant redesign of UITabBar for iOS Applications."
 
   s.description  = <<-DESC
@@ -28,7 +28,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   s.platform     = :ios, '7.0'
 
-  s.source = { :git => "https://github.com/Marxon13/M13InfiniteTabBar.git", :tag => "v2.3.1"}
+  s.source = { :git => "https://github.com/Marxon13/M13InfiniteTabBar.git", :tag => "v2.3.2"}
 
   s.source_files  = 'Classes/*/*', 'Classes/*'
 
