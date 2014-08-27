@@ -21,4 +21,14 @@
     return objc_getAssociatedObject(self, @"infiniteTabBarItemObject");
 }
 
+- (void)setInfiniteTabBarController:(M13InfiniteTabBarController *)controller
+{
+    objc_setAssociatedObject(self, @selector(setInfiniteTabBarItem:), controller, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (M13InfiniteTabBarController *)infiniteTabBarController
+{
+    return objc_getAssociatedObject(self, @selector(setInfiniteTabBarItem:));
+}
+
 @end
