@@ -1,1 +1,13 @@
-COCOAPODS: 0.29.0
+PODS:
+  - M13BadgeView (1.0.4)
+  - M13Toolkit/UIKitBatchUpdates (1.0.5)
+
+DEPENDENCIES:
+  - M13BadgeView
+  - M13Toolkit/UIKitBatchUpdates
+
+SPEC CHECKSUMS:
+  M13BadgeView: 25d03b04630496dfdb6c3f8eb793f6b1664495f8
+  M13Toolkit: b706e131b5c83a88025d97c88d28c520649f1ad3
+
+COCOAPODS: 0.35.0

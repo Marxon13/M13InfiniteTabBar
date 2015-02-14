@@ -1,0 +1,1 @@
+../../../M13Toolkit/iOS Classes/UIKit/UICollectionView+AutoBatchUpdates.h
