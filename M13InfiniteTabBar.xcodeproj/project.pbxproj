@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CAA35AAE1AC1CEA00048DFA2 /* SamplesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA35AAD1AC1CEA00048DFA2 /* SamplesTableViewController.m */; };
+		CAA35AB11AC1CFD60048DFA2 /* ChildTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA35AB01AC1CFD60048DFA2 /* ChildTableViewController.m */; };
+		CAA35AB41AC203070048DFA2 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA35AB31AC203070048DFA2 /* BasicViewController.m */; };
 		CABDA7691A8EF83D00C3B591 /* M13InfiniteTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CABDA7681A8EF83D00C3B591 /* M13InfiniteTabBarController.m */; };
 		CAEA94E81A7C23E400D3E627 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEA94E71A7C23E400D3E627 /* main.m */; };
 		CAEA94EB1A7C23E400D3E627 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEA94EA1A7C23E400D3E627 /* AppDelegate.m */; };
@@ -39,6 +42,12 @@
 		84DA26E7958A8B65E669794A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8DA3C2FD56842074CAA68E1A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA898A851A8A4A60004C74C7 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
+		CAA35AAC1AC1CEA00048DFA2 /* SamplesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesTableViewController.h; sourceTree = "<group>"; };
+		CAA35AAD1AC1CEA00048DFA2 /* SamplesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesTableViewController.m; sourceTree = "<group>"; };
+		CAA35AAF1AC1CFD60048DFA2 /* ChildTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildTableViewController.h; sourceTree = "<group>"; };
+		CAA35AB01AC1CFD60048DFA2 /* ChildTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildTableViewController.m; sourceTree = "<group>"; };
+		CAA35AB21AC203070048DFA2 /* BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicViewController.h; sourceTree = "<group>"; };
+		CAA35AB31AC203070048DFA2 /* BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
 		CABDA7671A8EF83D00C3B591 /* M13InfiniteTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = M13InfiniteTabBarController.h; path = Classes/M13InfiniteTabBarController.h; sourceTree = SOURCE_ROOT; };
 		CABDA7681A8EF83D00C3B591 /* M13InfiniteTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = M13InfiniteTabBarController.m; path = Classes/M13InfiniteTabBarController.m; sourceTree = SOURCE_ROOT; };
 		CAEA94E21A7C23E400D3E627 /* M13InfiniteTabBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = M13InfiniteTabBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,10 +219,16 @@
 			children = (
 				CAEA94E91A7C23E400D3E627 /* AppDelegate.h */,
 				CAEA94EA1A7C23E400D3E627 /* AppDelegate.m */,
+				CAA35AAC1AC1CEA00048DFA2 /* SamplesTableViewController.h */,
+				CAA35AAD1AC1CEA00048DFA2 /* SamplesTableViewController.m */,
 				EACF03411A8011760089913A /* TabBarItemSampleIOSViewController.h */,
 				EACF03421A8011760089913A /* TabBarItemSampleIOSViewController.m */,
 				EACF034B1A8151910089913A /* TabBarSampleViewController.h */,
 				EACF034C1A8151910089913A /* TabBarSampleViewController.m */,
+				CAA35AAF1AC1CFD60048DFA2 /* ChildTableViewController.h */,
+				CAA35AB01AC1CFD60048DFA2 /* ChildTableViewController.m */,
+				CAA35AB21AC203070048DFA2 /* BasicViewController.h */,
+				CAA35AB31AC203070048DFA2 /* BasicViewController.m */,
 				CAEA94EF1A7C23E400D3E627 /* Main.storyboard */,
 			);
 			name = "Sample App";
@@ -366,14 +381,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				EACF03431A8011760089913A /* TabBarItemSampleIOSViewController.m in Sources */,
+				CAA35AB11AC1CFD60048DFA2 /* ChildTableViewController.m in Sources */,
 				EACF03471A8130F20089913A /* M13InfiniteTabBar.m in Sources */,
 				EACF034D1A8151910089913A /* TabBarSampleViewController.m in Sources */,
+				CAA35AAE1AC1CEA00048DFA2 /* SamplesTableViewController.m in Sources */,
 				EA1925311A7FFCDC00238F9F /* M13InfiniteTabBarItemView.m in Sources */,
 				EA1925341A80057D00238F9F /* M13InfiniteTabBarItemViewIOS.m in Sources */,
 				CABDA7691A8EF83D00C3B591 /* M13InfiniteTabBarController.m in Sources */,
 				CAEA950E1A7C24C500D3E627 /* M13InfiniteTabBarItem.m in Sources */,
 				CAEA95111A7C290000D3E627 /* M13InfiniteTabBarItemIOS.m in Sources */,
 				EACF034A1A8133CA0089913A /* M13InfiniteTabBarFlowLayout.m in Sources */,
+				CAA35AB41AC203070048DFA2 /* BasicViewController.m in Sources */,
 				CAEA94EB1A7C23E400D3E627 /* AppDelegate.m in Sources */,
 				CAEA94E81A7C23E400D3E627 /* main.m in Sources */,
 			);

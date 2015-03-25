@@ -227,11 +227,18 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
 
 - (void)beginCustomizingItems:(NSArray *)items
 {
+    if ([_customizationDelegate respondsToSelector:@selector(infiniteTabBar:willBeginCustomizingItems:)]) {
+        [_customizationDelegate infiniteTabBar:self willBeginCustomizingItems:items];
+    }
+    
     
 }
 
 - (BOOL)endCustomizingItems
 {
+    if ([_customizationDelegate respondsToSelector:@selector(infiniteTabBar:didEndCustomizingItems:changed:)]) {
+        [_customizationDelegate infiniteTabBar:self didEndCustomizingItems:_items changed:false];
+    }
     return NO;
 }
 
@@ -403,6 +410,9 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
 
 - (void)updateCollectionViewCellClass
 {
+    if (_items.count <= 0) {
+        return;
+    }
     M13InfiniteTabBarItem *item = _items[0];
     if (item) {
         [_tabCollectionView registerClass:[item representedTabBarItemViewClass] forCellWithReuseIdentifier:@"M13InfiniteTabBarItemCell"];

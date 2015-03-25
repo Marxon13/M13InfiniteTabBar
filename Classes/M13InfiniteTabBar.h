@@ -30,17 +30,6 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarSelectionIndicatorLocation) {
  @param items The items on the customizing modal view.*/
 - (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar willBeginCustomizingItems:(NSArray *)items;
 
-/**Sent to the delegate after the customizing modal view is displayed.
- @param tabBar The tab bar that is being customized.
- @param items The items on the customizing modal view.*/
-- (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar didBeginCustomizingItems:(NSArray *)items;
-
-/**Sent to the delegate before the customizing modal view is dismissed.
- @param tabBar The tab bar that is being customized.
- @param items The items on the customizing modal view.
- @param changed true if the visible set of items on the tab bar changed; otherwise, false.*/
-- (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar willEndCustomizingItems:(NSArray *)items changed:(BOOL)changed;
-
 /**Sent to the delegate after the customizing modal view is dismissed.
  @param tabBar The tab bar that is being customized.
  @param items The items on the customizing modal view.
