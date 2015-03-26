@@ -11,5 +11,7 @@
 @interface BasicViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIColor *imageTintColor;
 
 @end

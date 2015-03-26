@@ -17,6 +17,8 @@
 #import "M13InfiniteTabBar.h"
 #import <objc/runtime.h>
 
+#define kM13InfiniteTabBarHeight 48.0
+
 @interface M13InfiniteTabBarController () <M13InfiniteTabBarSelectionDelegate, M13InfiniteTabBarCustomizationDelegate>
 
 /**
@@ -64,6 +66,12 @@
     //Style self
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
+    //Load the container view.
+    _controllerContainerView = [[UIView alloc] init];
+    [self.view addSubview:_controllerContainerView];
+    
     //Load the tab bar
     _infiniteTabBar = [[M13InfiniteTabBar alloc] init];
     [self.view addSubview:_infiniteTabBar];
@@ -72,6 +80,8 @@
     
     //Setup view controllers
     [self setViewControllers:_viewControllers];
+    
+    //self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,6 +106,7 @@
                 _viewControllers = [_configurationDelegate viewControllersToDisplayInInfiniteTabBarController:self];
             } else {
                 NSLog(@"Whoops, the M13InfiniteTabBarController was loaded without content.");
+                return;
             }
         }
         
@@ -106,7 +117,7 @@
         }
         [_infiniteTabBar setItems:itemArray];
         
-        //Make sure the selections are correct.
+        //Make sure the selections are correct
         BOOL previousSelectionExists = false;
         for (UIViewController *controller in _viewControllers) {
             if (controller == _selectedViewController) {
@@ -155,9 +166,15 @@
 
 - (void)displayContentController:(UIViewController *)content
 {
+    //Set the content
     [self addChildViewController:content];
-    content.view.frame = [self frameForContentController];
-    [self.view insertSubview:content.view belowSubview:_infiniteTabBar];
+    //Update the layout guides
+    [self updateLayoutConstraintsForChildViewController:content];
+    [self updateScrollViewInsetsForChildViewController:content];
+    
+    content.view.frame = [self frameForChildViewControllers];
+    [_controllerContainerView addSubview:content.view];
+    self.title = content.title;
     [content didMoveToParentViewController:self];
 }
 
@@ -170,21 +187,27 @@
 
 - (void)transitionFromViewController:(UIViewController*)oldContent toViewController:(UIViewController*)newContent
 {
-    
+    //Transition the content
     [oldContent willMoveToParentViewController:nil];
     [newContent willMoveToParentViewController:self];
     [self addChildViewController:newContent];
     
-    CGRect newViewStartFrame = [self frameForContentController];
+    CGRect newViewStartFrame = [self frameForChildViewControllers];
     newContent.view.frame = newViewStartFrame;
-    CGRect oldViewEndFrame = [self frameForContentController];
+    CGRect oldViewEndFrame = [self frameForChildViewControllers];
     CGRect endFrame = oldViewEndFrame;
     
+    //Update the layout guides (Doing it before the transition has no effect on the child.
+    [self updateLayoutConstraintsForChildViewController:newContent];
+    [self updateScrollViewInsetsForChildViewController:newContent];
+
     [self transitionFromViewController:oldContent toViewController:newContent duration:0.25 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         newContent.view.frame = oldContent.view.frame;
         oldContent.view.frame = endFrame;
+        
     } completion:^(BOOL finished) {
         [oldContent removeFromParentViewController];
+        [oldContent didMoveToParentViewController:nil];
         [newContent didMoveToParentViewController:self];
     }];
 }
@@ -212,18 +235,74 @@
 #pragma mark Layout
 //---------------------------------------
 
-- (CGRect)frameForContentController
+- (CGRect)frameForChildViewControllers
 {
-    return self.view.bounds;
+    return _controllerContainerView.bounds;
+}
+
+- (void)updateLayoutConstraintsForChildViewController:(UIViewController *)childViewController
+{
+    //Iterate through all the layout constraints and find the constraints for the top and bottom
+    for (NSLayoutConstraint *constraint in childViewController.view.constraints) {
+        //Is it the top layout guide?
+        if (constraint.firstItem == childViewController.topLayoutGuide && constraint.firstAttribute == NSLayoutAttributeHeight
+            && constraint.secondItem == nil) {
+            constraint.constant = self.topLayoutGuide.length;
+        }
+        //Is it the bottom layout guide
+        if (constraint.firstItem == childViewController.bottomLayoutGuide && constraint.firstAttribute == NSLayoutAttributeHeight && constraint.secondItem == nil) {
+            constraint.constant = kM13InfiniteTabBarHeight;
+        }
+    }
+}
+
+- (void)updateScrollViewInsetsForChildViewController:(UIViewController *)viewController
+{
+    if ([viewController.class isSubclassOfClass:[UITableViewController class]] && viewController.automaticallyAdjustsScrollViewInsets) {
+        UITableViewController *tbvc = (UITableViewController *)viewController;
+        tbvc.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0.0, kM13InfiniteTabBarHeight, 0.0);
+        tbvc.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.topLayoutGuide.length, 0.0, kM13InfiniteTabBarHeight, 0.0);
+        //Adjust only if the user has not scrolled.
+        if (tbvc.tableView.contentOffset.y == 0.0) {
+            [UIView animateWithDuration:0.01 delay:0.0 options:0 animations:^{
+                [tbvc.tableView setContentOffset:CGPointMake(0.0, - self.topLayoutGuide.length) animated:false];
+            } completion:^(BOOL finished) {
+                
+            }];
+            
+        }
+    } else if ([viewController.class isSubclassOfClass:[UICollectionViewController class]] && viewController.automaticallyAdjustsScrollViewInsets) {
+        UICollectionViewController *tbvc = (UICollectionViewController *)viewController;
+        tbvc.collectionView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0.0, kM13InfiniteTabBarHeight, 0.0);
+        tbvc.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(self.topLayoutGuide.length, 0.0, kM13InfiniteTabBarHeight, 0.0);
+        //Adjust only if the user has not scrolled.
+        if (tbvc.collectionView.contentOffset.y == 0.0) {
+            [tbvc.collectionView setContentOffset:CGPointMake(0.0, - self.topLayoutGuide.length) animated:false];
+        }
+    } else if (viewController.view.subviews.count > 0) {
+        if ([[viewController.view.subviews[0] class] isSubclassOfClass:[UIScrollView class]] && viewController.automaticallyAdjustsScrollViewInsets) {
+            UIScrollView *sv = (UIScrollView *)viewController.view.subviews[0];
+            sv.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0.0, kM13InfiniteTabBarHeight, 0.0);
+            sv.scrollIndicatorInsets = UIEdgeInsetsMake(self.topLayoutGuide.length, 0.0, kM13InfiniteTabBarHeight, 0.0);
+            //Adjust only if the user has not scrolled.
+            if (sv.contentOffset.y == 0.0) {
+                [sv setContentOffset:CGPointMake(0.0, - self.topLayoutGuide.length) animated:false];
+            }
+        }
+    }
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     
-    CGFloat tabBarHeight = 48.0;
-    _infiniteTabBar.frame = CGRectMake(0, self.view.bounds.size.height - tabBarHeight, self.view.bounds.size.width, tabBarHeight);
+    _controllerContainerView.frame = self.view.bounds;
+    
+    _infiniteTabBar.frame = CGRectMake(0, self.view.bounds.size.height - kM13InfiniteTabBarHeight, self.view.bounds.size.width, kM13InfiniteTabBarHeight);
     _selectedViewController.view.frame = self.view.bounds;
+    
+    [self updateLayoutConstraintsForChildViewController:_selectedViewController];
+    [self updateScrollViewInsetsForChildViewController:_selectedViewController];
 }
 
 //---------------------------------------
@@ -249,7 +328,13 @@
 - (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar concurrentAnimationsForSelectingItem:(M13InfiniteTabBarItem *)item
 {
     UIViewController *newController = _viewControllers[item.index];
-    [self transitionFromViewController:_selectedViewController toViewController:newController];
+    if (item.index == _selectedIndex) {
+        
+    } else {
+        //Switch tabs
+        [self transitionFromViewController:_selectedViewController toViewController:newController];
+    }
+    self.title = newController.title;
 }
 
 - (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar didSelectItem:(M13InfiniteTabBarItem *)item
@@ -257,6 +342,8 @@
     if ([_delegate respondsToSelector:@selector(infiniteTabBarController:didSelectViewController:)]) {
         [_delegate infiniteTabBarController:self didSelectViewController:_selectedViewController];
     }
+    _selectedIndex = item.index;
+    _selectedViewController = _viewControllers[_selectedIndex];
 }
 
 - (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar willBeginCustomizingItems:(NSArray *)items
@@ -296,7 +383,6 @@
 @end
 
 static char ITEM_KEY;
-static char CONTROLLER_KEY;
 
 @implementation UIViewController (M13InfiniteTabBar)
 
@@ -310,14 +396,14 @@ static char CONTROLLER_KEY;
     return objc_getAssociatedObject(self, &ITEM_KEY);
 }
 
-- (void)setInfiniteTabBarController:(M13InfiniteTabBarController *)controller
-{
-    objc_setAssociatedObject(self, &CONTROLLER_KEY, controller, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
 - (M13InfiniteTabBarController *)infiniteTabBarController
 {
-    return objc_getAssociatedObject(self, &CONTROLLER_KEY);
+    UIViewController *currentParent = self;
+    while (currentParent != nil && [currentParent class] != [M13InfiniteTabBarController class]) {
+        currentParent = currentParent.parentViewController;
+    }
+    
+    return (M13InfiniteTabBarController *)currentParent;
 }
 
 @end

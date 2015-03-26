@@ -138,9 +138,6 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarPosition) {
  @return The infinite tab bar item for the view controller.*/
 - (M13InfiniteTabBarItem *)infiniteTabBarItem;
 
-/**Set the infinite tab bar controller for the view controller.
- @param item The new tab bar controller for the view controller.*/
-- (void)setInfiniteTabBarController:(M13InfiniteTabBarController *)controller;
 /**Get the infinite tab bar controller for the view controller.
  @return The infinite tab bar controller for the view controller.*/
 - (M13InfiniteTabBarController *)infiniteTabBarController;
