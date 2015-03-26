@@ -565,7 +565,7 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
     }
     
     //Scroll View
-    _tabCollectionView.frame = CGRectMake(self.bounds.origin.x - _tabBarItemInsets.left, self.bounds.origin.y - _tabBarItemInsets.top, self.bounds.size.width - _tabBarItemInsets.left - _tabBarItemInsets.right, self.bounds.size.height - _tabBarItemInsets.top - _tabBarItemInsets.bottom);
+    _tabCollectionView.frame = CGRectMake(self.bounds.origin.x + _tabBarItemInsets.left, self.bounds.origin.y + _tabBarItemInsets.top, self.bounds.size.width - _tabBarItemInsets.left - _tabBarItemInsets.right, self.bounds.size.height - _tabBarItemInsets.top - _tabBarItemInsets.bottom);
     
     //Update the tabs and indicator if necessary
     [self updateTabLayout:true];
