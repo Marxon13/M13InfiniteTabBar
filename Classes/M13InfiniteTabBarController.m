@@ -17,7 +17,7 @@
 #import "M13InfiniteTabBar.h"
 #import <objc/runtime.h>
 
-#define kM13InfiniteTabBarHeight 48.0
+#define kM13InfiniteTabBarHeight 50.0
 
 @interface M13InfiniteTabBarController () <M13InfiniteTabBarSelectionDelegate, M13InfiniteTabBarCustomizationDelegate>
 
@@ -74,6 +74,7 @@
     
     //Load the tab bar
     _infiniteTabBar = [[M13InfiniteTabBar alloc] init];
+    _infiniteTabBar.tabBarItemInsets = UIEdgeInsetsMake(2.0, 0.0, 0.0, 0.0);
     [self.view addSubview:_infiniteTabBar];
     _infiniteTabBar.selectionDelegate = self;
     _infiniteTabBar.customizationDelegate = self;
