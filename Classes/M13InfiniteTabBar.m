@@ -38,6 +38,9 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
 /**The background image view, if the background image is set. If we are also translucent, this will appear over the visual effect view.*/
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 
+/**The layer that draws a 1.0 width border along the tab bar edge.*/
+@property (nonatomic, strong) CAShapeLayer *borderLayer;
+
 //---------------------------------------
 /**@name Interaction*/
 //---------------------------------------
@@ -63,6 +66,10 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
 /**Wether or not the tab bar items changed after the last layout.*/
 @property (nonatomic, assign) BOOL itemsChangedSinceLastLayout;
 @property (nonatomic, assign) M13InfiniteTabBarLayout layoutType;
+
+/**Wether or not the size changed after the last layout.*/
+@property (nonatomic, assign) BOOL sizeChangedSinceLastLayout;
+@property (nonatomic, assign) CGSize previousSize;
 
 /**How many sections do we want to display for the infinite scrolling? (Not integer max)*/
 @property (nonatomic, assign) NSUInteger numberOfSectionsForInfiniteScrolling;
@@ -347,11 +354,52 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
 {
     //Do we need a mask?
     if (_layoutType == M13InfiniteTabBarLayoutStatic) {
-        self.layer.mask = nil;
+        ((CAShapeLayer *)self.layer.mask).path = CGPathCreateWithRect(self.bounds, nil);
         return;
     }
     
     //Prepare to create the mask
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGFloat triangleDepth = 5.0;
+    
+    //Start with the top left corner
+    CGPathMoveToPoint(path, nil, 0, 0);
+    
+    //Draw the triangle on top if necessary
+    if (_selectionIndicatorLocation == M13InfiniteTabBarSelectionIndicatorLocationTop) {
+        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) - triangleDepth, 0);
+        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0), triangleDepth);
+        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) + triangleDepth, 0);
+    }
+    
+    //Top right
+    CGPathAddLineToPoint(path, nil, self.frame.size.width, 0);
+    
+    //Bottom right
+    CGPathAddLineToPoint(path, nil, self.frame.size.width, self.frame.size.height);
+    
+    //Draw the triangle on bottom if necessary
+    if (_selectionIndicatorLocation == M13InfiniteTabBarSelectionIndicatorLocationBottom) {
+        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) + triangleDepth, self.frame.size.height);
+        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0), self.frame.size.height - triangleDepth);
+        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) - triangleDepth, self.frame.size.height);
+    }
+    
+    //Bottom left
+    CGPathAddLineToPoint(path, nil, 0, self.frame.size.height);
+    
+    //Close the path and set the mask
+    CGPathCloseSubpath(path);
+    if (self.layer.mask == nil) {
+        self.layer.mask = [CAShapeLayer layer];
+    }
+    ((CAShapeLayer *)self.layer.mask).path = path;
+    CGPathRelease(path);
+}
+
+- (void)updateBorder
+{
+    //Prepare to create the border
     CGMutablePathRef path = CGPathCreateMutable();
     CGFloat triangleDepth = 5.0;
     
@@ -426,7 +474,15 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     M13InfiniteTabBarItem *item = _items[indexPath.row];
-    [self setSelectedItem:item atIndexPath:indexPath];
+    if (_selectedItem.index != indexPath.row) {
+        //Initial tap
+        [self setSelectedItem:item atIndexPath:indexPath];
+    } else {
+        //Secondary tap
+        if ([_selectionDelegate respondsToSelector:@selector(infiniteTabBar:secondaryAction:performedOnItem:)]) {
+            [_selectionDelegate infiniteTabBar:self secondaryAction:M13InfiniteTabBarSecondaryActionTap performedOnItem:_items[indexPath.row]];
+        }
+    }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -554,6 +610,11 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
 {
     [super layoutSubviews];
     
+    //Size Changed?
+    if (_previousSize.width != self.bounds.size.width || _previousSize.height != self.bounds.size.height) {
+        _sizeChangedSinceLastLayout = true;
+    }
+    
     //Visual effect view
     if (_backgroundVisualEffectView) {
         _backgroundVisualEffectView.frame = self.bounds;
@@ -599,7 +660,7 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
 - (void)layoutTabsAnimated:(BOOL)animated completion:(void(^)(BOOL finished))completion
 {
     if (animated) {
-        if (_itemsChangedSinceLastLayout) {
+        if (_itemsChangedSinceLastLayout || _sizeChangedSinceLastLayout) {
             [_tabCollectionView performBatchUpdates:^{
                 
                 //Did the number of sections change (Section 0 will always exist)
@@ -655,6 +716,7 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
         if (finished) {
             //Changes have been handled if they existed
             _itemsChangedSinceLastLayout = false;
+            _sizeChangedSinceLastLayout = false;
         }
     }];
 }
@@ -673,6 +735,7 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
             [_tabCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:indexToSelect inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
             //Changes have been handled if they existed
             _itemsChangedSinceLastLayout = false;
+            _sizeChangedSinceLastLayout = false;
         }
     }];
 }
@@ -693,6 +756,7 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
             [_tabCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:indexToSelect inSection:_centerSectionForInfiniteScrolling] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
             //Changes have been handled if they existed
             _itemsChangedSinceLastLayout = false;
+            _sizeChangedSinceLastLayout = false;
         }
     }];
 }

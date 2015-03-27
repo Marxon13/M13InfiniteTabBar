@@ -22,6 +22,11 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarSelectionIndicatorLocation) {
     M13InfiniteTabBarSelectionIndicatorLocationBottom,
 };
 
+typedef NS_ENUM(NSUInteger, M13InfiniteTabBarSecondaryAction) {
+    //The tap secondary action is only called when the selcted item is tapped for a second time. (single tap, not double.)
+    M13InfiniteTabBarSecondaryActionTap
+};
+
 /**The delegate that reponds to tab bar customization.*/
 @protocol M13InfiniteTabBarCustomizationDelegate <NSObject>
 
@@ -61,6 +66,15 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarSelectionIndicatorLocation) {
  @param tabBar The tab bar that did select the given item.
  @param item The item that the tab bar selected.*/
 - (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar didSelectItem:(M13InfiniteTabBarItem *)item;
+
+/**
+ Informs the delegate that a secondary action was performed to an item on the tab bar. This gets called for any defined action that does not select a tab, or begin customization.
+ 
+ @param tabBar The tab bar that the secondary action was performed on.
+ @param action The action that occured on the given item.
+ @param item   The item that the action was performed on.
+ */
+- (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar secondaryAction:(M13InfiniteTabBarSecondaryAction)action performedOnItem:(M13InfiniteTabBarItem *)item;
 
 @end
 

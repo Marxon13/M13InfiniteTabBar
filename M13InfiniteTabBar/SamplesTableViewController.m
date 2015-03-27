@@ -41,7 +41,7 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"basicViewControllerSegue"]) {
         //Setup the basic view controller
-        
+        //[self.navigationController setNavigationBarHidden:true animated:true];
         M13InfiniteTabBarController *vc = segue.destinationViewController;
         vc.configurationDelegate = self;
     }
@@ -92,13 +92,22 @@
     vc5.infiniteTabBarItem = [[M13InfiniteTabBarItemIOS alloc] initWithTitle:@"History" image:[[UIImage imageNamed:@"History"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] selectedImage:[[UIImage imageNamed:@"HistorySelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     [viewControllers addObject:vc5];
     
+    BasicViewController *vc65 = [storyboard instantiateViewControllerWithIdentifier:@"BasicViewController"];
+    vc65.image = [[UIImage imageNamed:@"GlobalIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    vc65.imageTintColor = [UIColor colorWithHue:0.16 saturation:0.64 brightness:0.89 alpha:1];
+    vc65.view.backgroundColor = [UIColor colorWithHue:0.16 saturation:0.64 brightness:0.98 alpha:1];
+    vc65.title = @"Global";
+    
+    UINavigationController *nc6 = [[UINavigationController alloc] initWithRootViewController:vc65];
+    nc6.infiniteTabBarItem = [[M13InfiniteTabBarItemIOS alloc] initWithTitle:@"Search" image:[[UIImage imageNamed:@"Search"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] selectedImage:[[UIImage imageNamed:@"SearchSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    [viewControllers addObject:nc6];
+    
     BasicViewController *vc6 = [storyboard instantiateViewControllerWithIdentifier:@"BasicViewController"];
     vc6.image = [[UIImage imageNamed:@"SearchIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     vc6.imageTintColor = [UIColor colorWithHue:0.92 saturation:0.83 brightness:0.82 alpha:1];
     vc6.view.backgroundColor = [UIColor colorWithHue:0.92 saturation:0.82 brightness:0.98 alpha:1];
     vc6.title = @"Search";
-    vc6.infiniteTabBarItem = [[M13InfiniteTabBarItemIOS alloc] initWithTitle:@"Search" image:[[UIImage imageNamed:@"Search"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] selectedImage:[[UIImage imageNamed:@"SearchSelected"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
-    [viewControllers addObject:vc6];
+    [nc6 pushViewController:vc6 animated:false];
     
     ChildTableViewController *vc7 = [storyboard instantiateViewControllerWithIdentifier:@"ChildTableViewController"];
     vc7.cellLabel = @"Viewed";

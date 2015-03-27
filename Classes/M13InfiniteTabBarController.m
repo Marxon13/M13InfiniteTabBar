@@ -232,6 +232,13 @@
     return UIInterfaceOrientationPortrait;
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator notifyWhenInteractionEndsUsingBlock:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        //[_infiniteTabBar setNeedsLayout];
+    }];
+}
+
 //---------------------------------------
 #pragma mark Layout
 //---------------------------------------
@@ -378,6 +385,16 @@
             }
         }
         [_delegate infiniteTabBarController:self didEndCustomizingViewControllers:viewControllers changed:changed];
+    }
+}
+
+- (void)infiniteTabBar:(M13InfiniteTabBar *)tabBar secondaryAction:(M13InfiniteTabBarSecondaryAction)action performedOnItem:(M13InfiniteTabBarItem *)item
+{
+    if (action == M13InfiniteTabBarSecondaryActionTap) {
+        //If the action is a tap, if the selected view controller is a UINavigationController, pop its stack to root.
+        if ([_selectedViewController.class isSubclassOfClass:[UINavigationController class]]) {
+            [((UINavigationController *)_selectedViewController) popToRootViewControllerAnimated:true];
+        }
     }
 }
 
