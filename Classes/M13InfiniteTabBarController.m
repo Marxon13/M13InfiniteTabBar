@@ -232,13 +232,6 @@
     return UIInterfaceOrientationPortrait;
 }
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-{
-    [coordinator notifyWhenInteractionEndsUsingBlock:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        //[_infiniteTabBar setNeedsLayout];
-    }];
-}
-
 //---------------------------------------
 #pragma mark Layout
 //---------------------------------------

@@ -166,6 +166,7 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
     [self updateBackground];
     //Create the selection indicator
     [self updateSelectionIndicator];
+    [self updateBorder];
 }
 
 //---------------------------------------
@@ -211,6 +212,7 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
     //Make sure we fully update tabs
     [self updateTabLayout:animated];
     [self updateSelectionIndicator];
+    [self updateBorder];
 }
 
 /**Rotate all the tab bar items in the tab bar to the given angle.*/
@@ -341,12 +343,14 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
 {
     _showSelectionIndicator = showSelectionIndicator;
     [self updateSelectionIndicator];
+    [self updateBorder];
 }
 
 - (void)setSelectionIndicatorLocation:(M13InfiniteTabBarSelectionIndicatorLocation)selectionIndicatorLocation
 {
     _selectionIndicatorLocation = selectionIndicatorLocation;
     [self updateSelectionIndicator];
+    [self updateBorder];
 }
 
 /**Draws the mask that is the selection indicator triangle.*/
@@ -402,39 +406,44 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
     //Prepare to create the border
     CGMutablePathRef path = CGPathCreateMutable();
     CGFloat triangleDepth = 5.0;
-    
-    //Start with the top left corner
-    CGPathMoveToPoint(path, nil, 0, 0);
-    
+    CGFloat lineOffset = 0.5 * (1.0 / [UIScreen mainScreen].scale);
+
     //Draw the triangle on top if necessary
     if (_selectionIndicatorLocation == M13InfiniteTabBarSelectionIndicatorLocationTop) {
-        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) - triangleDepth, 0);
-        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0), triangleDepth);
-        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) + triangleDepth, 0);
+        //Start with the top left corner
+        CGPathMoveToPoint(path, nil, 0, + lineOffset);
+        if (_showSelectionIndicator && _layoutType != M13InfiniteTabBarLayoutStatic) {
+            //Triangle
+            CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) - triangleDepth, + lineOffset);
+            CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0), triangleDepth + lineOffset);
+            CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) + triangleDepth, + lineOffset);
+        }
+        //Top right
+        CGPathAddLineToPoint(path, nil, self.frame.size.width, + lineOffset);
     }
-    
-    //Top right
-    CGPathAddLineToPoint(path, nil, self.frame.size.width, 0);
-    
-    //Bottom right
-    CGPathAddLineToPoint(path, nil, self.frame.size.width, self.frame.size.height);
     
     //Draw the triangle on bottom if necessary
     if (_selectionIndicatorLocation == M13InfiniteTabBarSelectionIndicatorLocationBottom) {
-        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) + triangleDepth, self.frame.size.height);
-        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0), self.frame.size.height - triangleDepth);
-        CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) - triangleDepth, self.frame.size.height);
+        //Bottom right
+        CGPathAddLineToPoint(path, nil, self.frame.size.width, self.frame.size.height - lineOffset);
+        if (_showSelectionIndicator && _layoutType != M13InfiniteTabBarLayoutStatic) {
+            //Triangle
+            CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) + triangleDepth, self.frame.size.height - lineOffset);
+            CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0), self.frame.size.height - triangleDepth - lineOffset);
+            CGPathAddLineToPoint(path, nil, (self.frame.size.width / 2.0) - triangleDepth, self.frame.size.height - lineOffset);
+        }
+        //Bottom left
+        CGPathAddLineToPoint(path, nil, 0, self.frame.size.height - lineOffset);
     }
     
-    //Bottom left
-    CGPathAddLineToPoint(path, nil, 0, self.frame.size.height);
-    
-    //Close the path and set the mask
-    CGPathCloseSubpath(path);
-    if (self.layer.mask == nil) {
-        self.layer.mask = [CAShapeLayer layer];
+    if (_borderLayer == nil) {
+        _borderLayer = [CAShapeLayer layer];
+        _borderLayer.strokeColor = [UIColor colorWithHue:0.0 saturation:0.0 brightness:0.0 alpha:0.25].CGColor;
+        _borderLayer.lineWidth = (1.0 / [UIScreen mainScreen].scale);
+        _borderLayer.fillColor = nil;
+        [self.layer addSublayer:_borderLayer];
     }
-    ((CAShapeLayer *)self.layer.mask).path = path;
+    _borderLayer.path = path;
     CGPathRelease(path);
 }
 
@@ -631,6 +640,7 @@ typedef NS_ENUM(NSUInteger, M13InfiniteTabBarLayout) {
     //Update the tabs and indicator if necessary
     [self updateTabLayout:true];
     [self updateSelectionIndicator];
+    [self updateBorder];
 }
 
 - (void)updateTabLayout:(BOOL)animated
