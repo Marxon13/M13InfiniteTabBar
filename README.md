@@ -1,5 +1,9 @@
 <img src="https://raw.github.com/Marxon13/M13InfiniteTabBar/master/ReadmeResources/M13InfiniteTabBarBanner.png">
 
+UNMAINTAINED
+=============
+This repo is no longer maintained. I am not planning on updating this in the future (This may change.) It's also not the most understandable user interface anyway. 
+
 M13InfiniteTabBar
 =============
 M13InfiniteTabBar is an elegant replacement for UITabBar. UITabBar becomes a problem when you have more than five view controllers that have the need to be accessed an equal amount of times. It maskes no sense to hide any of the tabs away under the "More" tab, as it takes two extra clicks to reach those view controllers. M13InfiniteTabBar solves this problem by having all the view controllers on a single level. The "extra" view controllers can be reached by scrolling the tab bar left or right. The scrolling does pose a problem though, in which direction is my offscreen tab? M13InfiniteTabBar solves this by putting the tabs in an infinite scrolling loop. Any tab can be reached by scrolling in any direction. M13InfiniteTabBar also has a few other features that UITabBar doesn't offer on top of that.
